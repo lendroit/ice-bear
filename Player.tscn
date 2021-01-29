@@ -14,6 +14,8 @@ script = ExtResource( 2 )
 position = Vector2( -0.495148, -19.6786 )
 scale = Vector2( 0.164762, 0.164762 )
 current = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
 
 [node name="ours" type="Sprite" parent="."]
 position = Vector2( -0.495148, -19.6786 )
