@@ -5,6 +5,7 @@ export (int) var jump_speed = -1800
 export (int) var gravity = 4000
 
 var velocity = Vector2.ZERO
+var double_jumped = false
 
 func get_input():
 	velocity.x = 0
@@ -19,4 +20,8 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity, Vector2.UP)
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor():
+			double_jumped = false
+			velocity.y = jump_speed
+		elif not double_jumped:
+			double_jumped = true
 			velocity.y = jump_speed
