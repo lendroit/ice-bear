@@ -73,6 +73,7 @@ shape = SubResource( 4 )
 [node name="HookPositionTween" type="Tween" parent="."]
 
 [node name="GrapplingHookRope" type="Sprite" parent="."]
+visible = false
 scale = Vector2( 0.107585, 0.107585 )
 texture = ExtResource( 1 )
 [connection signal="area_shape_entered" from="HurtBox" to="." method="_on_HurtBox_area_shape_entered"]
