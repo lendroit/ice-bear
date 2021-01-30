@@ -40,6 +40,7 @@ func idle():
 	animation_player.play("Idle")
 
 func flip():
+	velocity.x = 0
 	direction = -direction
 	sprite.flip_h = !sprite.flip_h
 
@@ -63,7 +64,6 @@ func _process(delta):
 		NEW_DIRECTION:
 			flip()
 			state = choose(possible_states_after_new_direction)
-			reset_walking_timer()
 		WALK:
 			walk()
 
