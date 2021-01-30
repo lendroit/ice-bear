@@ -40,7 +40,6 @@ var is_crawling = false
 var direction
 var orientation
 var ready_to_spit := true
-var reachable_hook_node
 
 enum leftright {left, right}
 
@@ -73,10 +72,15 @@ func stand():
 	is_crawling = false
 
 func hook():
-	if(!reachable_hook_node):
+	var hooks_in_area = reachable_hooks_area.get_overlapping_areas()
+	var hooks_direction = map(funcref(self, "get_direction"),hooks_in_area)
+	print(hooks_direction)
+	var upper_hooks_directions = filter(funcref(self, "keep_upper_hooks"), hooks_direction)
+	print(upper_hooks_directions)
+	if(upper_hooks_directions.size() == 0):
 		return
-	print(reachable_hook_node.position)
-	hook_position_tween.interpolate_property(self, "position", self.position, reachable_hook_node.position, 1, Tween.TRANS_EXPO)
+	var hook_direction = upper_hooks_directions[0].normalized()*WALK_SPEED*5
+	hook_position_tween.interpolate_property(self, "velocity", self.velocity, hook_direction, 0.1, Tween.TRANS_LINEAR)
 	hook_position_tween.start()
 
 
@@ -179,16 +183,27 @@ func _on_PickupBox_area_entered(area):
 		if(area is Crow):
 			CAN_HOVER = true
 
+func get_direction(other_area: Area2D)->Vector2:
+	return other_area.position - self.position
+
+func keep_upper_hooks(direction: Vector2)->bool:
+	return direction.y < 0
 
 func _on_Timer_timeout():
 	ready_to_spit = true
 
+static func map(function: FuncRef, i_array: Array)->Array:
+	var o_array := []
+	for value in i_array:
+		o_array.append(function.call_func(value))
+	return o_array
 
-func _on_ReachableHooksArea_area_entered(area):
-	reachable_hook_node = area
-	pass # Replace with function body.
+static func filter(filter_function: FuncRef, candidate_array: Array)->Array:
+	var filtered_array := []
 
+	for candidate_value in candidate_array:
+		if filter_function.call_func(candidate_value):
+			filtered_array.append(candidate_value)
 
-func _on_ReachableHooksArea_area_exited(area):
-	reachable_hook_node = null
-	pass # Replace with function body.
+	return filtered_array
+
