@@ -3,8 +3,12 @@ extends KinematicBody2D
 export (int) var speed = 200
 export (float) var friction = 0.1
 export (float) var acceleration = 0.25
+export (bool) var gravity_sensible = false
 
-const POSSIBLE_TIMER_DURATIONS = [0.5, 1, 1.5, 2]
+var possible_timer_Durations = [1.5]
+var possible_states_after_idle = [WALK]
+var possible_states_after_walk = [NEW_DIRECTION]
+var possible_states_after_new_direction = [WALK]
 
 onready var walking_timer = $WalkingTimer
 onready var sprite = $Sprite
@@ -17,7 +21,8 @@ var direction := Vector2.LEFT
 enum {
 	IDLE,
 	NEW_DIRECTION,
-	WALK
+	WALK,
+	ATTACK
 }
 
 var state = WALK
@@ -25,7 +30,7 @@ var state = WALK
 ##########
 
 func upd_walking_timer_duration():
-	walking_timer.set_wait_time(choose(POSSIBLE_TIMER_DURATIONS))
+	walking_timer.set_wait_time(choose(possible_timer_Durations))
 
 func walk():
 	velocity.x = lerp(velocity.x, speed * direction.x, acceleration)
@@ -58,29 +63,22 @@ func _process(delta):
 			idle()
 		NEW_DIRECTION:
 			flip()
-			state = WALK
+			state = choose(possible_states_after_new_direction)
 		WALK:
 			walk()
 
 func _physics_process(delta):
-	velocity.y += EngineParameters.GRAVITY * delta
+	if(gravity_sensible):
+		velocity.y += EngineParameters.GRAVITY * delta
 	velocity = move_and_slide(velocity, Vector2.UP)
 
 func _on_WalkingTimer_timeout():
 	reset_timer()
 	match state:
 		IDLE:
-			state = choose([WALK, NEW_DIRECTION])
+			state = choose(possible_states_after_idle)
 		WALK:
-			state = IDLE
-
-func _on_LeftCliffDetector_body_exited(body):
-	state = NEW_DIRECTION
-	print("Cliff left")
-
-func _on_RightCliffDetector_body_exited(body):
-	state = NEW_DIRECTION
-	print("Cliff right")
+			state = choose(possible_states_after_walk)
 
 func _on_LeftWallDetector_body_entered(body):
 	state = NEW_DIRECTION

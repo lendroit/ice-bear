@@ -137,15 +137,6 @@ position = Vector2( 0, -10 )
 rotation = 1.5708
 shape = SubResource( 2 )
 
-[node name="LeftCliffDetector" type="Area2D" parent="."]
-collision_layer = 2147483650
-collision_mask = 2
-
-[node name="LeftCliffCollider" type="CollisionShape2D" parent="LeftCliffDetector"]
-position = Vector2( -60, 10 )
-scale = Vector2( 0.5, 1 )
-shape = SubResource( 3 )
-
 [node name="LeftWallDetector" type="Area2D" parent="."]
 collision_layer = 2147483650
 collision_mask = 2
@@ -153,15 +144,6 @@ collision_mask = 2
 [node name="LeftWallCollider" type="CollisionShape2D" parent="LeftWallDetector"]
 position = Vector2( -60, -9 )
 scale = Vector2( 0.5, 0.9 )
-shape = SubResource( 3 )
-
-[node name="RightCliffDetector" type="Area2D" parent="."]
-collision_layer = 2147483650
-collision_mask = 2
-
-[node name="RightCliffCollider" type="CollisionShape2D" parent="RightCliffDetector"]
-position = Vector2( 60, 10 )
-scale = Vector2( 0.5, 1 )
 shape = SubResource( 3 )
 
 [node name="RightWallDetector" type="Area2D" parent="."]
@@ -188,9 +170,7 @@ position = Vector2( 1, -13 )
 rotation = 1.5708
 scale = Vector2( 1.3, 1.75 )
 shape = SubResource( 2 )
-[connection signal="body_exited" from="LeftCliffDetector" to="." method="_on_LeftCliffDetector_body_exited"]
 [connection signal="body_entered" from="LeftWallDetector" to="." method="_on_LeftWallDetector_body_entered"]
-[connection signal="body_exited" from="RightCliffDetector" to="." method="_on_RightCliffDetector_body_exited"]
 [connection signal="body_entered" from="RightWallDetector" to="." method="_on_RightWallDetector_body_entered"]
 [connection signal="timeout" from="WalkingTimer" to="." method="_on_WalkingTimer_timeout"]
 [connection signal="area_shape_entered" from="HitBox" to="." method="_on_HitBox_area_shape_entered"]
