@@ -4,6 +4,7 @@ onready var stand_hit_box = $StandHitBox
 onready var crawl_hit_box = $CrawlHitBox
 onready var sprite = $OursGoingLeft
 onready var reachable_hooks_area = $ReachableHooksArea
+onready var hook_position_tween = $HookPositionTween
 
 export (int) var MAX_JUMPS = 2
 export (int) var HEALTH_POINTS = 2
@@ -72,7 +73,11 @@ func stand():
 	is_crawling = false
 
 func hook():
-	print(reachable_hook_node)
+	if(!reachable_hook_node):
+		return
+	print(reachable_hook_node.position)
+	hook_position_tween.interpolate_property(self, "position", self.position, reachable_hook_node.position, 1, Tween.TRANS_EXPO)
+	hook_position_tween.start()
 
 
 func get_input():

@@ -30,3 +30,9 @@ position = Vector2( -361.302, 21.5394 )
 
 [node name="Penguin2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 334.661, -215.193 )
+
+[node name="Bird" parent="." instance=ExtResource( 6 )]
+position = Vector2( 278.391, -208.622 )
+
+[node name="HookNode" parent="." instance=ExtResource( 3 )]
+position = Vector2( 86.3344, -376.806 )
