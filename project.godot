@@ -10,11 +10,17 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Area2D",
+"class": "Crow",
+"language": "GDScript",
+"path": "res://Friends/Crow.gd"
+}, {
+"base": "Area2D",
 "class": "Lama",
 "language": "GDScript",
 "path": "res://Friends/Lama.gd"
 } ]
 _global_script_class_icons={
+"Crow": "",
 "Lama": ""
 }
 
