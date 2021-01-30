@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemy/Penguin.tscn" type="PackedScene" id=2]
@@ -6,17 +6,17 @@
 [ext_resource path="res://Terrain/Tileset.tres" type="TileSet" id=4]
 [ext_resource path="res://Friends/Lama.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Enemy/Bird.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Terrain/HookNode.tscn" type="PackedScene" id=7]
 
 [node name="ActualWorld" type="Node2D"]
 position = Vector2( -152.391, 47.622 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 2787.64, -209.301 )
+position = Vector2( -1552.16, -2261.91 )
 MAX_JUMPS = 1
 HEALTH_POINTS = 10
 CAN_GLAIRE = true
 CAN_HOVER = true
-WALK_SPEED = 600
 HOVER_SPEED = 226
 JUMP_SPEED = -1300
 spit_velocity = 1500
@@ -71,8 +71,6 @@ position = Vector2( 9879.82, -1184.53 )
 
 [node name="Penguin11" parent="Node" instance=ExtResource( 2 )]
 
-[node name="Penguin12" parent="Node" instance=ExtResource( 2 )]
-
 [node name="Penguin13" parent="Node" instance=ExtResource( 2 )]
 position = Vector2( 9867.86, -1586.33 )
 
@@ -84,3 +82,12 @@ position = Vector2( 10212.3, -1775.27 )
 
 [node name="Bird" parent="." instance=ExtResource( 6 )]
 position = Vector2( -529.545, -4229.93 )
+
+[node name="HookNode" parent="." instance=ExtResource( 7 )]
+position = Vector2( -2170.42, -2428.05 )
+
+[node name="HookNode2" parent="." instance=ExtResource( 7 )]
+position = Vector2( -865.743, -2405.28 )
+
+[node name="HookNode3" parent="." instance=ExtResource( 7 )]
+position = Vector2( -1581.52, -2509.39 )
