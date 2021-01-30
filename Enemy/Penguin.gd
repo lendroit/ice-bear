@@ -9,8 +9,6 @@ func _ready():
 
 func _on_LeftCliffDetector_body_exited(body):
 	state = NEW_DIRECTION
-	print("Cliff left")
 
 func _on_RightCliffDetector_body_exited(body):
 	state = NEW_DIRECTION
-	print("Cliff right")

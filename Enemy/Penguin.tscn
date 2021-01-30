@@ -13,8 +13,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="LeftCliffCollider" type="CollisionShape2D" parent="LeftCliffDetector" index="0"]
-position = Vector2( -60, 10 )
-scale = Vector2( 0.5, 1 )
+position = Vector2( -80, 10 )
 shape = SubResource( 1 )
 
 [node name="RightCliffDetector" type="Area2D" parent="." index="8"]
@@ -22,8 +21,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="RightCliffCollider" type="CollisionShape2D" parent="RightCliffDetector" index="0"]
-position = Vector2( 60, 10 )
-scale = Vector2( 0.5, 1 )
+position = Vector2( 80, 10 )
 shape = SubResource( 1 )
 [connection signal="body_exited" from="LeftCliffDetector" to="." method="_on_LeftCliffDetector_body_exited"]
 [connection signal="body_exited" from="RightCliffDetector" to="." method="_on_RightCliffDetector_body_exited"]

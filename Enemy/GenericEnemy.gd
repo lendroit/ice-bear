@@ -48,14 +48,14 @@ func choose(array):
 	array.shuffle()
 	return array.front()
 
-func reset_timer():
+func reset_walking_timer():
 	upd_walking_timer_duration()
 	walking_timer.start()
 
 ##########
 
 func _ready():
-	reset_timer()
+	reset_walking_timer()
 
 func _process(delta):
 	match state:
@@ -64,6 +64,7 @@ func _process(delta):
 		NEW_DIRECTION:
 			flip()
 			state = choose(possible_states_after_new_direction)
+			reset_walking_timer()
 		WALK:
 			walk()
 
@@ -73,7 +74,6 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity, Vector2.UP)
 
 func _on_WalkingTimer_timeout():
-	reset_timer()
 	match state:
 		IDLE:
 			state = choose(possible_states_after_idle)
@@ -82,8 +82,6 @@ func _on_WalkingTimer_timeout():
 
 func _on_LeftWallDetector_body_entered(body):
 	state = NEW_DIRECTION
-	print("Wall left")
 
 func _on_RightWallDetector_body_entered(body):
 	state = NEW_DIRECTION
-	print("Wall right")

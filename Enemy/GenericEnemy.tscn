@@ -142,8 +142,7 @@ collision_layer = 2147483650
 collision_mask = 2
 
 [node name="LeftWallCollider" type="CollisionShape2D" parent="LeftWallDetector"]
-position = Vector2( -60, -9 )
-scale = Vector2( 0.5, 0.9 )
+position = Vector2( -80, -10 )
 shape = SubResource( 3 )
 
 [node name="RightWallDetector" type="Area2D" parent="."]
@@ -151,8 +150,7 @@ collision_layer = 2147483650
 collision_mask = 2
 
 [node name="RightWallCollider" type="CollisionShape2D" parent="RightWallDetector"]
-position = Vector2( 60, -9 )
-scale = Vector2( 0.5, 0.9 )
+position = Vector2( 80, -10 )
 shape = SubResource( 3 )
 
 [node name="WalkingTimer" type="Timer" parent="."]
