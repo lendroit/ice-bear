@@ -5,6 +5,7 @@ onready var crawl_hit_box = $CrawlHitBox
 onready var sprite = $OursGoingLeft
 
 export (int) var MAX_JUMPS = 2
+export (int) var HEALTH_POINTS = 2
 
 #		POWER (DE)ACTIVATION
 export var CAN_JUMP = true
@@ -113,13 +114,18 @@ func set_direction(horizontal_speed):
 	else:
 		sprite.flip_h = true
 
+func player_death():
+	print("Tu es mort !")
+	get_tree().change_scene("res://World.tscn")
+
 func _physics_process(delta):
+	if(HEALTH_POINTS < 1):
+		player_death()
+	
 	get_input()
 	var speed
 	var acceleration
 	var friction
-	
-	
 	
 	handle_jump(delta)
 
@@ -144,4 +150,5 @@ func _physics_process(delta):
 		set_direction(velocity.x)
 
 func _on_HurtBox_area_shape_entered(area_id, area, area_shape, self_shape):
-	print("Aie !")
+	HEALTH_POINTS -= 1
+	print(HEALTH_POINTS)
