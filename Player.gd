@@ -5,24 +5,24 @@ onready var crawl_hit_box = $CrawlHitBox
 
 export (int) var MAX_JUMPS = 2
 
-export (int) var walk_speed = 400
-export (float, 0, 1.0) var walk_acceleration = 0.25
+export (int) var WALK_SPEED = 400
+export (float, 0, 1.0) var WALK_ACCELERATION = 0.25
 
-export (int) var crawl_speed = 200
-export (float, 0, 1.0) var crawl_acceleration = 0.75
+export (int) var CRAWL_SPEED = 200
+export (float, 0, 1.0) var CRAWL_ACCELERATION = 0.75
 
-export (int) var hover_speed = 400
+export (int) var HOVER_SPEED = 400
 
-export (int) var jump_speed = -1100
+export (int) var JUMP_SPEED = -1100
 
-export (int) var gravity = 4000
+export (int) var GRAVITY = 4000
 
 var velocity = Vector2.ZERO
 var jump_count = 0
 var is_crawling = false
 
-export (float, 0, 1.0) var friction = 0.1
-export (float, 0, 1.0) var air_friction = 0.5
+export (float, 0, 1.0) var FRICTION = 0.1
+export (float, 0, 1.0) var AIR_FRICTION = 0.5
 
 var direction
 
@@ -30,7 +30,7 @@ func crouch():
 	is_crawling = true
 	self.stand_hit_box.disabled = true
 	self.crawl_hit_box.disabled = false
-	
+
 func stand():
 	self.stand_hit_box.disabled = false
 	self.crawl_hit_box.disabled = true
@@ -59,25 +59,26 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("jump") && jump_count < MAX_JUMPS:
 		jump_count += 1
-		velocity.y = jump_speed
+		velocity.y = JUMP_SPEED
 		is_crawling = false
 
-	elif Input.is_action_just_released("jump"):	
-		velocity.y = lerp(velocity.y, hover_speed, air_friction)
+	elif Input.is_action_just_released("jump"):
+		# TODO le hover ne marche pas, mets des valeurs limites genre 50 pour HOVER_SPEED
+		# afin de mieux tester
+		velocity.y = lerp(velocity.y, HOVER_SPEED, AIR_FRICTION)
 	else:
-		velocity.y += gravity * delta
-		
-	
+		velocity.y += GRAVITY * delta
+
 	if (is_crawling):
-		speed = crawl_speed
-		acceleration = crawl_acceleration
+		speed = CRAWL_SPEED
+		acceleration = CRAWL_ACCELERATION
 	else:
-		speed = walk_speed
-		acceleration = walk_acceleration
+		speed = WALK_SPEED
+		acceleration = WALK_ACCELERATION
 
 	if direction != 0:
 		velocity.x = lerp(velocity.x, direction * speed, acceleration)
 	else:
-		velocity.x = lerp(velocity.x, 0, friction)
-		
+		velocity.x = lerp(velocity.x, 0, FRICTION)
+
 	velocity = move_and_slide(velocity, Vector2.UP)
