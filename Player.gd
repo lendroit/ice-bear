@@ -160,6 +160,8 @@ func _on_HurtBox_area_shape_entered(area_id, area, area_shape, self_shape):
 func _on_PickupBox_area_entered(area):
 	if area.has_method("on_pickup"):
 		area.on_pickup()
+		if(area is Lama):
+			print("yolo")
 
 func _on_Timer_timeout():
 	ready_to_spit = true
