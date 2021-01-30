@@ -47,11 +47,7 @@ func get_input():
 	elif Input.is_action_just_released("down"):
 		stand()
 
-func _physics_process(delta):
-	get_input()
-	var speed
-	var acceleration
-
+func handle_jump(delta):
 	if is_on_floor():
 		jump_count = 0
 	elif jump_count == 0:
@@ -68,6 +64,13 @@ func _physics_process(delta):
 		velocity.y = lerp(velocity.y, HOVER_SPEED, AIR_FRICTION)
 	else:
 		velocity.y += GRAVITY * delta
+
+func _physics_process(delta):
+	get_input()
+	var speed
+	var acceleration
+
+	handle_jump(delta)
 
 	if (is_crawling):
 		speed = CRAWL_SPEED
