@@ -1,11 +1,14 @@
 extends KinematicBody2D
 
-export (int) var speed = 600
+export (int) var speed = 200
 export (int) var gravity = 4000
 export (int) var direction = -1
-var walking := true
+export (float) var friction = 0.1
+export (float) var acceleration = 0.25
+
 onready var walking_timer = $WalkingTimer
 
+var walking := true
 var velocity := Vector2.ZERO
 
 func _ready():
@@ -14,9 +17,9 @@ func _ready():
 
 func walk():
 	if(walking):
-		velocity.x = speed * direction
+		velocity.x = lerp(velocity.x, speed * direction, acceleration)
 	else:
-		velocity.x = 0
+		velocity.x = lerp(velocity.x, 0, friction)
 
 func _physics_process(delta):
 	walk()
