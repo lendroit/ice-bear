@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://EnemyGlaire.gd" type="Script" id=1]
+[ext_resource path="res://Enemy/EnemyGlaire.gd" type="Script" id=1]
 [ext_resource path="res://spit.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
