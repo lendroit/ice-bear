@@ -1,5 +1,8 @@
 extends KinematicBody2D
 
+onready var stand_hit_box = $StandHitBox
+onready var crawl_hit_box = $CrawlHitBox
+
 export (int) var walk_speed = 1200
 export (float, 0, 1.0) var walk_acceleration = 0.25
 
@@ -31,8 +34,12 @@ func get_input():
 		dir -= 1
 	if Input.is_action_just_pressed("down"):
 		is_crawling = true
+		self.stand_hit_box.disabled = true
+		self.crawl_hit_box.disabled = false
 		velocity.x = 0
 	elif Input.is_action_just_released("down"):
+		self.stand_hit_box.disabled = false
+		self.crawl_hit_box.disabled = true
 		is_crawling = false
 		
 	if (is_crawling):
