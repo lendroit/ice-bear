@@ -22,18 +22,6 @@ enum {
 
 var state = WALK
 
-func _process(delta):
-	match state:
-		IDLE:
-			idle()
-		
-		NEW_DIRECTION:
-			flip()
-			state = WALK
-			
-		WALK:
-			walk()
-
 ##########
 
 func upd_walking_timer_duration():
@@ -63,6 +51,16 @@ func reset_timer():
 
 func _ready():
 	reset_timer()
+
+func _process(delta):
+	match state:
+		IDLE:
+			idle()
+		NEW_DIRECTION:
+			flip()
+			state = WALK
+		WALK:
+			walk()
 
 func _physics_process(delta):
 	velocity.y += EngineParameters.GRAVITY * delta
