@@ -24,26 +24,28 @@ var is_crawling = false
 export (float, 0, 1.0) var friction = 0.1
 export (float, 0, 1.0) var air_friction = 0.5
 
-var dir
+var direction
+
+func crouch():
+	is_crawling = true
+	self.stand_hit_box.disabled = true
+	self.crawl_hit_box.disabled = false
+	
+func stand():
+	self.stand_hit_box.disabled = false
+	self.crawl_hit_box.disabled = true
+	is_crawling = false
 
 func get_input():
-	dir = 0
-	
+	direction = 0
 	if Input.is_action_pressed("walk_right"):
-		dir += 1
+		direction = 1
 	if Input.is_action_pressed("walk_left"):
-		dir -= 1
+		direction = -1
 	if Input.is_action_just_pressed("down"):
-		is_crawling = true
-		self.stand_hit_box.disabled = true
-		self.crawl_hit_box.disabled = false
-		velocity.x = 0
+		crouch()
 	elif Input.is_action_just_released("down"):
-		self.stand_hit_box.disabled = false
-		self.crawl_hit_box.disabled = true
-		is_crawling = false
-		
-	
+		stand()
 
 func _physics_process(delta):
 	get_input()
@@ -73,8 +75,8 @@ func _physics_process(delta):
 		speed = walk_speed
 		acceleration = walk_acceleration
 
-	if dir != 0:
-		velocity.x = lerp(velocity.x, dir * speed, acceleration)
+	if direction != 0:
+		velocity.x = lerp(velocity.x, direction * speed, acceleration)
 	else:
 		velocity.x = lerp(velocity.x, 0, friction)
 		
