@@ -76,12 +76,16 @@ func _on_WalkingTimer_timeout():
 
 func _on_LeftCliffDetector_body_exited(body):
 	state = NEW_DIRECTION
+	print("Cliff left")
 
 func _on_RightCliffDetector_body_exited(body):
 	state = NEW_DIRECTION
+	print("Cliff right")
 
 func _on_LeftWallDetector_body_entered(body):
 	state = NEW_DIRECTION
+	print("Wall left")
 
 func _on_RightWallDetector_body_entered(body):
 	state = NEW_DIRECTION
+	print("Wall right")

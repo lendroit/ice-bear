@@ -121,7 +121,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, -23 ) ]
 }
 
-[node name="Enemy" type="KinematicBody2D"]
+[node name="GenericEnemy" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
@@ -142,8 +142,8 @@ collision_layer = 2147483650
 collision_mask = 2
 
 [node name="LeftCliffCollider" type="CollisionShape2D" parent="LeftCliffDetector"]
-position = Vector2( -50, 10 )
-scale = Vector2( 0.1, 1 )
+position = Vector2( -60, 10 )
+scale = Vector2( 0.5, 1 )
 shape = SubResource( 3 )
 
 [node name="LeftWallDetector" type="Area2D" parent="."]
@@ -151,8 +151,8 @@ collision_layer = 2147483650
 collision_mask = 2
 
 [node name="LeftWallCollider" type="CollisionShape2D" parent="LeftWallDetector"]
-position = Vector2( -50, -9 )
-scale = Vector2( 0.1, 0.9 )
+position = Vector2( -60, -9 )
+scale = Vector2( 0.5, 0.9 )
 shape = SubResource( 3 )
 
 [node name="RightCliffDetector" type="Area2D" parent="."]
@@ -160,8 +160,8 @@ collision_layer = 2147483650
 collision_mask = 2
 
 [node name="RightCliffCollider" type="CollisionShape2D" parent="RightCliffDetector"]
-position = Vector2( 50, 10 )
-scale = Vector2( 0.1, 1 )
+position = Vector2( 60, 10 )
+scale = Vector2( 0.5, 1 )
 shape = SubResource( 3 )
 
 [node name="RightWallDetector" type="Area2D" parent="."]
@@ -169,8 +169,8 @@ collision_layer = 2147483650
 collision_mask = 2
 
 [node name="RightWallCollider" type="CollisionShape2D" parent="RightWallDetector"]
-position = Vector2( 50, -9 )
-scale = Vector2( 0.1, 0.9 )
+position = Vector2( 60, -9 )
+scale = Vector2( 0.5, 0.9 )
 shape = SubResource( 3 )
 
 [node name="WalkingTimer" type="Timer" parent="."]
