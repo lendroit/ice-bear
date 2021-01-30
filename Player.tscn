@@ -79,6 +79,4 @@ texture = ExtResource( 1 )
 [connection signal="area_shape_entered" from="HurtBox" to="." method="_on_HurtBox_area_shape_entered"]
 [connection signal="area_entered" from="PickupBox" to="." method="_on_PickupBox_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="area_entered" from="ReachableHooksArea" to="." method="_on_ReachableHooksArea_area_entered"]
-[connection signal="area_exited" from="ReachableHooksArea" to="." method="_on_ReachableHooksArea_area_exited"]
 [connection signal="tween_all_completed" from="HookPositionTween" to="." method="_on_HookPositionTween_tween_all_completed"]
