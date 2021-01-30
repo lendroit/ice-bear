@@ -73,13 +73,10 @@ func stand():
 
 func hook():
 	var hooks_in_area = reachable_hooks_area.get_overlapping_areas()
-	var hooks_direction = map(funcref(self, "get_direction"),hooks_in_area)
-	print(hooks_direction)
-	var upper_hooks_directions = filter(funcref(self, "keep_upper_hooks"), hooks_direction)
-	print(upper_hooks_directions)
-	if(upper_hooks_directions.size() == 0):
+	var upper_hooks = filter(funcref(self, "keep_upper_hooks"),hooks_in_area)
+	if(upper_hooks.size() == 0):
 		return
-	var hook_direction = upper_hooks_directions[0].normalized()*WALK_SPEED*5
+	var hook_direction = (upper_hooks[0].position - self.position).normalized()*WALK_SPEED*5
 	hook_position_tween.interpolate_property(self, "velocity", self.velocity, hook_direction, 0.1, Tween.TRANS_LINEAR)
 	hook_position_tween.start()
 
@@ -191,8 +188,8 @@ func _on_PickupBox_area_entered(area):
 func get_direction(other_area: Area2D)->Vector2:
 	return other_area.position - self.position
 
-func keep_upper_hooks(direction: Vector2)->bool:
-	return direction.y < 0
+func keep_upper_hooks(hook_area: Area2D)->bool:
+	return hook_area.position.y < self.position.y
 
 func _on_Timer_timeout():
 	ready_to_spit = true
