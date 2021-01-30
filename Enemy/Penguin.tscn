@@ -8,9 +8,6 @@
 [node name="Penguin" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="HitBox" parent="." index="6"]
-collision_layer = 2147483648
-
 [node name="LeftCliffDetector" type="Area2D" parent="." index="7"]
 collision_layer = 0
 
