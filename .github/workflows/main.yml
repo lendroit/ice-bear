@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - deploy/**
 
 jobs:
   # job id, can be anything
