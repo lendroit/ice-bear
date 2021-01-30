@@ -1,7 +1,6 @@
 extends KinematicBody2D
 
 export (int) var speed = 200
-export (int) var gravity = 4000
 export (int) var direction = -1
 export (float) var friction = 0.1
 export (float) var acceleration = 0.25
@@ -41,7 +40,7 @@ func _ready():
 
 func _physics_process(delta):
 	walk()
-	velocity.y += gravity * delta
+	velocity.y += EngineParameters.GRAVITY * delta
 	velocity = move_and_slide(velocity, Vector2.UP)
 
 func _on_WalkingTimer_timeout():
