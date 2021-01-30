@@ -3,6 +3,7 @@ extends KinematicBody2D
 onready var stand_hit_box = $StandHitBox
 onready var crawl_hit_box = $CrawlHitBox
 onready var sprite = $OursGoingLeft
+onready var reachable_hooks_area = $ReachableHooksArea
 
 export (int) var MAX_JUMPS = 2
 export (int) var HEALTH_POINTS = 2
@@ -69,6 +70,9 @@ func stand():
 	self.crawl_hit_box.disabled = true
 	is_crawling = false
 
+func hook():
+	print(reachable_hooks_area)
+
 func get_input():
 	direction = 0
 		
@@ -89,6 +93,9 @@ func get_input():
 	if Input.is_action_just_pressed("Glaire") && CAN_GLAIRE && ready_to_spit && CAN_SPIT:
 		shoot(velocity.x, orientation)
 		ready_to_spit = false
+
+	if Input.is_action_just_pressed("hook"):
+		hook()
 		
 	if Input.is_action_just_pressed("down") && is_on_floor() && CAN_CRAWL:
 		crouch()
