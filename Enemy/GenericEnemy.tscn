@@ -171,4 +171,3 @@ shape = SubResource( 2 )
 [connection signal="body_entered" from="LeftWallDetector" to="." method="_on_LeftWallDetector_body_entered"]
 [connection signal="body_entered" from="RightWallDetector" to="." method="_on_RightWallDetector_body_entered"]
 [connection signal="timeout" from="WalkingTimer" to="." method="_on_WalkingTimer_timeout"]
-[connection signal="area_shape_entered" from="HitBox" to="." method="_on_HitBox_area_shape_entered"]
