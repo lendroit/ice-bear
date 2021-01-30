@@ -76,6 +76,7 @@ Glaire={
 2d_physics/layer_5="HitboxEnemy"
 2d_physics/layer_6="Allies/Collectible"
 2d_physics/layer_10="Collectible"
+2d_physics/layer_15="player projectile"
 
 [rendering]
 
