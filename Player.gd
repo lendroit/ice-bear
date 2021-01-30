@@ -5,6 +5,7 @@ onready var crawl_hit_box = $CrawlHitBox
 onready var sprite = $OursGoingLeft
 onready var reachable_hooks_area = $ReachableHooksArea
 onready var hook_position_tween = $HookPositionTween
+onready var grappling_hook_rope = $GrapplingHookRope
 
 export (int) var MAX_JUMPS = 2
 export (int) var HEALTH_POINTS = 2
@@ -41,6 +42,7 @@ var is_crawling = false
 var direction
 var orientation
 var ready_to_spit := true
+var hooked_node
 
 enum leftright {left, right}
 
@@ -79,10 +81,12 @@ func hook():
 		return
 	print(upper_hooks)
 	var uppest_hook = reduce(funcref(self, "get_higher_hook"), upper_hooks, upper_hooks[0])
+	hooked_node = uppest_hook
+	grappling_hook_rope.visible = true
+
 	var hook_direction = (uppest_hook.position - self.position).normalized()*GRAPPLING_HOOK_SPEED
 	hook_position_tween.interpolate_property(self, "velocity", self.velocity, hook_direction, 0.1, Tween.TRANS_LINEAR)
 	hook_position_tween.start()
-
 
 func get_input():
 	direction = 0
@@ -168,12 +172,22 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x, direction * speed, acceleration)
 	else:
 		velocity.x = lerp(velocity.x, 0, friction)
-
 	
 	velocity = move_and_slide(velocity, Vector2.UP)
 	
 	if abs(velocity.x) > 5:
 		set_direction(velocity.x)
+	if(hooked_node):
+		grappling_hook_rope.visible = true
+		var rope_direction =  (hooked_node.position - self.position)
+		var rope_position = rope_direction/2
+		var rope_angle = rope_direction.angle()
+		var rope_length = rope_direction.length()
+		grappling_hook_rope.position = rope_position
+		grappling_hook_rope.rotation = rope_angle
+		grappling_hook_rope.scale.x = rope_length/1000
+	else:
+		grappling_hook_rope.visible = false
 
 func _on_HurtBox_area_shape_entered(area_id, area, area_shape, self_shape):
 	HEALTH_POINTS -= 1
@@ -226,3 +240,8 @@ static func reduce(function: FuncRef, i_array: Array, first = null):
 	for index in range(start,i_array.size()):
 		acc = function.call_func(acc,i_array[index])
 	return acc
+
+
+func _on_HookPositionTween_tween_all_completed():
+	hooked_node = null
+	pass # Replace with function body.
