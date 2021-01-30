@@ -57,3 +57,8 @@ position = Vector2( -0.265686, -5.31366 )
 shape = SubResource( 3 )
 [connection signal="area_shape_entered" from="HurtBox" to="." method="_on_HurtBox_area_shape_entered"]
 [connection signal="area_entered" from="PickupBox" to="." method="_on_PickupBox_area_entered"]
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+[connection signal="area_shape_entered" from="HurtBox" to="." method="_on_HurtBox_area_shape_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

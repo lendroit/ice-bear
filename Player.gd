@@ -36,6 +36,7 @@ var is_crawling = false
 
 var direction
 var orientation
+var ready_to_spit := true
 
 enum leftright {left, right}
 
@@ -84,8 +85,9 @@ func get_input():
 	elif Input.is_action_just_released("walk_right") && Input.is_action_pressed("walk_left"):
 		orientation = leftright.left
 		
-	if Input.is_action_just_pressed("Glaire") && CAN_GLAIRE:
+	if Input.is_action_just_pressed("Glaire") && CAN_GLAIRE && ready_to_spit:
 		shoot(velocity.x, orientation)
+		ready_to_spit = false
 		
 	if Input.is_action_just_pressed("down") && is_on_floor() && CAN_CRAWL:
 		crouch()
@@ -157,3 +159,6 @@ func _on_HurtBox_area_shape_entered(area_id, area, area_shape, self_shape):
 func _on_PickupBox_area_entered(area):
 	if area.has_method("on_pickup"):
 		area.on_pickup()
+
+func _on_Timer_timeout():
+	ready_to_spit = true
