@@ -138,19 +138,19 @@ rotation = 1.5708
 shape = SubResource( 2 )
 
 [node name="LeftWallDetector" type="Area2D" parent="."]
-collision_layer = 2147483650
-collision_mask = 2
+collision_layer = 0
 
 [node name="LeftWallCollider" type="CollisionShape2D" parent="LeftWallDetector"]
-position = Vector2( -80, -10 )
+position = Vector2( -60, -9 )
+scale = Vector2( 0.5, 0.9 )
 shape = SubResource( 3 )
 
 [node name="RightWallDetector" type="Area2D" parent="."]
-collision_layer = 2147483650
-collision_mask = 2
+collision_layer = 0
 
 [node name="RightWallCollider" type="CollisionShape2D" parent="RightWallDetector"]
-position = Vector2( 80, -10 )
+position = Vector2( 60, -9 )
+scale = Vector2( 0.5, 0.9 )
 shape = SubResource( 3 )
 
 [node name="WalkingTimer" type="Timer" parent="."]
@@ -160,8 +160,8 @@ anims/Idle = SubResource( 4 )
 anims/Walking = SubResource( 5 )
 
 [node name="HitBox" type="Area2D" parent="."]
-collision_layer = 2147484672
-collision_mask = 1024
+collision_layer = 0
+collision_mask = 2
 
 [node name="HitBoxCollider" type="CollisionShape2D" parent="HitBox"]
 position = Vector2( 1, -13 )
