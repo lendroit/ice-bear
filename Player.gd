@@ -2,13 +2,15 @@ extends KinematicBody2D
 
 onready var stand_hit_box = $StandHitBox
 onready var crawl_hit_box = $CrawlHitBox
+onready var sprite = $OursGoingLeft
 
 export (int) var MAX_JUMPS = 2
 
 #		POWER (DE)ACTIVATION
-var CAN_JUMP = true
-var CAN_GLAIRE = true
-var CAN_HOVER = true
+export var CAN_JUMP = true
+export var CAN_GLAIRE = true
+export var CAN_HOVER = true
+export var CAN_CRAWL = true
 
 #		WALK VARIALES
 export (int) var WALK_SPEED = 400
@@ -32,18 +34,25 @@ var jump_count = 0
 var is_crawling = false
 
 var direction
+var orientation
 
+enum leftright {left, right}
 
 #		Handle Crachat :
-export var muzzle_velocity = 350
+export var spit_velocity = 350
 
 var Glaire = preload("res://Glaire.tscn")
 
-func shoot():
+func shoot(deplacement_speed, orientation):
 	var b = Glaire.instance()
 	owner.add_child(b)
 	b.position = self.position
-	b.velocity = b.transform.x * muzzle_velocity
+	#b.velocity = b.transform.x * (spit_velocity + deplacement_speed)
+	b.velocity = self.velocity
+	if orientation == leftright.left:
+		b.velocity.x -= spit_velocity
+	elif orientation == leftright.right:
+		b.velocity.x += spit_velocity
 	b.gravity = EngineParameters.GRAVITY
 #	#	#	#	#	#	#
 
@@ -59,13 +68,25 @@ func stand():
 
 func get_input():
 	direction = 0
-	if Input.is_action_just_pressed("Glaire") && CAN_GLAIRE:
-		shoot()
+		
 	if Input.is_action_pressed("walk_right"):
 		direction = 1
-	if Input.is_action_pressed("walk_left"):
+	elif Input.is_action_pressed("walk_left"):
 		direction = -1
-	if Input.is_action_just_pressed("down") && is_on_floor():
+		
+	if Input.is_action_just_pressed("walk_left"):
+		orientation = leftright.left
+	if Input.is_action_just_pressed("walk_right"):
+		orientation = leftright.right
+	if Input.is_action_just_released("walk_left") && Input.is_action_pressed("walk_right"):
+		orientation = leftright.right
+	elif Input.is_action_just_released("walk_right") && Input.is_action_pressed("walk_left"):
+		orientation = leftright.left
+		
+	if Input.is_action_just_pressed("Glaire") && CAN_GLAIRE:
+		shoot(velocity.x, orientation)
+		
+	if Input.is_action_just_pressed("down") && is_on_floor() && CAN_CRAWL:
 		crouch()
 	elif Input.is_action_just_released("down"):
 		stand()
@@ -85,13 +106,21 @@ func handle_jump(delta):
 		velocity.y = lerp(velocity.y, HOVER_SPEED, AIR_FRICTION)
 	else:
 		velocity.y += EngineParameters.GRAVITY * delta
+		
+func set_direction(horizontal_speed):
+	if horizontal_speed < 0:
+		sprite.flip_h = false
+	else:
+		sprite.flip_h = true
 
 func _physics_process(delta):
 	get_input()
 	var speed
 	var acceleration
 	var friction
-
+	
+	
+	
 	handle_jump(delta)
 
 	if (is_crawling):
@@ -108,7 +137,11 @@ func _physics_process(delta):
 	else:
 		velocity.x = lerp(velocity.x, 0, friction)
 
+	
 	velocity = move_and_slide(velocity, Vector2.UP)
+	
+	if abs(velocity.x) > 5:
+		set_direction(velocity.x)
 
 func _on_HurtBox_area_shape_entered(area_id, area, area_shape, self_shape):
 	print("Aie !")
