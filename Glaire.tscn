@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Glaire.gd" type="Script" id=1]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 6.22036
+
+[node name="Glaire" type="Area2D"]
+position = Vector2( -0.743258, -2.97303 )
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 8.47312, -2.00679 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]

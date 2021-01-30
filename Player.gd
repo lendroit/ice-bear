@@ -28,6 +28,21 @@ var is_crawling = false
 
 var direction
 
+
+#		Handle Crachat :
+export var muzzle_velocity = 350
+export var gravity = 250
+
+var Glaire = preload("res://Glaire.tscn")
+
+func shoot():
+	var b = Glaire.instance()
+	owner.add_child(b)
+	b.position = self.position
+	b.velocity = b.transform.x * muzzle_velocity
+	b.gravity = EngineParameters.GRAVITY
+#	#	#	#	#	#	#
+
 func crouch():
 	is_crawling = true
 	self.stand_hit_box.disabled = true
@@ -40,6 +55,8 @@ func stand():
 
 func get_input():
 	direction = 0
+	if Input.is_action_just_pressed("Glaire"):
+		shoot()
 	if Input.is_action_pressed("walk_right"):
 		direction = 1
 	if Input.is_action_pressed("walk_left"):
