@@ -11,7 +11,7 @@ export (float, 0, 1.0) var WALK_ACCELERATION = 0.25
 export (int) var CRAWL_SPEED = 200
 export (float, 0, 1.0) var CRAWL_ACCELERATION = 0.75
 
-export (int) var HOVER_SPEED = 400
+export (int) var HOVER_SPEED = 300
 
 export (int) var JUMP_SPEED = -1100
 
@@ -22,7 +22,7 @@ var jump_count = 0
 var is_crawling = false
 
 export (float, 0, 1.0) var FRICTION = 0.1
-export (float, 0, 1.0) var AIR_FRICTION = 0.5
+export (float, 0, 1.0) var AIR_FRICTION = .4
 
 var direction
 
@@ -58,9 +58,7 @@ func handle_jump(delta):
 		velocity.y = JUMP_SPEED
 		is_crawling = false
 
-	elif Input.is_action_just_released("jump"):
-		# TODO le hover ne marche pas, mets des valeurs limites genre 50 pour HOVER_SPEED
-		# afin de mieux tester
+	elif Input.is_action_pressed("jump") && velocity.y > 0:
 		velocity.y = lerp(velocity.y, HOVER_SPEED, AIR_FRICTION)
 	else:
 		velocity.y += GRAVITY * delta
