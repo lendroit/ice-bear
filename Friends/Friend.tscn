@@ -7,7 +7,7 @@ radius = 31.4138
 height = 15.3242
 
 [node name="Friend" type="Area2D"]
-collision_layer = 512
+collision_layer = 32
 collision_mask = 0
 script = ExtResource( 2 )
 
