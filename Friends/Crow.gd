@@ -1,3 +1,3 @@
 extends "res://Friends/Friend.gd"
 
-class_name Lama
+class_name Crow
