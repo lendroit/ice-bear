@@ -28,7 +28,7 @@ export (float, 0, 1.0) var CRAWL_FRICTION = .9
 
 #		HOVER VARIALES
 export (int) var HOVER_SPEED = 300
-export (float, 0, 1.0) var AIR_FRICTION = .4
+export (float, 0, 1.0) var AIR_FRICTION = .1
 
 #		JUMP VARIALES
 export (int) var JUMP_SPEED = -1100
@@ -73,13 +73,12 @@ func stand():
 
 func hook():
 	var hooks_in_area = reachable_hooks_area.get_overlapping_areas()
-	var hooks_direction = map(funcref(self, "get_direction"),hooks_in_area)
-	print(hooks_direction)
-	var upper_hooks_directions = filter(funcref(self, "keep_upper_hooks"), hooks_direction)
-	print(upper_hooks_directions)
-	if(upper_hooks_directions.size() == 0):
+	var upper_hooks = filter(funcref(self, "keep_upper_hooks"), hooks_in_area)
+	if(upper_hooks.size() == 0):
 		return
-	var hook_direction = upper_hooks_directions[0].normalized()*WALK_SPEED*5
+	print(upper_hooks)
+	var uppest_hook = reduce(funcref(self, "get_higher_hook"), upper_hooks, upper_hooks[0])
+	var hook_direction = (uppest_hook.position - self.position).normalized()*WALK_SPEED*5
 	hook_position_tween.interpolate_property(self, "velocity", self.velocity, hook_direction, 0.1, Tween.TRANS_LINEAR)
 	hook_position_tween.start()
 
@@ -155,9 +154,14 @@ func _physics_process(delta):
 		acceleration = CRAWL_ACCELERATION
 		friction = CRAWL_FRICTION
 	else:
-		speed = WALK_SPEED
-		acceleration = WALK_ACCELERATION
-		friction = WALK_FRICTION
+		if is_on_floor():
+			speed = WALK_SPEED
+			acceleration = WALK_ACCELERATION
+			friction = WALK_FRICTION
+		else:
+			speed = WALK_SPEED
+			acceleration = WALK_ACCELERATION
+			friction = AIR_FRICTION
 
 	if direction != 0:
 		velocity.x = lerp(velocity.x, direction * speed, acceleration)
@@ -186,8 +190,13 @@ func _on_PickupBox_area_entered(area):
 func get_direction(other_area: Area2D)->Vector2:
 	return other_area.position - self.position
 
-func keep_upper_hooks(direction: Vector2)->bool:
-	return direction.y < 0
+func keep_upper_hooks(hook_area: Area2D)->bool:
+	return hook_area.position.y < self.position.y
+
+func get_higher_hook(uppest_hook: Area2D, hook: Area2D)->Area2D:
+	if(uppest_hook.position.y > hook.position.y):
+		return hook
+	return uppest_hook
 
 func _on_Timer_timeout():
 	ready_to_spit = true
@@ -207,3 +216,12 @@ static func filter(filter_function: FuncRef, candidate_array: Array)->Array:
 
 	return filtered_array
 
+static func reduce(function: FuncRef, i_array: Array, first = null):
+	var acc = first
+	var start := 0
+	if acc == null:
+		acc = i_array[0]
+		start = 1
+	for index in range(start,i_array.size()):
+		acc = function.call_func(acc,i_array[index])
+	return acc
