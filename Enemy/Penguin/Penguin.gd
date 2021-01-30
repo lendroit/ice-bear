@@ -8,7 +8,9 @@ func _ready():
 	possible_states_after_new_direction = [WALK]
 
 func _on_LeftCliffDetector_body_exited(body):
+	print("Clift left")
 	state = NEW_DIRECTION
 
 func _on_RightCliffDetector_body_exited(body):
+	print("Clift right")
 	state = NEW_DIRECTION
