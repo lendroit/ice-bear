@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Enemy/Enemy.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 591.965, 34.5112 )
@@ -25,3 +26,6 @@ shape = SubResource( 1 )
 [node name="mur1" type="CollisionShape2D" parent="PlateForme"]
 position = Vector2( -573.955, -366.435 )
 shape = SubResource( 2 )
+
+[node name="Enemy" parent="." instance=ExtResource( 2 )]
+position = Vector2( -279.609, 8.378 )
