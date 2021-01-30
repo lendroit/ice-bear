@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=2]
 [ext_resource path="res://assets/ours_to_left.png" type="Texture" id=3]
@@ -12,6 +12,9 @@ extents = Vector2( 30.598, 35.3897 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 37.6624, 30.4216 )
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 203.524
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 5
@@ -58,6 +61,15 @@ shape = SubResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="ReachableHooksArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 524288
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReachableHooksArea"]
+shape = SubResource( 4 )
 [connection signal="area_shape_entered" from="HurtBox" to="." method="_on_HurtBox_area_shape_entered"]
 [connection signal="area_entered" from="PickupBox" to="." method="_on_PickupBox_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="area_entered" from="ReachableHooksArea" to="." method="_on_ReachableHooksArea_area_entered"]
+[connection signal="area_exited" from="ReachableHooksArea" to="." method="_on_ReachableHooksArea_area_exited"]

@@ -168,3 +168,13 @@ func _on_PickupBox_area_entered(area):
 
 func _on_Timer_timeout():
 	ready_to_spit = true
+
+
+func _on_ReachableHooksArea_area_entered(area):
+	print("node reachable !!")
+	pass # Replace with function body.
+
+
+func _on_ReachableHooksArea_area_exited(area):
+	print("No more nodes")
+	pass # Replace with function body.
