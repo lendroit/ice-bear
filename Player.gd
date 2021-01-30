@@ -28,7 +28,7 @@ export (float, 0, 1.0) var CRAWL_FRICTION = .9
 
 #		HOVER VARIALES
 export (int) var HOVER_SPEED = 300
-export (float, 0, 1.0) var AIR_FRICTION = .4
+export (float, 0, 1.0) var AIR_FRICTION = .1
 
 #		JUMP VARIALES
 export (int) var JUMP_SPEED = -1100
@@ -155,9 +155,14 @@ func _physics_process(delta):
 		acceleration = CRAWL_ACCELERATION
 		friction = CRAWL_FRICTION
 	else:
-		speed = WALK_SPEED
-		acceleration = WALK_ACCELERATION
-		friction = WALK_FRICTION
+		if is_on_floor():
+			speed = WALK_SPEED
+			acceleration = WALK_ACCELERATION
+			friction = WALK_FRICTION
+		else:
+			speed = WALK_SPEED
+			acceleration = WALK_ACCELERATION
+			friction = AIR_FRICTION
 
 	if direction != 0:
 		velocity.x = lerp(velocity.x, direction * speed, acceleration)
