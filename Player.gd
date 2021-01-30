@@ -39,6 +39,7 @@ var is_crawling = false
 var direction
 var orientation
 var ready_to_spit := true
+var reachable_hook_node
 
 enum leftright {left, right}
 
@@ -71,7 +72,8 @@ func stand():
 	is_crawling = false
 
 func hook():
-	print(reachable_hooks_area)
+	print(reachable_hook_node)
+
 
 func get_input():
 	direction = 0
@@ -178,10 +180,10 @@ func _on_Timer_timeout():
 
 
 func _on_ReachableHooksArea_area_entered(area):
-	print("node reachable !!")
+	reachable_hook_node = area
 	pass # Replace with function body.
 
 
 func _on_ReachableHooksArea_area_exited(area):
-	print("No more nodes")
+	reachable_hook_node = null
 	pass # Replace with function body.
