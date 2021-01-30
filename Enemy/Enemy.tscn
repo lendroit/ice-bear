@@ -133,26 +133,44 @@ frame = 1
 offset = Vector2( 0, 116 )
 
 [node name="BodyCollider" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -10.0442 )
+position = Vector2( 0, -10 )
 rotation = 1.5708
 shape = SubResource( 2 )
 
-[node name="LeftDetector" type="Area2D" parent="."]
+[node name="LeftCliffDetector" type="Area2D" parent="."]
 collision_layer = 2147483650
 collision_mask = 2
 
-[node name="LeftCollider" type="CollisionShape2D" parent="LeftDetector"]
-position = Vector2( -50, -0.054 )
+[node name="LeftCliffCollider" type="CollisionShape2D" parent="LeftCliffDetector"]
+position = Vector2( -50, 10 )
 scale = Vector2( 0.1, 1 )
 shape = SubResource( 3 )
 
-[node name="RightDetector" type="Area2D" parent="."]
+[node name="LeftWallDetector" type="Area2D" parent="."]
 collision_layer = 2147483650
 collision_mask = 2
 
-[node name="RightCollider" type="CollisionShape2D" parent="RightDetector"]
-position = Vector2( 50, 0 )
+[node name="LeftWallCollider" type="CollisionShape2D" parent="LeftWallDetector"]
+position = Vector2( -50, -9 )
+scale = Vector2( 0.1, 0.9 )
+shape = SubResource( 3 )
+
+[node name="RightCliffDetector" type="Area2D" parent="."]
+collision_layer = 2147483650
+collision_mask = 2
+
+[node name="RightCliffCollider" type="CollisionShape2D" parent="RightCliffDetector"]
+position = Vector2( 50, 10 )
 scale = Vector2( 0.1, 1 )
+shape = SubResource( 3 )
+
+[node name="RightWallDetector" type="Area2D" parent="."]
+collision_layer = 2147483650
+collision_mask = 2
+
+[node name="RightWallCollider" type="CollisionShape2D" parent="RightWallDetector"]
+position = Vector2( 50, -9 )
+scale = Vector2( 0.1, 0.9 )
 shape = SubResource( 3 )
 
 [node name="WalkingTimer" type="Timer" parent="."]
@@ -160,6 +178,8 @@ shape = SubResource( 3 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Idle = SubResource( 4 )
 anims/Walking = SubResource( 5 )
-[connection signal="body_exited" from="LeftDetector" to="." method="_on_LeftDetector_body_exited"]
-[connection signal="body_exited" from="RightDetector" to="." method="_on_RightDetector_body_exited"]
+[connection signal="body_exited" from="LeftCliffDetector" to="." method="_on_LeftCliffDetector_body_exited"]
+[connection signal="body_entered" from="LeftWallDetector" to="." method="_on_LeftWallDetector_body_entered"]
+[connection signal="body_exited" from="RightCliffDetector" to="." method="_on_RightCliffDetector_body_exited"]
+[connection signal="body_entered" from="RightWallDetector" to="." method="_on_RightWallDetector_body_entered"]
 [connection signal="timeout" from="WalkingTimer" to="." method="_on_WalkingTimer_timeout"]

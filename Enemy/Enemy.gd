@@ -44,15 +44,21 @@ func _physics_process(delta):
 	velocity.y += gravity * delta
 	velocity = move_and_slide(velocity, Vector2.UP)
 
-func _on_RightDetector_body_exited(body):
-	flip()
-
-func _on_LeftDetector_body_exited(body):
-	flip()
-
 func _on_WalkingTimer_timeout():
 	walking = !walking
 	upd_walking_timer_duration()
 	walking_timer.start()
 	if(walking && randf() > 0.5):
 		flip()
+
+func _on_LeftCliffDetector_body_exited(body):
+	flip()
+
+func _on_RightCliffDetector_body_exited(body):
+	flip()
+
+func _on_LeftWallDetector_body_entered(body):
+	flip()
+
+func _on_RightWallDetector_body_entered(body):
+	flip()
