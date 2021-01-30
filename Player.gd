@@ -20,6 +20,7 @@ export var CAN_SPIT = true
 export (int) var WALK_SPEED = 400
 export (float, 0, 1.0) var WALK_ACCELERATION = 0.25
 export (float, 0, 1.0) var WALK_FRICTION = .55
+export (int) var GRAPPLING_HOOK_SPEED = 2000
 
 #		CRAWL VARIALES
 export (int) var CRAWL_SPEED = 200
@@ -78,7 +79,7 @@ func hook():
 		return
 	print(upper_hooks)
 	var uppest_hook = reduce(funcref(self, "get_higher_hook"), upper_hooks, upper_hooks[0])
-	var hook_direction = (uppest_hook.position - self.position).normalized()*WALK_SPEED*5
+	var hook_direction = (uppest_hook.position - self.position).normalized()*GRAPPLING_HOOK_SPEED
 	hook_position_tween.interpolate_property(self, "velocity", self.velocity, hook_direction, 0.1, Tween.TRANS_LINEAR)
 	hook_position_tween.start()
 

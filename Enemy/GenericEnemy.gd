@@ -4,6 +4,7 @@ export (int) var speed = 200
 export (float) var friction = 0.1
 export (float) var acceleration = 0.25
 export (bool) var gravity_sensible = false
+export (int) var HEALTH_POINTS = 1
 
 var possible_walking_timer_durations = [1.5]
 var possible_states_after_idle = [WALK]
@@ -52,12 +53,19 @@ func reset_walking_timer():
 	upd_walking_timer_duration()
 	walking_timer.start()
 
+func generic_enemy_death():
+	print("enemy dead")
+	queue_free()
+
 ##########
 
 func _ready():
 	reset_walking_timer()
 
 func _process(delta):
+	if(HEALTH_POINTS < 1):
+		generic_enemy_death()
+	
 	match state:
 		IDLE:
 			idle()
@@ -84,3 +92,9 @@ func _on_LeftWallDetector_body_entered(body):
 
 func _on_RightWallDetector_body_entered(body):
 	state = NEW_DIRECTION
+
+func _on_HitBox_area_shape_entered(area_id, area, area_shape, self_shape):
+	HEALTH_POINTS -= 1
+	print("enemy aie")
+	if HEALTH_POINTS == 0:
+		queue_free()
