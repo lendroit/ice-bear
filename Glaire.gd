@@ -1,6 +1,6 @@
 extends Area2D
 
-var velocity = Vector2(350, 0)
+var velocity = Vector2(550, 0)
 
 var speed = 250
 
@@ -10,7 +10,7 @@ var speed = 250
 
 	
 func _process(delta):
-	velocity.y += EngineParameters.GRAVITY * delta
+	velocity.y += EngineParameters.GRAVITY/2 * delta
 	position += velocity * delta
 	rotation = velocity.angle()
 

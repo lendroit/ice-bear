@@ -42,7 +42,7 @@ var ready_to_spit := true
 enum leftright {left, right}
 
 #		Handle Crachat :
-export var spit_velocity = 350
+export var spit_velocity = 650
 
 var Glaire = preload("res://Glaire.tscn")
 
