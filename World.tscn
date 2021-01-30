@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemy/Enemy.tscn" type="PackedScene" id=2]
@@ -8,6 +8,9 @@ extents = Vector2( 591.965, 34.5112 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 26.0672, 479.558 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 261.137, 14.496 )
 
 [node name="World" type="Node2D"]
 position = Vector2( -152.391, 47.622 )
@@ -26,6 +29,10 @@ shape = SubResource( 1 )
 [node name="mur1" type="CollisionShape2D" parent="PlateForme"]
 position = Vector2( -573.955, -366.435 )
 shape = SubResource( 2 )
+
+[node name="plafond_bas" type="CollisionShape2D" parent="PlateForme"]
+position = Vector2( -281.764, -10.3181 )
+shape = SubResource( 3 )
 
 [node name="Enemy" parent="." instance=ExtResource( 2 )]
 position = Vector2( -279.609, 8.378 )
