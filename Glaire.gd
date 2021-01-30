@@ -14,5 +14,5 @@ func _process(delta):
 	position += velocity * delta
 	rotation = velocity.angle()
 
-func _on_BallisticBullet_body_entered(body):
+func _on_Glaire_body_entered(body):
 	queue_free()

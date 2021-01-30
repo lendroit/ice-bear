@@ -22,3 +22,4 @@ rotation = 1.5708
 scale = Vector2( 0.0229739, 0.022974 )
 texture = ExtResource( 2 )
 offset = Vector2( 8.5, -2 )
+[connection signal="body_entered" from="." to="." method="_on_Glaire_body_entered"]
