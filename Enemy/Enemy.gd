@@ -11,6 +11,7 @@ const MAX_DURATION_WALK_TIMER = 2
 
 onready var walking_timer = $WalkingTimer
 onready var sprite = $Sprite
+onready var animation_player = $AnimationPlayer
 
 var walking := true
 var velocity := Vector2.ZERO
@@ -23,8 +24,10 @@ func upd_walking_timer_duration():
 func walk():
 	if(walking):
 		velocity.x = lerp(velocity.x, speed * direction, acceleration)
+		animation_player.play("Walking")
 	else:
 		velocity.x = lerp(velocity.x, 0, friction)
+		animation_player.play("Idle")
 
 func flip():
 	direction = -direction
