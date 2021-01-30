@@ -93,6 +93,8 @@ func _on_LeftWallDetector_body_entered(body):
 func _on_RightWallDetector_body_entered(body):
 	state = NEW_DIRECTION
 
-func _on_HitBox_body_entered(body):
+func _on_HitBox_area_shape_entered(area_id, area, area_shape, self_shape):
 	HEALTH_POINTS -= 1
 	print("enemy aie")
+	if HEALTH_POINTS == 0:
+		queue_free()
