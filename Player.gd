@@ -9,7 +9,7 @@ export (int) var HEALTH_POINTS = 2
 
 #		POWER (DE)ACTIVATION
 export var CAN_JUMP = true
-export var CAN_GLAIRE = true
+export var CAN_GLAIRE = false
 export var CAN_HOVER = true
 export var CAN_CRAWL = true
 export var CAN_SPIT = true
@@ -161,7 +161,8 @@ func _on_PickupBox_area_entered(area):
 	if area.has_method("on_pickup"):
 		area.on_pickup()
 		if(area is Lama):
-			print("yolo")
+			CAN_GLAIRE = true
+
 
 func _on_Timer_timeout():
 	ready_to_spit = true
