@@ -73,7 +73,6 @@ func _on_WalkingTimer_timeout():
 	match state:
 		IDLE:
 			state = choose([WALK, NEW_DIRECTION])
-		
 		WALK:
 			state = IDLE
 

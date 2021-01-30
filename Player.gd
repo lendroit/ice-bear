@@ -88,3 +88,6 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x, 0, friction)
 
 	velocity = move_and_slide(velocity, Vector2.UP)
+
+func _on_HurtBox_area_shape_entered(area_id, area, area_shape, self_shape):
+	print("Aie !")
