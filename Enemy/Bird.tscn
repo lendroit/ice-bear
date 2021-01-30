@@ -5,3 +5,6 @@
 
 [node name="Bird" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+
+[node name="ShootTimer" type="Timer" parent="." index="7"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]

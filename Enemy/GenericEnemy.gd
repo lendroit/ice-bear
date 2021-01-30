@@ -5,7 +5,7 @@ export (float) var friction = 0.1
 export (float) var acceleration = 0.25
 export (bool) var gravity_sensible = false
 
-var possible_timer_Durations = [1.5]
+var possible_walking_timer_durations = [1.5]
 var possible_states_after_idle = [WALK]
 var possible_states_after_walk = [NEW_DIRECTION]
 var possible_states_after_new_direction = [WALK]
@@ -21,8 +21,7 @@ var direction := Vector2.LEFT
 enum {
 	IDLE,
 	NEW_DIRECTION,
-	WALK,
-	ATTACK
+	WALK
 }
 
 var state = WALK
@@ -30,7 +29,7 @@ var state = WALK
 ##########
 
 func upd_walking_timer_duration():
-	walking_timer.set_wait_time(choose(possible_timer_Durations))
+	walking_timer.set_wait_time(choose(possible_walking_timer_durations))
 
 func walk():
 	velocity.x = lerp(velocity.x, speed * direction.x, acceleration)
