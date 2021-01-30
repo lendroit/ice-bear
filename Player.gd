@@ -12,6 +12,7 @@ export var CAN_JUMP = true
 export var CAN_GLAIRE = true
 export var CAN_HOVER = true
 export var CAN_CRAWL = true
+export var CAN_SPIT = true
 
 #		WALK VARIALES
 export (int) var WALK_SPEED = 400
@@ -85,7 +86,7 @@ func get_input():
 	elif Input.is_action_just_released("walk_right") && Input.is_action_pressed("walk_left"):
 		orientation = leftright.left
 		
-	if Input.is_action_just_pressed("Glaire") && CAN_GLAIRE && ready_to_spit:
+	if Input.is_action_just_pressed("Glaire") && CAN_GLAIRE && ready_to_spit && CAN_SPIT:
 		shoot(velocity.x, orientation)
 		ready_to_spit = false
 		
