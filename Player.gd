@@ -8,7 +8,7 @@ export (int) var MAX_JUMPS = 2
 export (int) var walk_speed = 400
 export (float, 0, 1.0) var walk_acceleration = 0.25
 
-export (int) var crawl_speed = 300
+export (int) var crawl_speed = 200
 export (float, 0, 1.0) var crawl_acceleration = 0.75
 
 export (int) var hover_speed = 400
