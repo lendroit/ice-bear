@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Enemy/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Enemy/GenericEnemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/penguin_standing.png" type="Texture" id=2]
 [ext_resource path="res://assets/penguin_moving.png" type="Texture" id=3]
 
