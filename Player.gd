@@ -5,6 +5,11 @@ onready var crawl_hit_box = $CrawlHitBox
 
 export (int) var MAX_JUMPS = 2
 
+#		POWER (DE)ACTIVATION
+var CAN_JUMP = true
+var CAN_GLAIRE = true
+var CAN_HOVER = true
+
 #		WALK VARIALES
 export (int) var WALK_SPEED = 400
 export (float, 0, 1.0) var WALK_ACCELERATION = 0.25
@@ -31,7 +36,6 @@ var direction
 
 #		Handle Crachat :
 export var muzzle_velocity = 350
-export var gravity = 250
 
 var Glaire = preload("res://Glaire.tscn")
 
@@ -55,7 +59,7 @@ func stand():
 
 func get_input():
 	direction = 0
-	if Input.is_action_just_pressed("Glaire"):
+	if Input.is_action_just_pressed("Glaire") && CAN_GLAIRE:
 		shoot()
 	if Input.is_action_pressed("walk_right"):
 		direction = 1
@@ -72,12 +76,12 @@ func handle_jump(delta):
 	elif jump_count == 0:
 		jump_count = 1
 
-	if Input.is_action_just_pressed("jump") && jump_count < MAX_JUMPS:
+	if Input.is_action_just_pressed("jump") && jump_count < MAX_JUMPS && CAN_JUMP:
 		jump_count += 1
 		velocity.y = JUMP_SPEED
 		is_crawling = false
 
-	elif Input.is_action_pressed("jump") && velocity.y > 0:
+	elif Input.is_action_pressed("jump") && velocity.y > 0 && CAN_HOVER:
 		velocity.y = lerp(velocity.y, HOVER_SPEED, AIR_FRICTION)
 	else:
 		velocity.y += EngineParameters.GRAVITY * delta
