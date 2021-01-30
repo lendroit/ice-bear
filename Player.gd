@@ -3,6 +3,8 @@ extends KinematicBody2D
 onready var stand_hit_box = $StandHitBox
 onready var crawl_hit_box = $CrawlHitBox
 onready var sprite = $OursGoingLeft
+onready var reachable_hooks_area = $ReachableHooksArea
+onready var hook_position_tween = $HookPositionTween
 
 export (int) var MAX_JUMPS = 2
 export (int) var HEALTH_POINTS = 2
@@ -69,6 +71,19 @@ func stand():
 	self.crawl_hit_box.disabled = true
 	is_crawling = false
 
+func hook():
+	var hooks_in_area = reachable_hooks_area.get_overlapping_areas()
+	var hooks_direction = map(funcref(self, "get_direction"),hooks_in_area)
+	print(hooks_direction)
+	var upper_hooks_directions = filter(funcref(self, "keep_upper_hooks"), hooks_direction)
+	print(upper_hooks_directions)
+	if(upper_hooks_directions.size() == 0):
+		return
+	var hook_direction = upper_hooks_directions[0].normalized()*WALK_SPEED*5
+	hook_position_tween.interpolate_property(self, "velocity", self.velocity, hook_direction, 0.1, Tween.TRANS_LINEAR)
+	hook_position_tween.start()
+
+
 func get_input():
 	direction = 0
 		
@@ -89,6 +104,9 @@ func get_input():
 	if Input.is_action_just_pressed("Glaire") && CAN_GLAIRE && ready_to_spit && CAN_SPIT:
 		shoot(velocity.x, orientation)
 		ready_to_spit = false
+
+	if Input.is_action_just_pressed("hook"):
+		hook()
 		
 	if Input.is_action_just_pressed("down") && is_on_floor() && CAN_CRAWL:
 		crouch()
@@ -165,6 +183,27 @@ func _on_PickupBox_area_entered(area):
 		if(area is Crow):
 			CAN_HOVER = true
 
+func get_direction(other_area: Area2D)->Vector2:
+	return other_area.position - self.position
+
+func keep_upper_hooks(direction: Vector2)->bool:
+	return direction.y < 0
 
 func _on_Timer_timeout():
 	ready_to_spit = true
+
+static func map(function: FuncRef, i_array: Array)->Array:
+	var o_array := []
+	for value in i_array:
+		o_array.append(function.call_func(value))
+	return o_array
+
+static func filter(filter_function: FuncRef, candidate_array: Array)->Array:
+	var filtered_array := []
+
+	for candidate_value in candidate_array:
+		if filter_function.call_func(candidate_value):
+			filtered_array.append(candidate_value)
+
+	return filtered_array
+
