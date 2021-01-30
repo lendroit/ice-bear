@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=2]
 [ext_resource path="res://assets/ours_to_left.png" type="Texture" id=3]
@@ -10,7 +10,12 @@ height = 27.3443
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 30.598, 35.3897 )
 
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 37.6624, 30.4216 )
+
 [node name="Player" type="KinematicBody2D"]
+collision_layer = 513
+collision_mask = 513
 script = ExtResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -41,4 +46,14 @@ collision_mask = 1024
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2( -0.353546, -8.13173 )
 shape = SubResource( 2 )
+
+[node name="PickupBox" type="Area2D" parent="."]
+collision_layer = 513
+collision_mask = 513
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupBox"]
+modulate = Color( 0.215686, 0.835294, 0.298039, 1 )
+position = Vector2( -0.265686, -5.31366 )
+shape = SubResource( 3 )
 [connection signal="area_shape_entered" from="HurtBox" to="." method="_on_HurtBox_area_shape_entered"]
+[connection signal="area_entered" from="PickupBox" to="." method="_on_PickupBox_area_entered"]

@@ -56,6 +56,10 @@ Glaire={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_10="Collectible"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

@@ -152,3 +152,8 @@ func _physics_process(delta):
 func _on_HurtBox_area_shape_entered(area_id, area, area_shape, self_shape):
 	HEALTH_POINTS -= 1
 	print(HEALTH_POINTS)
+
+
+func _on_PickupBox_area_entered(area):
+	if area.has_method("on_pickup"):
+		area.on_pickup()
