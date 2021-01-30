@@ -13,7 +13,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 10, 15.5 )
+extents = Vector2( 9.42656, 14.3904 )
 
 [sub_resource type="RectangleShape2D" id=3]
 
@@ -160,7 +160,7 @@ anims/Idle = SubResource( 4 )
 anims/Walking = SubResource( 5 )
 
 [node name="HitBox" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 2147483656
 collision_mask = 2
 
 [node name="HitBoxCollider" type="CollisionShape2D" parent="HitBox"]
@@ -171,3 +171,4 @@ shape = SubResource( 2 )
 [connection signal="body_entered" from="LeftWallDetector" to="." method="_on_LeftWallDetector_body_entered"]
 [connection signal="body_entered" from="RightWallDetector" to="." method="_on_RightWallDetector_body_entered"]
 [connection signal="timeout" from="WalkingTimer" to="." method="_on_WalkingTimer_timeout"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]
