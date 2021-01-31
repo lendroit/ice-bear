@@ -53,6 +53,11 @@ _global_script_classes=[ {
 "class": "Snake",
 "language": "GDScript",
 "path": "res://Friends/Snake.gd"
+}, {
+"base": "TileMap",
+"class": "Water",
+"language": "GDScript",
+"path": "res://Water_Tile.gd"
 } ]
 _global_script_class_icons={
 "Beaver": "",
@@ -63,7 +68,8 @@ _global_script_class_icons={
 "Kangaroo": "",
 "Lama": "",
 "Player": "",
-"Snake": ""
+"Snake": "",
+"Water": ""
 }
 
 [application]
