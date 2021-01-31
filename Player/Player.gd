@@ -7,6 +7,7 @@ onready var animation_player = $SpriteAnimationPlayer
 onready var reachable_hooks_area = $ReachableHooksArea
 onready var hook_position_tween = $HookPositionTween
 onready var grappling_hook_rope = $GrapplingHookRope
+onready var glaire_muzzle = $GlaireMuzzle
 
 export (int) var MAX_JUMPS = 1
 export (int) var HEALTH_POINTS = 2
@@ -55,7 +56,8 @@ var Glaire = preload("res://Glaire.tscn")
 func shoot():
 	var b = Glaire.instance()
 	owner.add_child(b)
-	b.position = self.position
+	b.position = self.position + glaire_muzzle.position
+	print(b.position)
 	b.velocity = self.velocity
 	if orientation == leftright.left:
 		b.velocity.x -= spit_velocity
