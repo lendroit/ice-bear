@@ -57,7 +57,6 @@ func shoot():
 	var b = Glaire.instance()
 	owner.add_child(b)
 	b.position = self.position + glaire_muzzle.position
-	print(b.position)
 	b.velocity = self.velocity
 	if orientation == leftright.left:
 		b.velocity.x -= spit_velocity
@@ -83,7 +82,6 @@ func hook():
 	var upper_hooks = filter(funcref(self, "keep_upper_hooks"), hooks_in_area)
 	if(upper_hooks.size() == 0):
 		return
-	print(upper_hooks)
 	var uppest_hook = reduce(funcref(self, "get_higher_hook"), upper_hooks, upper_hooks[0])
 	hooked_node = uppest_hook
 	grappling_hook_rope.visible = true
@@ -199,7 +197,6 @@ func _physics_process(delta):
 
 func _on_HurtBox_area_shape_entered(_area_id, _area, _area_shape, _self_shape):
 	HEALTH_POINTS -= 1
-	print(HEALTH_POINTS)
 
 
 func _on_PickupBox_area_entered(area):
