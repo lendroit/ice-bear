@@ -8,7 +8,7 @@ onready var theme = $AudioPlayer/theme
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#_play_theme()
+	_play_theme()
 	var _useless = $Player.connect("player_died", self, "_player_died")
 	dialog_handler.connect("end", self, "end_dialog")
 	var enemies = get_tree().get_nodes_in_group("enemy")
