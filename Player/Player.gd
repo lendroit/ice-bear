@@ -2,35 +2,6 @@ extends KinematicBody2D
 
 class_name Player
 
-var spit_sounds = [
-	preload("res://assets/sound/spit/spit1.wav"),
-	preload("res://assets/sound/spit/spit2.wav"),
-	preload("res://assets/sound/spit/spit3.wav"),
-	preload("res://assets/sound/spit/spit4.wav"),
-	preload("res://assets/sound/spit/spit5.wav"),
-	preload("res://assets/sound/spit/spit6.wav"),
-	preload("res://assets/sound/spit/spit7.wav"),
-	preload("res://assets/sound/spit/spit8.wav"),
-	preload("res://assets/sound/spit/spit9.wav"),
-	preload("res://assets/sound/spit/spit10.wav"),
-	preload("res://assets/sound/spit/spit11.wav"),
-	preload("res://assets/sound/spit/spit12.wav"),
-	preload("res://assets/sound/spit/spit13.wav"),
-	preload("res://assets/sound/spit/spit14.wav")
- ]
-
-var death_sounds = [
-	preload("res://assets/sound/player_death/death_01_session.wav"),
-	preload("res://assets/sound/player_death/death_02_session.wav"),
-	preload("res://assets/sound/player_death/death_03_session.wav"),
-	preload("res://assets/sound/player_death/death_04_session.wav"),
-	preload("res://assets/sound/player_death/death_05_session.wav"),
-	preload("res://assets/sound/player_death/death_06_session.wav"),
-	preload("res://assets/sound/player_death/death_07_session.wav"),
-	preload("res://assets/sound/player_death/death_08_session.wav"),
-	preload("res://assets/sound/player_death/death_09_session.wav")
-]
-
 onready var spit = $AudioPlayer/Spit
 onready var death = $AudioPlayer/Death
 
@@ -47,37 +18,6 @@ onready var glaire_muzzle = $GlaireMuzzle
 onready var beaver_muzzle = $BeaverMuzzle
 onready var shoot_timer = $ShootTimer
 
-export (int) var MAX_JUMPS = 1
-export (int) var HEALTH_POINTS = 2
-
-#		POWER (DE)ACTIVATION
-export var CAN_GLAIRE = false
-export var CAN_HOVER = false
-export var CAN_CRAWL = false # Buggy & Unexploited feature
-export var CAN_HOOK = false
-export var CAN_BUILD = false
-
-#		WALK VARIALES
-export (int) var WALK_SPEED = 400
-export (float, 0, 1.0) var WALK_ACCELERATION = 0.25
-export (float, 0, 1.0) var WALK_FRICTION = .55
-export (int) var GRAPPLING_HOOK_SPEED = 2000
-
-#		CRAWL VARIALES
-export (int) var CRAWL_SPEED = 200
-export (float, 0, 1.0) var CRAWL_ACCELERATION = 0.75
-export (float, 0, 1.0) var CRAWL_FRICTION = .9
-
-#		HOVER VARIALES
-export (int) var HOVER_SPEED = 300
-export (float, 0, 1.0) var AIR_FRICTION = .1
-
-#		JUMP VARIALES
-export (int) var JUMP_SPEED = -1100
-
-#		SHOOT VARIALES
-export (float) var SHOOT_TIMER_TIME = 0.5
-
 var velocity = Vector2.ZERO
 var jump_count = 0
 var is_crawling = false
@@ -89,13 +29,11 @@ var hooked_node
 
 enum leftright {left, right}
 
-export var spit_velocity = 650
-
 var Glaire = preload("res://Glaire.tscn")
 var beaver_projectile = preload("res://BeaverProjectile.tscn")
 
 func reset_shoot_timer():
-	shoot_timer.set_wait_time(SHOOT_TIMER_TIME)
+	shoot_timer.set_wait_time(PlayerParameters.PLAYER_SHOOT_TIMER_TIME)
 	shoot_timer.start()
 
 func shoot():
@@ -106,9 +44,9 @@ func shoot():
 	b.position = self.position + glaire_muzzle.position
 	b.velocity = self.velocity
 	if orientation == leftright.left:
-		b.velocity.x -= spit_velocity
+		b.velocity.x -= PlayerParameters.PLAYER_SPIT_VELOCITY
 	elif orientation == leftright.right:
-		b.velocity.x += spit_velocity
+		b.velocity.x += PlayerParameters.PLAYER_SPIT_VELOCITY
 	b.gravity = EngineParameters.GRAVITY
 
 func build():
@@ -119,9 +57,9 @@ func build():
 	b.position = self.position + beaver_muzzle.position
 	b.velocity = self.velocity
 	if orientation == leftright.left:
-		b.velocity.x -= spit_velocity
+		b.velocity.x -= PlayerParameters.PLAYER_SPIT_VELOCITY
 	elif orientation == leftright.right:
-		b.velocity.x += spit_velocity
+		b.velocity.x += PlayerParameters.PLAYER_SPIT_VELOCITY
 	b.gravity = EngineParameters.GRAVITY
 
 func crouch():
@@ -135,7 +73,7 @@ func stand():
 	is_crawling = false
 
 func hook():
-	if (!CAN_HOOK):
+	if (!PlayerParameters.PLAYER_CAN_HOOK):
 		return
 
 	var hooks_in_area = reachable_hooks_area.get_overlapping_areas()
@@ -146,7 +84,7 @@ func hook():
 	hooked_node = uppest_hook
 	grappling_hook_rope.visible = true
 
-	var hook_direction = (uppest_hook.position - self.position).normalized()*GRAPPLING_HOOK_SPEED
+	var hook_direction = (uppest_hook.position - self.position).normalized()*PlayerParameters.PLAYER_GRAPPLING_HOOK_SPEED
 	hook_position_tween.interpolate_property(self, "velocity", self.velocity, hook_direction, 0.1, Tween.TRANS_LINEAR)
 	hook_position_tween.start()
 
@@ -171,17 +109,18 @@ func get_input():
 	elif Input.is_action_just_released("walk_right") && Input.is_action_pressed("walk_left"):
 		orientation = leftright.left
 		
-	if Input.is_action_just_pressed("Glaire") && CAN_GLAIRE && ready_to_shoot:
+	if Input.is_action_just_pressed("Glaire") && PlayerParameters.PLAYER_CAN_GLAIRE && ready_to_shoot:
+		print(PlayerParameters.PLAYER_CAN_GLAIRE)
 		_play_spit_sound()
 		shoot()
 		
-	if Input.is_action_just_pressed("build") && CAN_BUILD && ready_to_shoot:
+	if Input.is_action_just_pressed("build") && PlayerParameters.PLAYER_CAN_BUILD && ready_to_shoot:
 		build()
 		
 	if Input.is_action_just_pressed("hook"):
 		hook()
 		
-	if Input.is_action_just_pressed("down") && is_on_floor() && CAN_CRAWL:
+	if Input.is_action_just_pressed("down") && is_on_floor() && PlayerParameters.PLAYER_CAN_CRAWL:
 		crouch()
 	elif Input.is_action_just_released("down"):
 		stand()
@@ -192,13 +131,13 @@ func handle_jump(delta):
 	elif jump_count == 0:
 		jump_count = 1
 
-	if Input.is_action_just_pressed("jump") && jump_count < MAX_JUMPS:
+	if Input.is_action_just_pressed("jump") && jump_count < PlayerParameters.PLAYER_MAX_JUMPS:
 		jump_count += 1
-		velocity.y = JUMP_SPEED
+		velocity.y = PlayerParameters.PLAYER_JUMP_SPEED
 		is_crawling = false
 
-	elif Input.is_action_pressed("jump") && velocity.y > 0 && CAN_HOVER:
-		velocity.y = lerp(velocity.y, HOVER_SPEED, AIR_FRICTION)
+	elif Input.is_action_pressed("jump") && velocity.y > 0 && PlayerParameters.PLAYER_CAN_HOVER:
+		velocity.y = lerp(velocity.y, PlayerParameters.PLAYER_HOVER_SPEED, PlayerParameters.PLAYER_AIR_FRICTION)
 	else:
 		velocity.y += EngineParameters.GRAVITY * delta
 		
@@ -219,18 +158,18 @@ func _physics_process(delta):
 	handle_jump(delta)
 
 	if (is_crawling):
-		speed = CRAWL_SPEED
-		acceleration = CRAWL_ACCELERATION
-		friction = CRAWL_FRICTION
+		speed = PlayerParameters.PLAYER_CRAWL_SPEED
+		acceleration = PlayerParameters.PLAYER_CRAWL_ACCELERATION
+		friction = PlayerParameters.PLAYER_CRAWL_FRICTION
 	else:
 		if is_on_floor():
-			speed = WALK_SPEED
-			acceleration = WALK_ACCELERATION
-			friction = WALK_FRICTION
+			speed = PlayerParameters.PLAYER_WALK_SPEED
+			acceleration = PlayerParameters.PLAYER_WALK_ACCELERATION
+			friction = PlayerParameters.PLAYER_WALK_FRICTION
 		else:
-			speed = WALK_SPEED
-			acceleration = WALK_ACCELERATION
-			friction = AIR_FRICTION
+			speed = PlayerParameters.PLAYER_WALK_SPEED
+			acceleration = PlayerParameters.PLAYER_WALK_ACCELERATION
+			friction = PlayerParameters.PLAYER_AIR_FRICTION
 
 	if direction != 0:
 		velocity.x = lerp(velocity.x, direction * speed, acceleration)
@@ -254,8 +193,8 @@ func _physics_process(delta):
 		grappling_hook_rope.visible = false
 
 func player_hurt():
-	HEALTH_POINTS -= 1
-	if HEALTH_POINTS < 1:
+	PlayerParameters.PLAYER_HEALTH_POINTS -= 1
+	if PlayerParameters.PLAYER_HEALTH_POINTS < 1:
 		player_death()
 
 func _on_HurtBox_area_shape_entered(_area_id, _area, _area_shape, _self_shape):
@@ -265,15 +204,15 @@ func _on_PickupBox_area_entered(area):
 	if area.has_method("on_pickup"):
 		area.on_pickup()
 		if(area is Lama):
-			CAN_GLAIRE = true
+			PlayerParameters.PLAYER_CAN_GLAIRE = true
 		if(area is Snake):
-			CAN_HOOK = true
+			PlayerParameters.PLAYER_CAN_HOOK = true
 		if(area is Crow):
-			CAN_HOVER = true
+			PlayerParameters.PLAYER_CAN_HOVER = true
 		if(area is Beaver):
-			CAN_BUILD = true
+			PlayerParameters.PLAYER_CAN_BUILD = true
 		if(area is Kangaroo):
-			MAX_JUMPS += 1
+			PlayerParameters.PLAYER_MAX_JUMPS += 1
 
 func get_direction(other_area: Area2D)->Vector2:
 	return other_area.position - self.position
@@ -315,13 +254,13 @@ static func reduce(function: FuncRef, i_array: Array, first = null):
 	return acc
 
 func _play_spit_sound():
-	var random_index = randi()%spit_sounds.size()
-	spit.stream = spit_sounds[random_index]
+	var random_index = randi()%PlayerParameters.PLAYER_SPIT_SOUNDS.size()
+	spit.stream = PlayerParameters.PLAYER_SPIT_SOUNDS[random_index]
 	spit.play()
 
 func _play_death_sound():
 	# var random_index = randi()%death_sounds.size()
-	death.stream = death_sounds[1]#[random_index]
+	death.stream = PlayerParameters.PLAYER_DEATH_SOUNDS[1]#[random_index]
 	death.play()
 
 func _on_HookPositionTween_tween_all_completed():
