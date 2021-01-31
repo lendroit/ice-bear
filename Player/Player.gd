@@ -323,7 +323,7 @@ func _play_spit_sound():
 	spit.play()
 
 func _play_death_sound():
-	var random_index = randi()%death_sounds.size()
+	# var random_index = randi()%death_sounds.size()
 	death.stream = death_sounds[1]#[random_index]
 	death.play()
 

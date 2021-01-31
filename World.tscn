@@ -71,4 +71,5 @@ pause_mode = 2
 [node name="DialogManager" parent="CanvasLayer" instance=ExtResource( 17 )]
 
 [node name="Water" parent="." instance=ExtResource( 14 )]
+position = Vector2( 0, 0 )
 tile_data = PoolIntArray( 65537, 0, 0, 131073, 1, 0 )
