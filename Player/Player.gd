@@ -259,8 +259,11 @@ func _physics_process(delta):
 	else:
 		grappling_hook_rope.visible = false
 
-func _on_HurtBox_area_shape_entered(_area_id, _area, _area_shape, _self_shape):
+func player_hurt():
 	HEALTH_POINTS -= 1
+
+func _on_HurtBox_area_shape_entered(_area_id, _area, _area_shape, _self_shape):
+	player_hurt()
 
 
 func _on_PickupBox_area_entered(area):
@@ -329,3 +332,9 @@ func _play_death_sound():
 func _on_HookPositionTween_tween_all_completed():
 	hooked_node = null
 	pass # Replace with function body.
+
+
+func _on_HurtBox_body_entered(body):
+	if !(body is Water):
+		return
+	player_death()
