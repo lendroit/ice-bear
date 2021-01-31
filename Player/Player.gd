@@ -51,11 +51,11 @@ export (int) var MAX_JUMPS = 1
 export (int) var HEALTH_POINTS = 2
 
 #		POWER (DE)ACTIVATION
-export var CAN_GLAIRE = false
-export var CAN_HOVER = false
+export var HAS_GLAIRE_POWER = false
+export var HAS_HOVER_POWER = false
 export var CAN_CRAWL = false # Buggy & Unexploited feature
-export var CAN_HOOK = false
-export var CAN_BUILD = false
+export var HAS_HOOK_POWER = false
+export var HAS_BUILD_POWER = false
 
 #		WALK VARIALES
 export (int) var WALK_SPEED = 400
@@ -135,7 +135,7 @@ func stand():
 	is_crawling = false
 
 func hook():
-	if (!CAN_HOOK):
+	if (!HAS_HOOK_POWER):
 		return
 
 	var hooks_in_area = reachable_hooks_area.get_overlapping_areas()
@@ -171,11 +171,11 @@ func get_input():
 	elif Input.is_action_just_released("walk_right") && Input.is_action_pressed("walk_left"):
 		orientation = leftright.left
 		
-	if Input.is_action_just_pressed("Glaire") && CAN_GLAIRE && ready_to_shoot:
+	if Input.is_action_just_pressed("Glaire") && HAS_GLAIRE_POWER && ready_to_shoot:
 		_play_spit_sound()
 		shoot()
 		
-	if Input.is_action_just_pressed("build") && CAN_BUILD && ready_to_shoot:
+	if Input.is_action_just_pressed("build") && HAS_BUILD_POWER && ready_to_shoot:
 		build()
 		
 	if Input.is_action_just_pressed("hook"):
@@ -197,7 +197,7 @@ func handle_jump(delta):
 		velocity.y = JUMP_SPEED
 		is_crawling = false
 
-	elif Input.is_action_pressed("jump") && velocity.y > 0 && CAN_HOVER:
+	elif Input.is_action_pressed("jump") && velocity.y > 0 && HAS_HOVER_POWER:
 		velocity.y = lerp(velocity.y, HOVER_SPEED, AIR_FRICTION)
 	else:
 		velocity.y += EngineParameters.GRAVITY * delta
@@ -265,13 +265,13 @@ func _on_PickupBox_area_entered(area):
 	if area.has_method("on_pickup"):
 		area.on_pickup()
 		if(area is Lama):
-			CAN_GLAIRE = true
+			HAS_GLAIRE_POWER = true
 		if(area is Snake):
-			CAN_HOOK = true
+			HAS_HOOK_POWER = true
 		if(area is Crow):
-			CAN_HOVER = true
+			HAS_HOVER_POWER = true
 		if(area is Beaver):
-			CAN_BUILD = true
+			HAS_BUILD_POWER = true
 		if(area is Kangaroo):
 			MAX_JUMPS += 1
 
