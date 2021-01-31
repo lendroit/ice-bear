@@ -34,6 +34,8 @@ var death_sounds = [
 onready var spit = $AudioPlayer/Spit
 onready var death = $AudioPlayer/Death
 
+signal player_died
+
 onready var stand_hit_box = $StandHitBox
 onready var crawl_hit_box = $CrawlHitBox
 onready var sprite = $SpriteContainer/Sprite
@@ -208,8 +210,8 @@ func set_direction(horizontal_speed):
 
 func player_death():
 	print("Tu es mort !")
-	#_play_death_sound()
-	var _useless  = get_tree().change_scene("res://World.tscn")
+	_play_death_sound()
+	emit_signal("player_died")
 
 func _physics_process(delta):
 	if(HEALTH_POINTS < 1):
