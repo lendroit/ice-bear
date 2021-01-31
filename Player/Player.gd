@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+class_name Player
+
 onready var stand_hit_box = $StandHitBox
 onready var crawl_hit_box = $CrawlHitBox
 onready var sprite = $SpriteContainer/Sprite
@@ -8,6 +10,8 @@ onready var reachable_hooks_area = $ReachableHooksArea
 onready var hook_position_tween = $HookPositionTween
 onready var grappling_hook_rope = $GrapplingHookRope
 onready var glaire_muzzle = $GlaireMuzzle
+onready var beaver_muzzle = $BeaverMuzzle
+onready var shoot_timer = $ShootTimer
 
 export (int) var MAX_JUMPS = 1
 export (int) var HEALTH_POINTS = 2
@@ -16,7 +20,6 @@ export (int) var HEALTH_POINTS = 2
 export var CAN_GLAIRE = false
 export var CAN_HOVER = false
 export var CAN_CRAWL = true
-export var CAN_SPIT = true
 export var CAN_HOOK = false
 export var CAN_BUILD = false
 
@@ -38,13 +41,16 @@ export (float, 0, 1.0) var AIR_FRICTION = .1
 #		JUMP VARIALES
 export (int) var JUMP_SPEED = -1100
 
+#		SHOOT VARIALES
+export (float) var SHOOT_TIMER_TIME = 0.5
+
 var velocity = Vector2.ZERO
 var jump_count = 0
 var is_crawling = false
 
 var direction
 var orientation
-var ready_to_spit := true
+var ready_to_shoot := true
 var hooked_node
 
 enum leftright {left, right}
@@ -52,11 +58,31 @@ enum leftright {left, right}
 export var spit_velocity = 650
 
 var Glaire = preload("res://Glaire.tscn")
+var beaver_projectile = preload("res://BeaverProjectile.tscn")
+
+func reset_shoot_timer():
+	shoot_timer.set_wait_time(SHOOT_TIMER_TIME)
+	shoot_timer.start()
 
 func shoot():
+	ready_to_shoot = false
+	reset_shoot_timer()
 	var b = Glaire.instance()
 	owner.add_child(b)
 	b.position = self.position + glaire_muzzle.position
+	b.velocity = self.velocity
+	if orientation == leftright.left:
+		b.velocity.x -= spit_velocity
+	elif orientation == leftright.right:
+		b.velocity.x += spit_velocity
+	b.gravity = EngineParameters.GRAVITY
+
+func build():
+	ready_to_shoot = false
+	reset_shoot_timer()
+	var b = beaver_projectile.instance()
+	owner.add_child(b)
+	b.position = self.position + beaver_muzzle.position
 	b.velocity = self.velocity
 	if orientation == leftright.left:
 		b.velocity.x -= spit_velocity
@@ -111,10 +137,12 @@ func get_input():
 	elif Input.is_action_just_released("walk_right") && Input.is_action_pressed("walk_left"):
 		orientation = leftright.left
 		
-	if Input.is_action_just_pressed("Glaire") && CAN_GLAIRE && ready_to_spit && CAN_SPIT:
+	if Input.is_action_just_pressed("Glaire") && CAN_GLAIRE && ready_to_shoot:
 		shoot()
-		ready_to_spit = false
-
+		
+	if Input.is_action_just_pressed("build") && CAN_BUILD && ready_to_shoot:
+		build()
+		
 	if Input.is_action_just_pressed("hook"):
 		hook()
 		
@@ -225,7 +253,7 @@ func get_higher_hook(uppest_hook: Area2D, hook: Area2D)->Area2D:
 	return uppest_hook
 
 func _on_Timer_timeout():
-	ready_to_spit = true
+	ready_to_shoot = true
 
 static func map(function: FuncRef, i_array: Array)->Array:
 	var o_array := []

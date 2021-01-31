@@ -30,6 +30,11 @@ _global_script_classes=[ {
 "path": "res://addons/dialogic/Other/DialogicUtil.gd"
 }, {
 "base": "Area2D",
+"class": "Glaire",
+"language": "GDScript",
+"path": "res://Glaire.gd"
+}, {
+"base": "Area2D",
 "class": "Kangaroo",
 "language": "GDScript",
 "path": "res://Friends/Kangaroo.gd"
@@ -38,6 +43,11 @@ _global_script_classes=[ {
 "class": "Lama",
 "language": "GDScript",
 "path": "res://Friends/Lama.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Player/Player.gd"
 }, {
 "base": "Area2D",
 "class": "Snake",
@@ -49,8 +59,10 @@ _global_script_class_icons={
 "Crow": "",
 "Dialogic": "",
 "DialogicUtil": "",
+"Glaire": "",
 "Kangaroo": "",
 "Lama": "",
+"Player": "",
 "Snake": ""
 }
 
@@ -68,6 +80,7 @@ EngineParameters="*res://EngineParameters.gd"
 
 window/size/width=1920
 window/size/height=1080
+window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
 [input]
@@ -102,6 +115,11 @@ hook={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":72,"unicode":0,"echo":false,"script":null)
  ]
 }
+build={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":66,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [layer_names]
 
@@ -111,6 +129,7 @@ hook={
 2d_physics/layer_4="Hurtbox Enemy"
 2d_physics/layer_5="HitboxEnemy"
 2d_physics/layer_6="Allies/Collectible"
+2d_physics/layer_7="Building"
 2d_physics/layer_10="Collectible"
 2d_physics/layer_15="player projectile"
 2d_physics/layer_20="Hook"
