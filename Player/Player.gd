@@ -188,23 +188,12 @@ func player_death():
 
 func _physics_process(delta):
 	get_input()
-	var speed
-	var acceleration
-	var friction
-
 	handle_jump(delta)
 
-	if is_on_floor():
-		speed = WALK_SPEED
-		acceleration = WALK_ACCELERATION
-		friction = WALK_FRICTION
-	else:
-		speed = WALK_SPEED
-		acceleration = WALK_ACCELERATION
-		friction = AIR_FRICTION
+	var friction = WALK_FRICTION if is_on_floor() else AIR_FRICTION
 
 	if direction != 0:
-		velocity.x = lerp(velocity.x, direction * speed, acceleration)
+		velocity.x = lerp(velocity.x, direction * WALK_SPEED, WALK_ACCELERATION)
 	else:
 		velocity.x = lerp(velocity.x, 0, friction)
 
