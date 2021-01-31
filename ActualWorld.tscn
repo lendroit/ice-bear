@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemy/Penguin/Penguin.tscn" type="PackedScene" id=2]
@@ -12,10 +12,13 @@
 [ext_resource path="res://Friends/Beaver.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Friends/Snake.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Enemy/Bird/Bird.tscn" type="PackedScene" id=12]
+[ext_resource path="res://DialogManager.tscn" type="PackedScene" id=13]
+[ext_resource path="res://DialogManager.gd" type="Script" id=14]
+[ext_resource path="res://World.gd" type="Script" id=15]
 
 [node name="ActualWorld" type="Node2D"]
 position = Vector2( -152.391, 47.622 )
-script = ExtResource( 9 )
+script = ExtResource( 15 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 8 )]
 
@@ -44,10 +47,7 @@ position = Vector2( 10612.6, -2067.14 )
 [node name="water" type="Node" parent="Terrain"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 10022.3, -1281.02 )
-CAN_GLAIRE = true
-CAN_HOOK = true
-CAN_BUILD = true
+position = Vector2( -5565.73, 1205.56 )
 WALK_SPEED = 600
 HOVER_SPEED = 225
 JUMP_SPEED = -1300
@@ -278,3 +278,14 @@ position = Vector2( 10377.2, -1410.03 )
 
 [node name="Penguin34" parent="." instance=ExtResource( 2 )]
 position = Vector2( 10347.7, -1782.75 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+pause_mode = 2
+
+[node name="DialogManager" type="Control" parent="CanvasLayer" instance=ExtResource( 13 )]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
