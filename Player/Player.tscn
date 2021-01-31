@@ -134,7 +134,8 @@ modulate = Color( 0.215686, 0.835294, 0.298039, 1 )
 position = Vector2( 0.00570679, -20.996 )
 shape = SubResource( 4 )
 
-[node name="Timer" type="Timer" parent="."]
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.5
 autostart = true
 
 [node name="ReachableHooksArea" type="Area2D" parent="."]
@@ -158,7 +159,10 @@ anims/Walking = SubResource( 7 )
 
 [node name="GlaireMuzzle" type="Node2D" parent="."]
 position = Vector2( 0, -63 )
+
+[node name="BeaverMuzzle" type="Node2D" parent="."]
+position = Vector2( 0, -20 )
 [connection signal="area_shape_entered" from="HurtBox" to="." method="_on_HurtBox_area_shape_entered"]
 [connection signal="area_entered" from="PickupBox" to="." method="_on_PickupBox_area_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_Timer_timeout"]
 [connection signal="tween_all_completed" from="HookPositionTween" to="." method="_on_HookPositionTween_tween_all_completed"]
