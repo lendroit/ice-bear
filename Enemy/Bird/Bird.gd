@@ -2,7 +2,7 @@ extends "res://Enemy/GenericEnemy.gd"
 
 onready var shoot_timer = $ShootTimer
 
-var possible_shoot_timer_durations = [0.25, 0.5, 0.75, 1]
+var possible_shoot_timer_durations = [0.7, 0.85, 1]
 
 var Glaire = preload("res://Enemy/EnemyGlaire.tscn")
 export var spit_velocity = 650

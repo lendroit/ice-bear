@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/spit12.wav-6f96f5c8c1a421f4fdbc8ad496990afd.sample"
+
+[deps]
+
+source_file="res://assets/sound/spit/spit12.wav"
+dest_files=[ "res://.import/spit12.wav-6f96f5c8c1a421f4fdbc8ad496990afd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

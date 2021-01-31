@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemy/Penguin/Penguin.tscn" type="PackedScene" id=2]
@@ -13,6 +13,11 @@
 [ext_resource path="res://Friends/Beaver.tscn" type="PackedScene" id=11]
 [ext_resource path="res://World.gd" type="Script" id=12]
 [ext_resource path="res://BuildablePlatform/BuildablePlatform.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Dialogs/DialogIterator.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Dialogs/little bear.png" type="Texture" id=15]
+[ext_resource path="res://Dialogs/little beaver.png" type="Texture" id=16]
+[ext_resource path="res://DialogManager.gd" type="Script" id=17]
+[ext_resource path="res://Dialogs/little lama (1).png" type="Texture" id=18]
 
 [node name="World" type="Node2D"]
 position = Vector2( -152.391, 47.622 )
@@ -26,9 +31,6 @@ position = Vector2( 414.033, 21.4436 )
 
 [node name="Kangaroo" parent="." instance=ExtResource( 9 )]
 position = Vector2( 116.421, -131.819 )
-
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 511.5, 31.3955 )
 
 [node name="Terrain" type="TileMap" parent="."]
 tile_set = ExtResource( 4 )
@@ -47,7 +49,7 @@ position = Vector2( -361.302, 21.5394 )
 position = Vector2( 334.661, -215.193 )
 
 [node name="Bird" parent="." instance=ExtResource( 6 )]
-position = Vector2( 278.391, -208.622 )
+position = Vector2( -85.0963, -322.657 )
 
 [node name="HookNode" parent="." instance=ExtResource( 3 )]
 position = Vector2( 86.3344, -376.806 )
@@ -56,9 +58,63 @@ position = Vector2( 86.3344, -376.806 )
 position = Vector2( 128.21, 32.8845 )
 
 [node name="Bird2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 326.817, -288.417 )
+position = Vector2( 825.721, -117.364 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 7 )]
 
 [node name="BuildablePlatform" parent="." instance=ExtResource( 13 )]
 position = Vector2( 656.538, 8.33466 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 546.496, 23.4695 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+pause_mode = 2
+
+[node name="DialogManager" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Lama" parent="CanvasLayer/DialogManager" instance=ExtResource( 14 )]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/DialogManager/Lama"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 15 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/DialogManager/Lama"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 18 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Beaver" parent="CanvasLayer/DialogManager" instance=ExtResource( 14 )]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/DialogManager/Beaver"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 15 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/DialogManager/Beaver"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 16 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}

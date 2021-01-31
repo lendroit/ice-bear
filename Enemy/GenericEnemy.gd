@@ -55,8 +55,12 @@ func reset_walking_timer():
 	upd_walking_timer_duration()
 	walking_timer.start()
 
+func generic_enemy_hurt():
+	HEALTH_POINTS -= 1
+	if(HEALTH_POINTS < 1):
+		generic_enemy_death()
+	
 func generic_enemy_death():
-	print("enemy dead")
 	emit_signal("died", self.position)
 	queue_free()
 
@@ -99,6 +103,4 @@ func _on_RightWallDetector_body_entered(_body):
 func _on_HitBox_area_shape_entered(_area_id, _area, _area_shape, _self_shape):
 	if not (_area is Glaire):
 		return
-	HEALTH_POINTS -= 1
-	if HEALTH_POINTS == 0:
-		generic_enemy_death()
+	generic_enemy_hurt()
