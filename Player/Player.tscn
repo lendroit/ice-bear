@@ -2,17 +2,17 @@
 
 [ext_resource path="res://Terrain/rope.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
-[ext_resource path="res://assets/ours_to_left.png" type="Texture" id=3]
+[ext_resource path="res://Player/ours.png" type="Texture" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 16.0834
-height = 27.3443
+radius = 18.3768
+height = 73.3629
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 30.598, 35.3897 )
+extents = Vector2( 23.9846, 53.8799 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 37.6624, 30.4216 )
+extents = Vector2( 25.5175, 52.2606 )
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 203.524
@@ -30,15 +30,16 @@ drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 
 [node name="OursGoingLeft" type="Sprite" parent="."]
-position = Vector2( -0.495148, -19.6786 )
-scale = Vector2( 0.164762, 0.164762 )
+position = Vector2( 8.93539, -27.6142 )
+scale = Vector2( 0.466823, 0.466823 )
 texture = ExtResource( 3 )
 
 [node name="StandHitBox" type="CollisionShape2D" parent="."]
+position = Vector2( -0.794037, -19.1022 )
 shape = SubResource( 1 )
 
 [node name="CrawlHitBox" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 10 )
+position = Vector2( 1.31669, 14.7643 )
 rotation = 1.5708
 shape = SubResource( 1 )
 disabled = true
@@ -48,7 +49,7 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2( -0.353546, -8.13173 )
+position = Vector2( 0.347496, -21.1632 )
 shape = SubResource( 2 )
 
 [node name="PickupBox" type="Area2D" parent="."]
@@ -57,13 +58,14 @@ collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupBox"]
 modulate = Color( 0.215686, 0.835294, 0.298039, 1 )
-position = Vector2( -0.265686, -5.31366 )
+position = Vector2( 0.00570679, -20.996 )
 shape = SubResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
 [node name="ReachableHooksArea" type="Area2D" parent="."]
+modulate = Color( 0.435294, 0.611765, 0, 0.290196 )
 collision_layer = 0
 collision_mask = 524288
 

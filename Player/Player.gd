@@ -132,9 +132,9 @@ func handle_jump(delta):
 		
 func set_direction(horizontal_speed):
 	if horizontal_speed < 0:
-		sprite.flip_h = false
-	else:
 		sprite.flip_h = true
+	else:
+		sprite.flip_h = false
 
 func player_death():
 	print("Tu es mort !")
