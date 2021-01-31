@@ -4,6 +4,9 @@ signal end
 
 onready var lama = $Lama
 onready var beaver = $Beaver
+onready var kangaroo = $Kangaroo
+onready var snake = $Snake
+onready var crow = $Crow
 
 func _ready():
 	for child in get_children():
@@ -15,6 +18,12 @@ func start(dialog_name: String):
 			lama.start()
 		"beaver":
 			beaver.start()
+		"kangaroo":
+			kangaroo.start()
+		"snake":
+			snake.start()
+		"crow":
+			crow.start()
 		_:
 			emit_signal("end")
 
