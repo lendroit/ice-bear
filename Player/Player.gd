@@ -139,7 +139,7 @@ func hook():
 		return
 
 	var hooks_in_area = reachable_hooks_area.get_overlapping_areas()
-	var upper_hooks = filter(funcref(self, "keep_upper_hooks"), hooks_in_area)
+	var upper_hooks = Utils.filter(funcref(self, "keep_upper_hooks"), hooks_in_area)
 	if(upper_hooks.size() == 0):
 		return
 	var uppest_hook = reduce(funcref(self, "get_higher_hook"), upper_hooks, upper_hooks[0])
@@ -288,21 +288,6 @@ func get_higher_hook(uppest_hook: Area2D, hook: Area2D)->Area2D:
 
 func _on_Timer_timeout():
 	ready_to_shoot = true
-
-static func map(function: FuncRef, i_array: Array)->Array:
-	var o_array := []
-	for value in i_array:
-		o_array.append(function.call_func(value))
-	return o_array
-
-static func filter(filter_function: FuncRef, candidate_array: Array)->Array:
-	var filtered_array := []
-
-	for candidate_value in candidate_array:
-		if filter_function.call_func(candidate_value):
-			filtered_array.append(candidate_value)
-
-	return filtered_array
 
 static func reduce(function: FuncRef, i_array: Array, first = null):
 	var acc = first
