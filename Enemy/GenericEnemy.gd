@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal died
+
 export (int) var speed = 200
 export (float) var friction = 0.1
 export (float) var acceleration = 0.25
@@ -55,6 +57,7 @@ func reset_walking_timer():
 
 func generic_enemy_death():
 	print("enemy dead")
+	emit_signal("died", self.position)
 	queue_free()
 
 ##########
@@ -97,4 +100,4 @@ func _on_HitBox_area_shape_entered(_area_id, _area, _area_shape, _self_shape):
 	HEALTH_POINTS -= 1
 	print("enemy aie")
 	if HEALTH_POINTS == 0:
-		queue_free()
+		generic_enemy_death()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemy/Penguin/Penguin.tscn" type="PackedScene" id=2]
@@ -8,9 +8,11 @@
 [ext_resource path="res://Enemy/Bird/Bird.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Terrain/HookNode.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Terrain/ParallaxBackground.tscn" type="PackedScene" id=8]
+[ext_resource path="res://World.gd" type="Script" id=9]
 
 [node name="ActualWorld" type="Node2D"]
 position = Vector2( -152.391, 47.622 )
+script = ExtResource( 9 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -663.688, -188.807 )

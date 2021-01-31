@@ -48,7 +48,9 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 15 ) ]
 }
 
-[node name="GenericEnemy" type="KinematicBody2D"]
+[node name="GenericEnemy" type="KinematicBody2D" groups=[
+"enemy",
+]]
 collision_layer = 0
 script = ExtResource( 1 )
 
