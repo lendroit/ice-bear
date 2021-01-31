@@ -6,7 +6,6 @@
 [ext_resource path="res://assets/Roboto-Medium.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Dialogs/little bear.png" type="Texture" id=5]
 
-
 [sub_resource type="DynamicFont" id=1]
 size = 32
 font_data = ExtResource( 4 )

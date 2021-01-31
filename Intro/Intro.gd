@@ -4,6 +4,7 @@ var World = preload("res://ActualWorld.tscn")
 
 func _ready():
 	$DialogIterator.connect("end", self, "start_game")
+	$DialogIterator.print_screen(0)
 
 func start_game():
 	get_tree().change_scene_to(World)

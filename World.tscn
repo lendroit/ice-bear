@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemy/Penguin/Penguin.tscn" type="PackedScene" id=2]
@@ -13,6 +13,10 @@
 [ext_resource path="res://Friends/Beaver.tscn" type="PackedScene" id=11]
 [ext_resource path="res://World.gd" type="Script" id=12]
 [ext_resource path="res://BuildablePlatform/BuildablePlatform.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Dialogs/DialogIterator.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Dialogs/little bear.png" type="Texture" id=15]
+[ext_resource path="res://Dialogs/little beaver.png" type="Texture" id=16]
+[ext_resource path="res://DialogManager.gd" type="Script" id=17]
 
 [node name="World" type="Node2D"]
 position = Vector2( -152.391, 47.622 )
@@ -62,3 +66,34 @@ position = Vector2( 656.538, 8.33466 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 546.496, 23.4695 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+pause_mode = 2
+
+[node name="DialogManager" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Lama" parent="CanvasLayer/DialogManager" instance=ExtResource( 14 )]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/DialogManager/Lama"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 15 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/DialogManager/Lama"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 16 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}

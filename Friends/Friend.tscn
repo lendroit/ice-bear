@@ -46,7 +46,9 @@ orbit_velocity_random = 0.0
 scale = 0.2
 color = Color( 1, 1, 1, 0.227451 )
 
-[node name="Friend" type="Area2D"]
+[node name="Friend" type="Area2D" groups=[
+"friend",
+]]
 collision_layer = 32
 collision_mask = 0
 script = ExtResource( 2 )
@@ -67,7 +69,6 @@ anims/Idle = SubResource( 2 )
 [node name="Particles2D" type="Particles2D" parent="."]
 position = Vector2( -0.340103, 11.2234 )
 rotation = -3.72529e-09
-scale = Vector2( 1, 1 )
 z_index = -1
 process_material = SubResource( 3 )
 texture = ExtResource( 3 )
