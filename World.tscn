@@ -47,7 +47,7 @@ position = Vector2( -361.302, 21.5394 )
 position = Vector2( 334.661, -215.193 )
 
 [node name="Bird" parent="." instance=ExtResource( 6 )]
-position = Vector2( 278.391, -208.622 )
+position = Vector2( -85.0963, -322.657 )
 
 [node name="HookNode" parent="." instance=ExtResource( 3 )]
 position = Vector2( 86.3344, -376.806 )
@@ -56,7 +56,7 @@ position = Vector2( 86.3344, -376.806 )
 position = Vector2( 128.21, 32.8845 )
 
 [node name="Bird2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 326.817, -288.417 )
+position = Vector2( 825.721, -117.364 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 7 )]
 
