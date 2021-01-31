@@ -292,6 +292,7 @@ pause_mode = 2
 [node name="DialogManager" parent="CanvasLayer" instance=ExtResource( 13 )]
 
 [node name="AudioPlayer" type="Node" parent="."]
+pause_mode = 2
 
 [node name="theme" type="AudioStreamPlayer" parent="AudioPlayer"]
 autoplay = true
