@@ -2,7 +2,8 @@ extends KinematicBody2D
 
 onready var stand_hit_box = $StandHitBox
 onready var crawl_hit_box = $CrawlHitBox
-onready var sprite = $OursGoingLeft
+onready var sprite = $SpriteContainer/Sprite
+onready var animation_player = $SpriteAnimationPlayer
 onready var reachable_hooks_area = $ReachableHooksArea
 onready var hook_position_tween = $HookPositionTween
 onready var grappling_hook_rope = $GrapplingHookRope
@@ -92,10 +93,14 @@ func get_input():
 		direction = 1
 	elif Input.is_action_pressed("walk_left"):
 		direction = -1
+	else:
+		animation_player.play("Idle")
 		
 	if Input.is_action_just_pressed("walk_left"):
+		animation_player.play("Walking")
 		orientation = leftright.left
 	if Input.is_action_just_pressed("walk_right"):
+		animation_player.play("Walking")
 		orientation = leftright.right
 	if Input.is_action_just_released("walk_left") && Input.is_action_pressed("walk_right"):
 		orientation = leftright.right
