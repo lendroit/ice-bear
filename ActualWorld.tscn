@@ -88,22 +88,22 @@ position = Vector2( -1129.86, -2364.32 )
 [node name="Friends" type="Node2D" parent="."]
 
 [node name="Lama" parent="Friends" instance=ExtResource( 5 )]
-position = Vector2( -5260.52, 1078.96 )
+position = Vector2( -5103.72, 1029.07 )
 
 [node name="Crow" parent="Friends" instance=ExtResource( 3 )]
-position = Vector2( -3591.83, -2169.65 )
+position = Vector2( -3435.03, -2219.54 )
 
 [node name="Kangaroo" parent="Friends" instance=ExtResource( 9 )]
-position = Vector2( 450.17, -4349.98 )
+position = Vector2( 606.968, -4399.87 )
 
 [node name="Beaver" parent="Friends" instance=ExtResource( 10 )]
-position = Vector2( 11669.5, -1908.3 )
+position = Vector2( 11826.3, -1958.19 )
 
 [node name="Snake" parent="Friends" instance=ExtResource( 11 )]
-position = Vector2( 6794.24, -2187.19 )
+position = Vector2( 6951.04, -2237.08 )
 
 [node name="Kangaroo2" parent="Friends" instance=ExtResource( 9 )]
-position = Vector2( 12498.9, -2704.26 )
+position = Vector2( 12655.7, -2754.15 )
 
 [node name="Enemies" type="Node2D" parent="."]
 
