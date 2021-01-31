@@ -6,10 +6,11 @@
 [ext_resource path="res://Terrain/Tileset.tres" type="TileSet" id=4]
 [ext_resource path="res://Friends/Lama.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Enemy/Bird/Bird.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Friends/Crow.tscn" type="PackedScene" id=7]
+[ext_resource path="res://World.gd" type="Script" id=7]
 
 [node name="World" type="Node2D"]
 position = Vector2( -152.391, 47.622 )
+script = ExtResource( 7 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -108.565, -156.236 )
@@ -38,5 +39,5 @@ position = Vector2( 278.391, -208.622 )
 [node name="HookNode" parent="." instance=ExtResource( 3 )]
 position = Vector2( 86.3344, -376.806 )
 
-[node name="Crow" parent="." instance=ExtResource( 7 )]
-position = Vector2( 307.572, -91.4814 )
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+pause_mode = 2
