@@ -38,7 +38,7 @@ signal player_died
 
 onready var stand_hit_box = $StandHitBox
 onready var crawl_hit_box = $CrawlHitBox
-onready var sprite = $SpriteContainer/Sprite
+onready var sprite = $SpriteContainer
 onready var animation_player = $SpriteAnimationPlayer
 onready var reachable_hooks_area = $ReachableHooksArea
 onready var hook_position_tween = $HookPositionTween
@@ -203,10 +203,7 @@ func handle_jump(delta):
 		velocity.y += EngineParameters.GRAVITY * delta
 		
 func set_direction(horizontal_speed):
-	if horizontal_speed < 0:
-		sprite.flip_h = true
-	else:
-		sprite.flip_h = false
+	sprite.scale.x = sign(horizontal_speed) * abs(sprite.scale.x)
 
 func player_death():
 	print("Tu es mort !")
