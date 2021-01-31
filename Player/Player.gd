@@ -37,7 +37,6 @@ onready var death = $AudioPlayer/Death
 signal player_died
 
 onready var stand_hit_box = $StandHitBox
-onready var crawl_hit_box = $CrawlHitBox
 onready var sprite = $SpriteContainer
 onready var animation_player = $SpriteAnimationPlayer
 onready var reachable_hooks_area = $ReachableHooksArea
@@ -53,7 +52,6 @@ export (int) var HEALTH_POINTS = 2
 #		POWER (DE)ACTIVATION
 export var HAS_GLAIRE_POWER = false
 export var HAS_HOVER_POWER = false
-export var CAN_CRAWL = false # Buggy & Unexploited feature
 export var HAS_HOOK_POWER = false
 export var HAS_BUILD_POWER = false
 
@@ -62,11 +60,6 @@ export (int) var WALK_SPEED = 400
 export (float, 0, 1.0) var WALK_ACCELERATION = 0.25
 export (float, 0, 1.0) var WALK_FRICTION = .55
 export (int) var GRAPPLING_HOOK_SPEED = 2000
-
-#		CRAWL VARIALES
-export (int) var CRAWL_SPEED = 200
-export (float, 0, 1.0) var CRAWL_ACCELERATION = 0.75
-export (float, 0, 1.0) var CRAWL_FRICTION = .9
 
 #		HOVER VARIALES
 export (int) var HOVER_SPEED = 300
@@ -80,7 +73,6 @@ export (float) var SHOOT_TIMER_TIME = 0.5
 
 var velocity = Vector2.ZERO
 var jump_count = 0
-var is_crawling = false
 
 var direction
 var orientation
@@ -123,16 +115,6 @@ func build():
 	elif orientation == leftright.right:
 		b.velocity.x += spit_velocity
 	b.gravity = EngineParameters.GRAVITY
-
-func crouch():
-	is_crawling = true
-	self.stand_hit_box.disabled = true
-	self.crawl_hit_box.disabled = false
-
-func stand():
-	self.stand_hit_box.disabled = false
-	self.crawl_hit_box.disabled = true
-	is_crawling = false
 
 func hook():
 	if (!HAS_HOOK_POWER):
@@ -180,11 +162,6 @@ func get_input():
 		
 	if Input.is_action_just_pressed("hook"):
 		hook()
-		
-	if Input.is_action_just_pressed("down") && is_on_floor() && CAN_CRAWL:
-		crouch()
-	elif Input.is_action_just_released("down"):
-		stand()
 
 func handle_jump(delta):
 	if is_on_floor():
@@ -195,7 +172,6 @@ func handle_jump(delta):
 	if Input.is_action_just_pressed("jump") && jump_count < MAX_JUMPS:
 		jump_count += 1
 		velocity.y = JUMP_SPEED
-		is_crawling = false
 
 	elif Input.is_action_pressed("jump") && velocity.y > 0 && HAS_HOVER_POWER:
 		velocity.y = lerp(velocity.y, HOVER_SPEED, AIR_FRICTION)
@@ -218,19 +194,14 @@ func _physics_process(delta):
 	
 	handle_jump(delta)
 
-	if (is_crawling):
-		speed = CRAWL_SPEED
-		acceleration = CRAWL_ACCELERATION
-		friction = CRAWL_FRICTION
+	if is_on_floor():
+		speed = WALK_SPEED
+		acceleration = WALK_ACCELERATION
+		friction = WALK_FRICTION
 	else:
-		if is_on_floor():
-			speed = WALK_SPEED
-			acceleration = WALK_ACCELERATION
-			friction = WALK_FRICTION
-		else:
-			speed = WALK_SPEED
-			acceleration = WALK_ACCELERATION
-			friction = AIR_FRICTION
+		speed = WALK_SPEED
+		acceleration = WALK_ACCELERATION
+		friction = AIR_FRICTION
 
 	if direction != 0:
 		velocity.x = lerp(velocity.x, direction * speed, acceleration)
