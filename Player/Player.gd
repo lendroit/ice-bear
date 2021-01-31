@@ -16,10 +16,23 @@ var spit_sounds = [
 	preload("res://assets/sound/spit/spit11.wav"),
 	preload("res://assets/sound/spit/spit12.wav"),
 	preload("res://assets/sound/spit/spit13.wav"),
-	preload("res://assets/sound/spit/spit14.wav"),
+	preload("res://assets/sound/spit/spit14.wav")
  ]
 
+var death_sounds = [
+	preload("res://assets/sound/player_death/death_01_session.wav"),
+	preload("res://assets/sound/player_death/death_02_session.wav"),
+	preload("res://assets/sound/player_death/death_03_session.wav"),
+	preload("res://assets/sound/player_death/death_04_session.wav"),
+	preload("res://assets/sound/player_death/death_05_session.wav"),
+	preload("res://assets/sound/player_death/death_06_session.wav"),
+	preload("res://assets/sound/player_death/death_07_session.wav"),
+	preload("res://assets/sound/player_death/death_08_session.wav"),
+	preload("res://assets/sound/player_death/death_09_session.wav")
+]
+
 onready var spit = $AudioPlayer/Spit
+onready var death = $AudioPlayer/Death
 
 onready var stand_hit_box = $StandHitBox
 onready var crawl_hit_box = $CrawlHitBox
@@ -195,6 +208,7 @@ func set_direction(horizontal_speed):
 
 func player_death():
 	print("Tu es mort !")
+	#_play_death_sound()
 	var _useless  = get_tree().change_scene("res://World.tscn")
 
 func _physics_process(delta):
@@ -305,6 +319,10 @@ func _play_spit_sound():
 	spit.stream = spit_sounds[random_index]
 	spit.play()
 
+func _play_death_sound():
+	var random_index = randi()%death_sounds.size()
+	death.stream = death_sounds[1]#[random_index]
+	death.play()
 
 func _on_HookPositionTween_tween_all_completed():
 	hooked_node = null
