@@ -1,11 +1,14 @@
 extends Node2D
 
 var enemy_death_particles = preload("res://Particles/EnemyDeathParticles.tscn")
+var theme_sound = preload("res://assets/sound/theme.wav")
 
 onready var dialog_handler = $CanvasLayer/DialogManager
+onready var theme = $AudioPlayer/theme
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	_play_theme()
 	var _useless = $Player.connect("player_died", self, "_player_died")
 	dialog_handler.connect("end", self, "end_dialog")
 	var enemies = get_tree().get_nodes_in_group("enemy")
@@ -32,3 +35,7 @@ func open_dialog(friend_name: String):
 	
 func end_dialog():
 	get_tree().paused = false
+
+func _play_theme():
+	theme.stream = theme_sound
+	theme.play()
