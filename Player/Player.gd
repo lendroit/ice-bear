@@ -20,11 +20,9 @@ var velocity = Vector2.ZERO
 var jump_count = 0
 
 var direction
-var orientation
+var orientation = 1
 var ready_to_shoot := true
 var hooked_node
-
-enum leftright {left, right}
 
 var Glaire = preload("res://Glaire.tscn")
 var beaver_projectile = preload("res://BeaverProjectile.tscn")
@@ -40,10 +38,7 @@ func shoot():
 	owner.add_child(b)
 	b.position = self.position + glaire_muzzle.position
 	b.velocity = self.velocity
-	if orientation == leftright.left:
-		b.velocity.x -= PlayerParameters.PLAYER_SPIT_VELOCITY
-	elif orientation == leftright.right:
-		b.velocity.x += PlayerParameters.PLAYER_SPIT_VELOCITY
+	b.velocity.x += orientation * PlayerParameters.PLAYER_SPIT_VELOCITY
 	b.gravity = EngineParameters.GRAVITY
 
 func build():
@@ -53,10 +48,7 @@ func build():
 	owner.add_child(b)
 	b.position = self.position + beaver_muzzle.position
 	b.velocity = self.velocity
-	if orientation == leftright.left:
-		b.velocity.x -= PlayerParameters.PLAYER_SPIT_VELOCITY
-	elif orientation == leftright.right:
-		b.velocity.x += PlayerParameters.PLAYER_SPIT_VELOCITY
+	b.velocity.x += orientation * PlayerParameters.PLAYER_SPIT_VELOCITY
 	b.gravity = EngineParameters.GRAVITY
 
 func hook():
@@ -87,14 +79,14 @@ func get_input():
 
 	if Input.is_action_just_pressed("walk_left"):
 		animation_player.play("Walking")
-		orientation = leftright.left
+		orientation = -1
 	if Input.is_action_just_pressed("walk_right"):
 		animation_player.play("Walking")
-		orientation = leftright.right
+		orientation = 1
 	if Input.is_action_just_released("walk_left") && Input.is_action_pressed("walk_right"):
-		orientation = leftright.right
+		orientation = 1
 	elif Input.is_action_just_released("walk_right") && Input.is_action_pressed("walk_left"):
-		orientation = leftright.left
+		orientation = -1
 
 	if Input.is_action_just_pressed("Glaire") && PlayerParameters.PLAYER_CAN_GLAIRE && ready_to_shoot:
 		print(PlayerParameters.PLAYER_CAN_GLAIRE)
