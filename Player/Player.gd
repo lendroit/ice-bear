@@ -36,7 +36,6 @@ onready var death = $AudioPlayer/Death
 
 signal player_died
 
-onready var stand_hit_box = $StandHitBox
 onready var sprite = $SpriteContainer
 onready var animation_player = $SpriteAnimationPlayer
 onready var reachable_hooks_area = $ReachableHooksArea
