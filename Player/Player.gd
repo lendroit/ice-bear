@@ -90,7 +90,6 @@ func get_input():
 		orientation = -1
 
 	if Input.is_action_just_pressed("Glaire") && PlayerParameters.PLAYER_CAN_GLAIRE && ready_to_shoot:
-		print(PlayerParameters.PLAYER_CAN_GLAIRE)
 		_play_spit_sound()
 		shoot()
 

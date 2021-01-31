@@ -3,11 +3,11 @@ extends Control
 var World = preload("res://ActualWorld.tscn")
 
 func _ready():
-	$DialogIterator.connect("end", self, "start_game")
+	var _connect_error = $DialogIterator.connect("end", self, "start_game")
 	$DialogIterator.start()
 
 func start_game():
-	get_tree().change_scene_to(World)
+	var _change_scene_error = get_tree().change_scene_to(World)
 
 #func _input(event):
 #	if event.is_action_pressed("ui_accept"):
