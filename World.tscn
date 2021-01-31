@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemy/Penguin/Penguin.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Friends/Crow.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Friends/Kangaroo.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Friends/Snake.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Friends/Beaver.tscn" type="PackedScene" id=11]
 
 [node name="World" type="Node2D"]
 position = Vector2( -152.391, 47.622 )
@@ -19,6 +20,9 @@ position = Vector2( 116.421, -131.819 )
 
 [node name="Snake" parent="Kangaroo" instance=ExtResource( 10 )]
 position = Vector2( -358.249, 132.041 )
+
+[node name="Beaver" parent="Kangaroo" instance=ExtResource( 11 )]
+position = Vector2( -121.11, -105.098 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -108.565, -157.475 )

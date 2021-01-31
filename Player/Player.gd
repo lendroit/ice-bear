@@ -17,6 +17,7 @@ export var CAN_HOVER = false
 export var CAN_CRAWL = true
 export var CAN_SPIT = true
 export var CAN_HOOK = false
+export var CAN_BUILD = false
 
 #		WALK VARIALES
 export (int) var WALK_SPEED = 400
@@ -208,6 +209,8 @@ func _on_PickupBox_area_entered(area):
 			CAN_HOOK = true
 		if(area is Crow):
 			CAN_HOVER = true
+		if(area is Beaver):
+			CAN_BUILD = true
 		if(area is Kangaroo):
 			MAX_JUMPS += 1
 

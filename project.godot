@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Area2D",
+"class": "Beaver",
+"language": "GDScript",
+"path": "res://Friends/Beaver.gd"
+}, {
+"base": "Area2D",
 "class": "Crow",
 "language": "GDScript",
 "path": "res://Friends/Crow.gd"
@@ -40,6 +45,7 @@ _global_script_classes=[ {
 "path": "res://Friends/Snake.gd"
 } ]
 _global_script_class_icons={
+"Beaver": "",
 "Crow": "",
 "Dialogic": "",
 "DialogicUtil": "",
