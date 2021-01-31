@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Intro/intro.png" type="Texture" id=1]
 [ext_resource path="res://Intro/Intro.gd" type="Script" id=2]
+[ext_resource path="res://Intro/DialogIterator.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/Roboto-Medium.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Dialogs/little bear.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 4 )
 
 [node name="Intro" type="Control"]
 anchor_right = 1.0
@@ -12,7 +19,52 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="DialogIterator" parent="." instance=ExtResource( 3 )]
+
+[node name="2" type="Control" parent="DialogIterator"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="DialogIterator/2"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -582.0
+margin_top = -291.0
+margin_bottom = 291.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="DialogIterator/2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 50.0
+margin_right = -469.0
+margin_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Vous êtes un ours albinos. Vous vous réveillez dans un beau milieu arctique."
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="3" type="Control" parent="DialogIterator"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="DialogIterator/3"]
 margin_left = 107.161
 margin_top = 1.64862
 margin_right = 1101.16
