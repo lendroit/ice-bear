@@ -186,6 +186,19 @@ func player_death():
 	_play_death_sound()
 	emit_signal("player_died")
 
+func draw_hook():
+	if(hooked_node):
+		grappling_hook_rope.visible = true
+		var rope_direction =  (hooked_node.position - self.position)
+		var rope_position = rope_direction/2
+		var rope_angle = rope_direction.angle()
+		var rope_length = rope_direction.length()
+		grappling_hook_rope.position = rope_position
+		grappling_hook_rope.rotation = rope_angle
+		grappling_hook_rope.scale.x = rope_length/1000
+	else:
+		grappling_hook_rope.visible = false
+
 func _physics_process(delta):
 	get_input()
 	handle_jump(delta)
@@ -201,17 +214,8 @@ func _physics_process(delta):
 
 	if abs(velocity.x) > 5:
 		set_direction(velocity.x)
-	if(hooked_node):
-		grappling_hook_rope.visible = true
-		var rope_direction =  (hooked_node.position - self.position)
-		var rope_position = rope_direction/2
-		var rope_angle = rope_direction.angle()
-		var rope_length = rope_direction.length()
-		grappling_hook_rope.position = rope_position
-		grappling_hook_rope.rotation = rope_angle
-		grappling_hook_rope.scale.x = rope_length/1000
-	else:
-		grappling_hook_rope.visible = false
+
+	draw_hook()
 
 func player_hurt():
 	HEALTH_POINTS -= 1
