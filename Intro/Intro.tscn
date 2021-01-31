@@ -51,7 +51,8 @@ margin_right = -469.0
 margin_bottom = 1.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Vous êtes un ours albinos. Vous vous réveillez dans un beau milieu arctique."
+text = "Où suis-je ? Ma tête....
+Que s'est-il passé ?"
 align = 1
 valign = 1
 autowrap = true
@@ -72,6 +73,83 @@ anchor_bottom = 1.0
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="4" type="Control" parent="DialogIterator"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="DialogIterator/4"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -582.0
+margin_top = -291.0
+margin_bottom = 291.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="DialogIterator/4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 50.0
+margin_right = -469.0
+margin_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Je me souviens. Ces idiots m'ont confondu avec un ours polaire. Et maintenant me voilà perdu au milieu de la banquise...."
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="5" type="Control" parent="DialogIterator"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="DialogIterator/5"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -582.0
+margin_top = -291.0
+margin_bottom = 291.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="DialogIterator/5"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 50.0
+margin_right = -469.0
+margin_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Plus qu'à trouver un moyen de rentrer chez moi.
+Peut être que je pourrais trouver d'autres personnes dans la même situation que moi.."
+align = 1
+valign = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
