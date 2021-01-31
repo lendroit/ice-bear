@@ -2,6 +2,25 @@ extends KinematicBody2D
 
 class_name Player
 
+var spit_sounds = [
+	preload("res://assets/sound/spit/spit1.wav"),
+	preload("res://assets/sound/spit/spit2.wav"),
+	preload("res://assets/sound/spit/spit3.wav"),
+	preload("res://assets/sound/spit/spit4.wav"),
+	preload("res://assets/sound/spit/spit5.wav"),
+	preload("res://assets/sound/spit/spit6.wav"),
+	preload("res://assets/sound/spit/spit7.wav"),
+	preload("res://assets/sound/spit/spit8.wav"),
+	preload("res://assets/sound/spit/spit9.wav"),
+	preload("res://assets/sound/spit/spit10.wav"),
+	preload("res://assets/sound/spit/spit11.wav"),
+	preload("res://assets/sound/spit/spit12.wav"),
+	preload("res://assets/sound/spit/spit13.wav"),
+	preload("res://assets/sound/spit/spit14.wav"),
+ ]
+
+onready var spit = $AudioPlayer/Spit
+
 onready var stand_hit_box = $StandHitBox
 onready var crawl_hit_box = $CrawlHitBox
 onready var sprite = $SpriteContainer/Sprite
@@ -138,6 +157,7 @@ func get_input():
 		orientation = leftright.left
 		
 	if Input.is_action_just_pressed("Glaire") && CAN_GLAIRE && ready_to_shoot:
+		_play_spit_sound()
 		shoot()
 		
 	if Input.is_action_just_pressed("build") && CAN_BUILD && ready_to_shoot:
@@ -279,6 +299,11 @@ static func reduce(function: FuncRef, i_array: Array, first = null):
 	for index in range(start,i_array.size()):
 		acc = function.call_func(acc,i_array[index])
 	return acc
+
+func _play_spit_sound():
+	var random_index = randi()%spit_sounds.size()
+	spit.stream = spit_sounds[random_index]
+	spit.play()
 
 
 func _on_HookPositionTween_tween_all_completed():

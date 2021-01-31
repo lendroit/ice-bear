@@ -162,6 +162,10 @@ position = Vector2( 0, -63 )
 
 [node name="BeaverMuzzle" type="Node2D" parent="."]
 position = Vector2( 0, -20 )
+
+[node name="AudioPlayer" type="Node2D" parent="."]
+
+[node name="Spit" type="AudioStreamPlayer" parent="AudioPlayer"]
 [connection signal="area_shape_entered" from="HurtBox" to="." method="_on_HurtBox_area_shape_entered"]
 [connection signal="area_entered" from="PickupBox" to="." method="_on_PickupBox_area_entered"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_Timer_timeout"]
