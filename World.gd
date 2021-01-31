@@ -6,7 +6,7 @@ onready var dialog_handler = $CanvasLayer/DialogManager
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Player.connect("player_died", self, "_player_died")
+	var _useless = $Player.connect("player_died", self, "_player_died")
 	dialog_handler.connect("end", self, "end_dialog")
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	for enemy in enemies:
@@ -17,7 +17,7 @@ func _ready():
 		friend.connect("trigger_dialog", self, "open_dialog")
 
 func _player_died():
-	get_tree().reload_current_scene()
+	var _useless = get_tree().reload_current_scene()
 
 func add_explosion(position: Vector2):
 	var d = enemy_death_particles.instance()

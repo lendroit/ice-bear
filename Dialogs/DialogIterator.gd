@@ -18,7 +18,7 @@ func start():
 	is_active = true
 	print_screen(0)
 
-func print_screen(step):
+func print_screen(_step):
 	var children = get_children()
 	var number_of_steps = get_children().size()
 	for index in range(number_of_steps):
