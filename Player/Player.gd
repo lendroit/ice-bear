@@ -53,7 +53,7 @@ export (int) var HEALTH_POINTS = 2
 #		POWER (DE)ACTIVATION
 export var CAN_GLAIRE = false
 export var CAN_HOVER = false
-export var CAN_CRAWL = true
+export var CAN_CRAWL = false # Buggy & Unexploited feature
 export var CAN_HOOK = false
 export var CAN_BUILD = false
 
@@ -213,10 +213,7 @@ func player_death():
 	_play_death_sound()
 	emit_signal("player_died")
 
-func _physics_process(delta):
-	if(HEALTH_POINTS < 1):
-		player_death()
-	
+func _physics_process(delta):	
 	get_input()
 	var speed
 	var acceleration
@@ -261,10 +258,11 @@ func _physics_process(delta):
 
 func player_hurt():
 	HEALTH_POINTS -= 1
+	if HEALTH_POINTS < 1:
+		player_death()
 
 func _on_HurtBox_area_shape_entered(_area_id, _area, _area_shape, _self_shape):
 	player_hurt()
-
 
 func _on_PickupBox_area_entered(area):
 	if area.has_method("on_pickup"):

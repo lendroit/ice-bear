@@ -17,7 +17,7 @@ func _ready():
 		friend.connect("trigger_dialog", self, "open_dialog")
 
 func _player_died():
-	get_tree().change_scene("res://World.tscn")
+	get_tree().reload_current_scene()
 
 func add_explosion(position: Vector2):
 	var d = enemy_death_particles.instance()

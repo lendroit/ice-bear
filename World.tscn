@@ -63,7 +63,7 @@ position = Vector2( 825.721, -117.364 )
 position = Vector2( 656.538, 8.33466 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 546.496, 23.4695 )
+position = Vector2( 199.248, 22.2803 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 pause_mode = 2
@@ -71,3 +71,4 @@ pause_mode = 2
 [node name="DialogManager" parent="CanvasLayer" instance=ExtResource( 17 )]
 
 [node name="Water" parent="." instance=ExtResource( 14 )]
+tile_data = PoolIntArray( 65537, 0, 0, 131073, 1, 0 )
