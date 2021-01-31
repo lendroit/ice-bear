@@ -16,6 +16,7 @@ export var CAN_GLAIRE = false
 export var CAN_HOVER = false
 export var CAN_CRAWL = true
 export var CAN_SPIT = true
+export var CAN_HOOK = false
 
 #		WALK VARIALES
 export (int) var WALK_SPEED = 400
@@ -72,6 +73,9 @@ func stand():
 	is_crawling = false
 
 func hook():
+	if (!CAN_HOOK):
+		return
+
 	var hooks_in_area = reachable_hooks_area.get_overlapping_areas()
 	var upper_hooks = filter(funcref(self, "keep_upper_hooks"), hooks_in_area)
 	if(upper_hooks.size() == 0):
@@ -200,6 +204,8 @@ func _on_PickupBox_area_entered(area):
 		area.on_pickup()
 		if(area is Lama):
 			CAN_GLAIRE = true
+		if(area is Snake):
+			CAN_HOOK = true
 		if(area is Crow):
 			CAN_HOVER = true
 		if(area is Kangaroo):

@@ -33,13 +33,19 @@ _global_script_classes=[ {
 "class": "Lama",
 "language": "GDScript",
 "path": "res://Friends/Lama.gd"
+}, {
+"base": "Area2D",
+"class": "Snake",
+"language": "GDScript",
+"path": "res://Friends/Snake.gd"
 } ]
 _global_script_class_icons={
 "Crow": "",
 "Dialogic": "",
 "DialogicUtil": "",
 "Kangaroo": "",
-"Lama": ""
+"Lama": "",
+"Snake": ""
 }
 
 [application]
