@@ -25,6 +25,11 @@ _global_script_classes=[ {
 "path": "res://addons/dialogic/Other/DialogicUtil.gd"
 }, {
 "base": "Area2D",
+"class": "Kangaroo",
+"language": "GDScript",
+"path": "res://Friends/Kangaroo.gd"
+}, {
+"base": "Area2D",
 "class": "Lama",
 "language": "GDScript",
 "path": "res://Friends/Lama.gd"
@@ -33,6 +38,7 @@ _global_script_class_icons={
 "Crow": "",
 "Dialogic": "",
 "DialogicUtil": "",
+"Kangaroo": "",
 "Lama": ""
 }
 

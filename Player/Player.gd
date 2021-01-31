@@ -8,11 +8,10 @@ onready var reachable_hooks_area = $ReachableHooksArea
 onready var hook_position_tween = $HookPositionTween
 onready var grappling_hook_rope = $GrapplingHookRope
 
-export (int) var MAX_JUMPS = 2
+export (int) var MAX_JUMPS = 1
 export (int) var HEALTH_POINTS = 2
 
 #		POWER (DE)ACTIVATION
-export var CAN_JUMP = true
 export var CAN_GLAIRE = false
 export var CAN_HOVER = false
 export var CAN_CRAWL = true
@@ -125,7 +124,7 @@ func handle_jump(delta):
 	elif jump_count == 0:
 		jump_count = 1
 
-	if Input.is_action_just_pressed("jump") && jump_count < MAX_JUMPS && CAN_JUMP:
+	if Input.is_action_just_pressed("jump") && jump_count < MAX_JUMPS:
 		jump_count += 1
 		velocity.y = JUMP_SPEED
 		is_crawling = false
@@ -203,6 +202,8 @@ func _on_PickupBox_area_entered(area):
 			CAN_GLAIRE = true
 		if(area is Crow):
 			CAN_HOVER = true
+		if(area is Kangaroo):
+			MAX_JUMPS += 1
 
 func get_direction(other_area: Area2D)->Vector2:
 	return other_area.position - self.position
