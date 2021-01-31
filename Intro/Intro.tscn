@@ -60,18 +60,18 @@ __meta__ = {
 }
 
 [node name="3" type="Control" parent="DialogIterator"]
-visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureRect" type="TextureRect" parent="DialogIterator/3"]
-margin_left = 107.161
-margin_top = 1.64862
-margin_right = 1101.16
-margin_bottom = 605.649
+anchor_right = 1.0
+anchor_bottom = 1.0
 texture = ExtResource( 1 )
 expand = true
-stretch_mode = 5
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
