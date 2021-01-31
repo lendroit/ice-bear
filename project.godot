@@ -30,6 +30,11 @@ _global_script_classes=[ {
 "path": "res://addons/dialogic/Other/DialogicUtil.gd"
 }, {
 "base": "Area2D",
+"class": "Glaire",
+"language": "GDScript",
+"path": "res://Glaire.gd"
+}, {
+"base": "Area2D",
 "class": "Kangaroo",
 "language": "GDScript",
 "path": "res://Friends/Kangaroo.gd"
@@ -38,6 +43,11 @@ _global_script_classes=[ {
 "class": "Lama",
 "language": "GDScript",
 "path": "res://Friends/Lama.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Player/Player.gd"
 }, {
 "base": "Area2D",
 "class": "Snake",
@@ -49,8 +59,10 @@ _global_script_class_icons={
 "Crow": "",
 "Dialogic": "",
 "DialogicUtil": "",
+"Glaire": "",
 "Kangaroo": "",
 "Lama": "",
+"Player": "",
 "Snake": ""
 }
 

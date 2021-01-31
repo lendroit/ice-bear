@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+class_name Player
+
 onready var stand_hit_box = $StandHitBox
 onready var crawl_hit_box = $CrawlHitBox
 onready var sprite = $SpriteContainer/Sprite

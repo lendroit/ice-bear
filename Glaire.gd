@@ -1,5 +1,7 @@
 extends Area2D
 
+class_name Glaire
+
 var velocity := Vector2.ZERO
 const SPIT_DRAG_COEFF := 2.0
 
