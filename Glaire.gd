@@ -8,5 +8,5 @@ func _process(delta):
 	position += velocity * delta
 	rotation = velocity.angle()
 
-func _on_Glaire_body_entered():
+func _on_Glaire_body_entered(_body):
 	queue_free()
