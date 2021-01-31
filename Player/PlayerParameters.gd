@@ -1,7 +1,7 @@
 extends Node2D
 
 #		WALK VARIALES
-export (int) var PLAYER_WALK_SPEED = 400
+export (int) var PLAYER_WALK_SPEED = 600
 export (float, 0, 1.0) var PLAYER_WALK_ACCELERATION = 0.25
 export (float, 0, 1.0) var PLAYER_WALK_FRICTION = .55
 
@@ -13,16 +13,16 @@ export (float, 0, 1.0) var PLAYER_CRAWL_ACCELERATION = 0.75
 export (float, 0, 1.0) var PLAYER_CRAWL_FRICTION = .9
 
 #		HOVER VARIALES
-export (int) var PLAYER_HOVER_SPEED = 300
+export (int) var PLAYER_HOVER_SPEED = 225
 export (float, 0, 1.0) var PLAYER_AIR_FRICTION = .1
 
 #		JUMP VARIALES
-export (int) var PLAYER_JUMP_SPEED = -1100
+export (int) var PLAYER_JUMP_SPEED = -1300
 export (int) var PLAYER_MAX_JUMPS = 1
 
 #		SHOOT VARIALES
 export (float) var PLAYER_SHOOT_TIMER_TIME = 0.5
-export var PLAYER_SPIT_VELOCITY = 650
+export var PLAYER_SPIT_VELOCITY = 1500
 
 
 export (int) var PLAYER_HEALTH_POINTS = 2
