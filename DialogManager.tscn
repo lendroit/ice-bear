@@ -34,3 +34,21 @@ portrait = ExtResource( 1 )
 [node name="PortraitAndText4" parent="Beaver" instance=ExtResource( 6 )]
 text = "hohoho super"
 portrait = ExtResource( 4 )
+
+[node name="Kangaroo" parent="." instance=ExtResource( 2 )]
+
+[node name="PortraitAndText3" parent="Kangaroo" instance=ExtResource( 6 )]
+text = "Gnac gnac gnac"
+portrait = ExtResource( 1 )
+
+[node name="Snake" parent="." instance=ExtResource( 2 )]
+
+[node name="PortraitAndText3" parent="Snake" instance=ExtResource( 6 )]
+text = "Gnac gnac gnac"
+portrait = ExtResource( 1 )
+
+[node name="Crow" parent="." instance=ExtResource( 2 )]
+
+[node name="PortraitAndText3" parent="Crow" instance=ExtResource( 6 )]
+text = "Gnac gnac gnac"
+portrait = ExtResource( 1 )
