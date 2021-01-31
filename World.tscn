@@ -27,9 +27,6 @@ position = Vector2( 414.033, 21.4436 )
 [node name="Kangaroo" parent="." instance=ExtResource( 9 )]
 position = Vector2( 116.421, -131.819 )
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 511.5, 31.3955 )
-
 [node name="Terrain" type="TileMap" parent="."]
 tile_set = ExtResource( 4 )
 collision_layer = 16385
@@ -62,3 +59,6 @@ position = Vector2( 825.721, -117.364 )
 
 [node name="BuildablePlatform" parent="." instance=ExtResource( 13 )]
 position = Vector2( 656.538, 8.33466 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 546.496, 23.4695 )

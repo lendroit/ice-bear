@@ -9,7 +9,6 @@ func _ready():
 		enemy.connect("died", self, "add_explosion")
 
 func add_explosion(position: Vector2):
-	print("hey")
 	var d = enemy_death_particles.instance()
 	d.position = position
 	self.add_child(d)
