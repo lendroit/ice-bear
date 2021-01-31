@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/death_04_session.wav-5bf6637b247e1238de2a3597ba57f563.sample"
+
+[deps]
+
+source_file="res://assets/sound/player_death/death_04_session.wav"
+dest_files=[ "res://.import/death_04_session.wav-5bf6637b247e1238de2a3597ba57f563.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
