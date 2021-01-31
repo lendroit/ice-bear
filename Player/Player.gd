@@ -124,7 +124,7 @@ func hook():
 	var upper_hooks = Utils.filter(funcref(self, "keep_upper_hooks"), hooks_in_area)
 	if(upper_hooks.size() == 0):
 		return
-	var uppest_hook = reduce(funcref(self, "get_higher_hook"), upper_hooks, upper_hooks[0])
+	var uppest_hook = Utils.reduce(funcref(self, "get_higher_hook"), upper_hooks, upper_hooks[0])
 	hooked_node = uppest_hook
 	grappling_hook_rope.visible = true
 
@@ -252,16 +252,6 @@ func get_higher_hook(uppest_hook: Area2D, hook: Area2D)->Area2D:
 
 func _on_Timer_timeout():
 	ready_to_shoot = true
-
-static func reduce(function: FuncRef, i_array: Array, first = null):
-	var acc = first
-	var start := 0
-	if acc == null:
-		acc = i_array[0]
-		start = 1
-	for index in range(start,i_array.size()):
-		acc = function.call_func(acc,i_array[index])
-	return acc
 
 func _play_spit_sound():
 	var random_index = randi()%spit_sounds.size()

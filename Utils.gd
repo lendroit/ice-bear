@@ -14,3 +14,13 @@ static func filter(filter_function: FuncRef, candidate_array: Array)->Array:
 			filtered_array.append(candidate_value)
 
 	return filtered_array
+
+static func reduce(function: FuncRef, i_array: Array, first = null):
+	var acc = first
+	var start := 0
+	if acc == null:
+		acc = i_array[0]
+		start = 1
+	for index in range(start,i_array.size()):
+		acc = function.call_func(acc,i_array[index])
+	return acc
