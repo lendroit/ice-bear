@@ -15,6 +15,7 @@ onready var grappling_hook_rope = $GrapplingHookRope
 onready var glaire_muzzle = $GlaireMuzzle
 onready var beaver_muzzle = $BeaverMuzzle
 onready var shoot_timer = $ShootTimer
+onready var backpack = $SpriteContainer/Backpack
 
 var velocity = Vector2.ZERO
 var jump_count = 0
@@ -163,6 +164,7 @@ func _on_HurtBox_area_shape_entered(_area_id, _area, _area_shape, _self_shape):
 func _on_PickupBox_area_entered(area):
 	if area.has_method("on_pickup"):
 		area.on_pickup()
+		backpack.add_friend(area)
 		if(area is Lama):
 			PlayerParameters.PLAYER_CAN_GLAIRE = true
 		if(area is Snake):
