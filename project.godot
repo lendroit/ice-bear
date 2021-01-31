@@ -51,10 +51,6 @@ EngineParameters="*res://EngineParameters.gd"
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
-[editor_plugins]
-
-enabled=PoolStringArray( "dialogic" )
-
 [input]
 
 walk_left={
