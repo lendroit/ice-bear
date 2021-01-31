@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Enemy/GenericEnemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/penguin_standing.png" type="Texture" id=2]
@@ -16,6 +16,12 @@ animations = [ {
 extents = Vector2( 9.42656, 14.3904 )
 
 [sub_resource type="RectangleShape2D" id=3]
+
+[sub_resource type="Animation" id=5]
+resource_name = "Idle"
+
+[sub_resource type="Animation" id=4]
+resource_name = "Walking"
 
 [node name="GenericEnemy" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -50,6 +56,8 @@ shape = SubResource( 3 )
 [node name="WalkingTimer" type="Timer" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Idle = SubResource( 5 )
+anims/Walking = SubResource( 4 )
 
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 2147483656
@@ -64,4 +72,3 @@ shape = SubResource( 2 )
 [connection signal="body_entered" from="RightWallDetector" to="." method="_on_RightWallDetector_body_entered"]
 [connection signal="timeout" from="WalkingTimer" to="." method="_on_WalkingTimer_timeout"]
 [connection signal="area_shape_entered" from="HitBox" to="." method="_on_HitBox_area_shape_entered"]
-[connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]

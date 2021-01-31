@@ -46,23 +46,20 @@ var hooked_node
 
 enum leftright {left, right}
 
-#		Handle Crachat :
 export var spit_velocity = 650
 
 var Glaire = preload("res://Glaire.tscn")
 
-func shoot(deplacement_speed, orientation):
+func shoot():
 	var b = Glaire.instance()
 	owner.add_child(b)
 	b.position = self.position
-	#b.velocity = b.transform.x * (spit_velocity + deplacement_speed)
 	b.velocity = self.velocity
 	if orientation == leftright.left:
 		b.velocity.x -= spit_velocity
 	elif orientation == leftright.right:
 		b.velocity.x += spit_velocity
 	b.gravity = EngineParameters.GRAVITY
-#	#	#	#	#	#	#
 
 func crouch():
 	is_crawling = true
@@ -106,7 +103,7 @@ func get_input():
 		orientation = leftright.left
 		
 	if Input.is_action_just_pressed("Glaire") && CAN_GLAIRE && ready_to_spit && CAN_SPIT:
-		shoot(velocity.x, orientation)
+		shoot()
 		ready_to_spit = false
 
 	if Input.is_action_just_pressed("hook"):
@@ -141,7 +138,7 @@ func set_direction(horizontal_speed):
 
 func player_death():
 	print("Tu es mort !")
-	get_tree().change_scene("res://World.tscn")
+	var _useless  = get_tree().change_scene("res://World.tscn")
 
 func _physics_process(delta):
 	if(HEALTH_POINTS < 1):
@@ -189,7 +186,7 @@ func _physics_process(delta):
 	else:
 		grappling_hook_rope.visible = false
 
-func _on_HurtBox_area_shape_entered(area_id, area, area_shape, self_shape):
+func _on_HurtBox_area_shape_entered(_area_id, _area, _area_shape, _self_shape):
 	HEALTH_POINTS -= 1
 	print(HEALTH_POINTS)
 
