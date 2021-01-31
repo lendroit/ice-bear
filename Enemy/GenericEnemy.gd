@@ -12,7 +12,7 @@ var possible_states_after_walk = [NEW_DIRECTION]
 var possible_states_after_new_direction = [WALK]
 
 onready var walking_timer = $WalkingTimer
-onready var sprite = $Sprite
+onready var sprite = $SpriteContainer/Sprite
 onready var animation_player = $AnimationPlayer
 
 var walking := true
