@@ -125,13 +125,6 @@ visible = false
 position = Vector2( -0.794037, -19.1022 )
 shape = SubResource( 3 )
 
-[node name="CrawlHitBox" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 1.31669, 14.7643 )
-rotation = 1.5708
-shape = SubResource( 3 )
-disabled = true
-
 [node name="HurtBox" type="Area2D" parent="."]
 visible = false
 collision_layer = 2

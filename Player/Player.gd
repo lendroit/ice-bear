@@ -7,8 +7,6 @@ onready var death = $AudioPlayer/Death
 
 signal player_died
 
-onready var stand_hit_box = $StandHitBox
-onready var crawl_hit_box = $CrawlHitBox
 onready var sprite = $SpriteContainer
 onready var animation_player = $SpriteAnimationPlayer
 onready var reachable_hooks_area = $ReachableHooksArea
@@ -20,7 +18,6 @@ onready var shoot_timer = $ShootTimer
 
 var velocity = Vector2.ZERO
 var jump_count = 0
-var is_crawling = false
 
 var direction
 var orientation
@@ -62,25 +59,15 @@ func build():
 		b.velocity.x += PlayerParameters.PLAYER_SPIT_VELOCITY
 	b.gravity = EngineParameters.GRAVITY
 
-func crouch():
-	is_crawling = true
-	self.stand_hit_box.disabled = true
-	self.crawl_hit_box.disabled = false
-
-func stand():
-	self.stand_hit_box.disabled = false
-	self.crawl_hit_box.disabled = true
-	is_crawling = false
-
 func hook():
 	if (!PlayerParameters.PLAYER_CAN_HOOK):
 		return
 
 	var hooks_in_area = reachable_hooks_area.get_overlapping_areas()
-	var upper_hooks = filter(funcref(self, "keep_upper_hooks"), hooks_in_area)
+	var upper_hooks = Utils.filter(funcref(self, "keep_upper_hooks"), hooks_in_area)
 	if(upper_hooks.size() == 0):
 		return
-	var uppest_hook = reduce(funcref(self, "get_higher_hook"), upper_hooks, upper_hooks[0])
+	var uppest_hook = Utils.reduce(funcref(self, "get_higher_hook"), upper_hooks, upper_hooks[0])
 	hooked_node = uppest_hook
 	grappling_hook_rope.visible = true
 
@@ -90,14 +77,14 @@ func hook():
 
 func get_input():
 	direction = 0
-		
+
 	if Input.is_action_pressed("walk_right"):
 		direction = 1
 	elif Input.is_action_pressed("walk_left"):
 		direction = -1
 	else:
 		animation_player.play("Idle")
-		
+
 	if Input.is_action_just_pressed("walk_left"):
 		animation_player.play("Walking")
 		orientation = leftright.left
@@ -108,22 +95,17 @@ func get_input():
 		orientation = leftright.right
 	elif Input.is_action_just_released("walk_right") && Input.is_action_pressed("walk_left"):
 		orientation = leftright.left
-		
+
 	if Input.is_action_just_pressed("Glaire") && PlayerParameters.PLAYER_CAN_GLAIRE && ready_to_shoot:
 		print(PlayerParameters.PLAYER_CAN_GLAIRE)
 		_play_spit_sound()
 		shoot()
-		
+
 	if Input.is_action_just_pressed("build") && PlayerParameters.PLAYER_CAN_BUILD && ready_to_shoot:
 		build()
-		
+
 	if Input.is_action_just_pressed("hook"):
 		hook()
-		
-	if Input.is_action_just_pressed("down") && is_on_floor() && PlayerParameters.PLAYER_CAN_CRAWL:
-		crouch()
-	elif Input.is_action_just_released("down"):
-		stand()
 
 func handle_jump(delta):
 	if is_on_floor():
@@ -134,13 +116,11 @@ func handle_jump(delta):
 	if Input.is_action_just_pressed("jump") && jump_count < PlayerParameters.PLAYER_MAX_JUMPS:
 		jump_count += 1
 		velocity.y = PlayerParameters.PLAYER_JUMP_SPEED
-		is_crawling = false
-
 	elif Input.is_action_pressed("jump") && velocity.y > 0 && PlayerParameters.PLAYER_CAN_HOVER:
 		velocity.y = lerp(velocity.y, PlayerParameters.PLAYER_HOVER_SPEED, PlayerParameters.PLAYER_AIR_FRICTION)
 	else:
 		velocity.y += EngineParameters.GRAVITY * delta
-		
+
 func set_direction(horizontal_speed):
 	sprite.scale.x = sign(horizontal_speed) * abs(sprite.scale.x)
 
@@ -149,37 +129,7 @@ func player_death():
 	_play_death_sound()
 	emit_signal("player_died")
 
-func _physics_process(delta):	
-	get_input()
-	var speed
-	var acceleration
-	var friction
-	
-	handle_jump(delta)
-
-	if (is_crawling):
-		speed = PlayerParameters.PLAYER_CRAWL_SPEED
-		acceleration = PlayerParameters.PLAYER_CRAWL_ACCELERATION
-		friction = PlayerParameters.PLAYER_CRAWL_FRICTION
-	else:
-		if is_on_floor():
-			speed = PlayerParameters.PLAYER_WALK_SPEED
-			acceleration = PlayerParameters.PLAYER_WALK_ACCELERATION
-			friction = PlayerParameters.PLAYER_WALK_FRICTION
-		else:
-			speed = PlayerParameters.PLAYER_WALK_SPEED
-			acceleration = PlayerParameters.PLAYER_WALK_ACCELERATION
-			friction = PlayerParameters.PLAYER_AIR_FRICTION
-
-	if direction != 0:
-		velocity.x = lerp(velocity.x, direction * speed, acceleration)
-	else:
-		velocity.x = lerp(velocity.x, 0, friction)
-	
-	velocity = move_and_slide(velocity, Vector2.UP)
-	
-	if abs(velocity.x) > 5:
-		set_direction(velocity.x)
+func draw_hook():
 	if(hooked_node):
 		grappling_hook_rope.visible = true
 		var rope_direction =  (hooked_node.position - self.position)
@@ -191,6 +141,24 @@ func _physics_process(delta):
 		grappling_hook_rope.scale.x = rope_length/1000
 	else:
 		grappling_hook_rope.visible = false
+
+func _physics_process(delta):
+	get_input()
+	handle_jump(delta)
+
+	var friction = PlayerParameters.PLAYER_WALK_FRICTION if is_on_floor() else PlayerParameters.PLAYER_AIR_FRICTION
+
+	if direction != 0:
+		velocity.x = lerp(velocity.x, direction * PlayerParameters.PLAYER_WALK_SPEED, PlayerParameters.PLAYER_WALK_ACCELERATION)
+	else:
+		velocity.x = lerp(velocity.x, 0, friction)
+
+	velocity = move_and_slide(velocity, Vector2.UP)
+
+	if abs(velocity.x) > 5:
+		set_direction(velocity.x)
+
+	draw_hook()
 
 func player_hurt():
 	PlayerParameters.PLAYER_HEALTH_POINTS -= 1
@@ -227,31 +195,6 @@ func get_higher_hook(uppest_hook: Area2D, hook: Area2D)->Area2D:
 
 func _on_Timer_timeout():
 	ready_to_shoot = true
-
-static func map(function: FuncRef, i_array: Array)->Array:
-	var o_array := []
-	for value in i_array:
-		o_array.append(function.call_func(value))
-	return o_array
-
-static func filter(filter_function: FuncRef, candidate_array: Array)->Array:
-	var filtered_array := []
-
-	for candidate_value in candidate_array:
-		if filter_function.call_func(candidate_value):
-			filtered_array.append(candidate_value)
-
-	return filtered_array
-
-static func reduce(function: FuncRef, i_array: Array, first = null):
-	var acc = first
-	var start := 0
-	if acc == null:
-		acc = i_array[0]
-		start = 1
-	for index in range(start,i_array.size()):
-		acc = function.call_func(acc,i_array[index])
-	return acc
 
 func _play_spit_sound():
 	var random_index = randi()%PlayerParameters.PLAYER_SPIT_SOUNDS.size()
