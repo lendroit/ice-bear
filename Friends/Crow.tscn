@@ -8,5 +8,9 @@
 script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]
-modulate = Color( 0, 0, 0, 1 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+rotation = -0.785398
+scale = Vector2( 0.5, 0.5 )

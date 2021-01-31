@@ -17,7 +17,7 @@ func reset_shoot_timer():
 func _ready():
 	reset_shoot_timer()
 
-func shoot(direction):
+func shoot():
 	var b = Glaire.instance()
 	owner.add_child(b)
 	b.position = self.position
@@ -28,4 +28,4 @@ func shoot(direction):
 
 func _on_ShootTimer_timeout():
 	reset_shoot_timer()
-	shoot(direction)
+	shoot()

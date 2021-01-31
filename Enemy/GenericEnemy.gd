@@ -12,7 +12,7 @@ var possible_states_after_walk = [NEW_DIRECTION]
 var possible_states_after_new_direction = [WALK]
 
 onready var walking_timer = $WalkingTimer
-onready var sprite = $Sprite
+onready var sprite = $SpriteContainer/Sprite
 onready var animation_player = $AnimationPlayer
 
 var walking := true
@@ -62,7 +62,7 @@ func generic_enemy_death():
 func _ready():
 	reset_walking_timer()
 
-func _process(delta):
+func _process(_delta):
 	if(HEALTH_POINTS < 1):
 		generic_enemy_death()
 	
@@ -87,13 +87,13 @@ func _on_WalkingTimer_timeout():
 		WALK:
 			state = choose(possible_states_after_walk)
 
-func _on_LeftWallDetector_body_entered(body):
+func _on_LeftWallDetector_body_entered(_body):
 	state = NEW_DIRECTION
 
-func _on_RightWallDetector_body_entered(body):
+func _on_RightWallDetector_body_entered(_body):
 	state = NEW_DIRECTION
 
-func _on_HitBox_area_shape_entered(area_id, area, area_shape, self_shape):
+func _on_HitBox_area_shape_entered(_area_id, _area, _area_shape, _self_shape):
 	HEALTH_POINTS -= 1
 	print("enemy aie")
 	if HEALTH_POINTS == 0:

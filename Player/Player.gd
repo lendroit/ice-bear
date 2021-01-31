@@ -2,20 +2,23 @@ extends KinematicBody2D
 
 onready var stand_hit_box = $StandHitBox
 onready var crawl_hit_box = $CrawlHitBox
-onready var sprite = $OursGoingLeft
+onready var sprite = $SpriteContainer/Sprite
+onready var animation_player = $SpriteAnimationPlayer
 onready var reachable_hooks_area = $ReachableHooksArea
 onready var hook_position_tween = $HookPositionTween
 onready var grappling_hook_rope = $GrapplingHookRope
+onready var glaire_muzzle = $GlaireMuzzle
 
-export (int) var MAX_JUMPS = 2
+export (int) var MAX_JUMPS = 1
 export (int) var HEALTH_POINTS = 2
 
 #		POWER (DE)ACTIVATION
-export var CAN_JUMP = true
 export var CAN_GLAIRE = false
 export var CAN_HOVER = false
 export var CAN_CRAWL = true
 export var CAN_SPIT = true
+export var CAN_HOOK = false
+export var CAN_BUILD = false
 
 #		WALK VARIALES
 export (int) var WALK_SPEED = 400
@@ -46,23 +49,20 @@ var hooked_node
 
 enum leftright {left, right}
 
-#		Handle Crachat :
 export var spit_velocity = 650
 
 var Glaire = preload("res://Glaire.tscn")
 
-func shoot(deplacement_speed, orientation):
+func shoot():
 	var b = Glaire.instance()
 	owner.add_child(b)
-	b.position = self.position
-	#b.velocity = b.transform.x * (spit_velocity + deplacement_speed)
+	b.position = self.position + glaire_muzzle.position
 	b.velocity = self.velocity
 	if orientation == leftright.left:
 		b.velocity.x -= spit_velocity
 	elif orientation == leftright.right:
 		b.velocity.x += spit_velocity
 	b.gravity = EngineParameters.GRAVITY
-#	#	#	#	#	#	#
 
 func crouch():
 	is_crawling = true
@@ -75,11 +75,13 @@ func stand():
 	is_crawling = false
 
 func hook():
+	if (!CAN_HOOK):
+		return
+
 	var hooks_in_area = reachable_hooks_area.get_overlapping_areas()
 	var upper_hooks = filter(funcref(self, "keep_upper_hooks"), hooks_in_area)
 	if(upper_hooks.size() == 0):
 		return
-	print(upper_hooks)
 	var uppest_hook = reduce(funcref(self, "get_higher_hook"), upper_hooks, upper_hooks[0])
 	hooked_node = uppest_hook
 	grappling_hook_rope.visible = true
@@ -95,10 +97,14 @@ func get_input():
 		direction = 1
 	elif Input.is_action_pressed("walk_left"):
 		direction = -1
+	else:
+		animation_player.play("Idle")
 		
 	if Input.is_action_just_pressed("walk_left"):
+		animation_player.play("Walking")
 		orientation = leftright.left
 	if Input.is_action_just_pressed("walk_right"):
+		animation_player.play("Walking")
 		orientation = leftright.right
 	if Input.is_action_just_released("walk_left") && Input.is_action_pressed("walk_right"):
 		orientation = leftright.right
@@ -106,7 +112,7 @@ func get_input():
 		orientation = leftright.left
 		
 	if Input.is_action_just_pressed("Glaire") && CAN_GLAIRE && ready_to_spit && CAN_SPIT:
-		shoot(velocity.x, orientation)
+		shoot()
 		ready_to_spit = false
 
 	if Input.is_action_just_pressed("hook"):
@@ -123,7 +129,7 @@ func handle_jump(delta):
 	elif jump_count == 0:
 		jump_count = 1
 
-	if Input.is_action_just_pressed("jump") && jump_count < MAX_JUMPS && CAN_JUMP:
+	if Input.is_action_just_pressed("jump") && jump_count < MAX_JUMPS:
 		jump_count += 1
 		velocity.y = JUMP_SPEED
 		is_crawling = false
@@ -135,13 +141,13 @@ func handle_jump(delta):
 		
 func set_direction(horizontal_speed):
 	if horizontal_speed < 0:
-		sprite.flip_h = false
-	else:
 		sprite.flip_h = true
+	else:
+		sprite.flip_h = false
 
 func player_death():
 	print("Tu es mort !")
-	get_tree().change_scene("res://World.tscn")
+	var _useless  = get_tree().change_scene("res://World.tscn")
 
 func _physics_process(delta):
 	if(HEALTH_POINTS < 1):
@@ -189,9 +195,8 @@ func _physics_process(delta):
 	else:
 		grappling_hook_rope.visible = false
 
-func _on_HurtBox_area_shape_entered(area_id, area, area_shape, self_shape):
+func _on_HurtBox_area_shape_entered(_area_id, _area, _area_shape, _self_shape):
 	HEALTH_POINTS -= 1
-	print(HEALTH_POINTS)
 
 
 func _on_PickupBox_area_entered(area):
@@ -199,8 +204,14 @@ func _on_PickupBox_area_entered(area):
 		area.on_pickup()
 		if(area is Lama):
 			CAN_GLAIRE = true
+		if(area is Snake):
+			CAN_HOOK = true
 		if(area is Crow):
 			CAN_HOVER = true
+		if(area is Beaver):
+			CAN_BUILD = true
+		if(area is Kangaroo):
+			MAX_JUMPS += 1
 
 func get_direction(other_area: Area2D)->Vector2:
 	return other_area.position - self.position

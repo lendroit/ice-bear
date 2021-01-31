@@ -10,18 +10,48 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Area2D",
+"class": "Beaver",
+"language": "GDScript",
+"path": "res://Friends/Beaver.gd"
+}, {
+"base": "Area2D",
 "class": "Crow",
 "language": "GDScript",
 "path": "res://Friends/Crow.gd"
+}, {
+"base": "Node",
+"class": "Dialogic",
+"language": "GDScript",
+"path": "res://addons/dialogic/Other/dialogic_class.gd"
+}, {
+"base": "Reference",
+"class": "DialogicUtil",
+"language": "GDScript",
+"path": "res://addons/dialogic/Other/DialogicUtil.gd"
+}, {
+"base": "Area2D",
+"class": "Kangaroo",
+"language": "GDScript",
+"path": "res://Friends/Kangaroo.gd"
 }, {
 "base": "Area2D",
 "class": "Lama",
 "language": "GDScript",
 "path": "res://Friends/Lama.gd"
+}, {
+"base": "Area2D",
+"class": "Snake",
+"language": "GDScript",
+"path": "res://Friends/Snake.gd"
 } ]
 _global_script_class_icons={
+"Beaver": "",
 "Crow": "",
-"Lama": ""
+"Dialogic": "",
+"DialogicUtil": "",
+"Kangaroo": "",
+"Lama": "",
+"Snake": ""
 }
 
 [application]
@@ -86,4 +116,5 @@ hook={
 
 [rendering]
 
+environment/default_clear_color=Color( 0.803922, 0.984314, 0.992157, 1 )
 environment/default_environment="res://default_env.tres"
