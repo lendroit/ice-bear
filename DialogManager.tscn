@@ -22,8 +22,12 @@ text = "Merci de m'avoir sauvé ! Je peux t'aider à cracher sur tes ennemis hé
 portrait = ExtResource( 5 )
 
 [node name="PortraitAndText2" parent="Lama" instance=ExtResource( 6 )]
-text = "Oh trop cool de la bombe !"
+text = "Merci mais comment ça marche jammy ?"
 portrait = ExtResource( 4 )
+
+[node name="PortraitAndText3" parent="Lama" instance=ExtResource( 6 )]
+text = "C'est très simple il suffit de cracher avec la touche T de ton clavier."
+portrait = ExtResource( 5 )
 
 [node name="Beaver" parent="." instance=ExtResource( 2 )]
 
@@ -32,6 +36,10 @@ text = "Gnac gnac gnac"
 portrait = ExtResource( 1 )
 
 [node name="PortraitAndText4" parent="Beaver" instance=ExtResource( 6 )]
+text = "hohoho super"
+portrait = ExtResource( 4 )
+
+[node name="PortraitAndText5" parent="Beaver" instance=ExtResource( 6 )]
 text = "hohoho super"
 portrait = ExtResource( 4 )
 
