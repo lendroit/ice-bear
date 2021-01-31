@@ -15,7 +15,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "Builded"
 loop = true
 tracks/0/type = "value"
@@ -48,8 +48,7 @@ tracks/0/keys = {
 "values": [ 1, 2, 3 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Unbuilded"
+[sub_resource type="Animation" id=4]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("SpriteContainer/AnimatedSprite:frame")
@@ -71,6 +70,7 @@ extents = Vector2( 66, 49 )
 extents = Vector2( 88, 58 )
 
 [node name="BuildablePlatform" type="StaticBody2D"]
+scale = Vector2( 0.5, 0.5 )
 collision_mask = 0
 script = ExtResource( 6 )
 
@@ -81,12 +81,13 @@ frames = SubResource( 1 )
 frame = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Builded = SubResource( 4 )
+anims/Builded = SubResource( 2 )
 anims/Building = SubResource( 3 )
-anims/Unbuilded = SubResource( 2 )
+anims/Unbuilded = SubResource( 4 )
 
 [node name="Body" type="CollisionShape2D" parent="."]
 position = Vector2( 8, -20 )
+scale = Vector2( 1.05, 1.05 )
 shape = SubResource( 5 )
 disabled = true
 
