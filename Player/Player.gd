@@ -134,14 +134,14 @@ func hook():
 
 func get_input():
 	direction = 0
-		
+
 	if Input.is_action_pressed("walk_right"):
 		direction = 1
 	elif Input.is_action_pressed("walk_left"):
 		direction = -1
 	else:
 		animation_player.play("Idle")
-		
+
 	if Input.is_action_just_pressed("walk_left"):
 		animation_player.play("Walking")
 		orientation = leftright.left
@@ -152,14 +152,14 @@ func get_input():
 		orientation = leftright.right
 	elif Input.is_action_just_released("walk_right") && Input.is_action_pressed("walk_left"):
 		orientation = leftright.left
-		
+
 	if Input.is_action_just_pressed("Glaire") && HAS_GLAIRE_POWER && ready_to_shoot:
 		_play_spit_sound()
 		shoot()
-		
+
 	if Input.is_action_just_pressed("build") && HAS_BUILD_POWER && ready_to_shoot:
 		build()
-		
+
 	if Input.is_action_just_pressed("hook"):
 		hook()
 
@@ -177,7 +177,7 @@ func handle_jump(delta):
 		velocity.y = lerp(velocity.y, HOVER_SPEED, AIR_FRICTION)
 	else:
 		velocity.y += EngineParameters.GRAVITY * delta
-		
+
 func set_direction(horizontal_speed):
 	sprite.scale.x = sign(horizontal_speed) * abs(sprite.scale.x)
 
@@ -186,12 +186,12 @@ func player_death():
 	_play_death_sound()
 	emit_signal("player_died")
 
-func _physics_process(delta):	
+func _physics_process(delta):
 	get_input()
 	var speed
 	var acceleration
 	var friction
-	
+
 	handle_jump(delta)
 
 	if is_on_floor():
@@ -207,9 +207,9 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x, direction * speed, acceleration)
 	else:
 		velocity.x = lerp(velocity.x, 0, friction)
-	
+
 	velocity = move_and_slide(velocity, Vector2.UP)
-	
+
 	if abs(velocity.x) > 5:
 		set_direction(velocity.x)
 	if(hooked_node):
