@@ -68,9 +68,9 @@ config/icon="res://icon.png"
 
 [autoload]
 
-EngineParameters="*res://EngineParameters.gd"
-PlayerParameters="*res://Player/PlayerParameters.gd"
-Utils="*res://Utils.gd"
+EngineParameters="*res://Singletons/EngineParameters.gd"
+PlayerParameters="*res://Singletons/PlayerParameters.gd"
+Utils="*res://Singletons/Utils.gd"
 
 [display]
 
