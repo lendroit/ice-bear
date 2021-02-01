@@ -1,104 +1,35 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://BuildablePlatform/BuildedPlatform.png" type="Texture" id=1]
-[ext_resource path="res://BuildablePlatform/BuildingPlatform_F01.png" type="Texture" id=2]
-[ext_resource path="res://BuildablePlatform/BuildingPlatform_F02.png" type="Texture" id=3]
-[ext_resource path="res://BuildablePlatform/BuildingPlatform_F03.png" type="Texture" id=4]
-[ext_resource path="res://BuildablePlatform/BuildablePlatform.png" type="Texture" id=5]
+[ext_resource path="res://BuildablePlatform/Logs/Logs.tscn" type="PackedScene" id=1]
 [ext_resource path="res://BuildablePlatform/BuildablePlatform.gd" type="Script" id=6]
 
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 5 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 1 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 81.8557, 48.7546 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "Builded"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("SpriteContainer/AnimatedSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 4 ]
-}
-
-[sub_resource type="Animation" id=3]
-resource_name = "Building"
-length = 0.6
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("SpriteContainer/AnimatedSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 3 ]
-}
-
-[sub_resource type="Animation" id=4]
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("SpriteContainer/AnimatedSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
-
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 66, 49 )
-
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 88, 58 )
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 92.7147, 61.1983 )
 
 [node name="BuildablePlatform" type="StaticBody2D"]
+rotation = 3.14159
 scale = Vector2( 0.5, 0.5 )
 collision_mask = 0
 script = ExtResource( 6 )
 
-[node name="SpriteContainer" type="Node2D" parent="."]
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="SpriteContainer"]
-frames = SubResource( 1 )
-frame = 4
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Builded = SubResource( 2 )
-anims/Building = SubResource( 3 )
-anims/Unbuilded = SubResource( 4 )
+[node name="Logs" parent="." instance=ExtResource( 1 )]
+rotation = 0.0698132
 
 [node name="Body" type="CollisionShape2D" parent="."]
-position = Vector2( 8, -20 )
+position = Vector2( 5.6189, -20.7937 )
 scale = Vector2( 1.05, 1.05 )
-shape = SubResource( 5 )
+shape = SubResource( 2 )
 disabled = true
 
-[node name="BuildAnimationTimer" type="Timer" parent="."]
-
 [node name="BeaverDetector" type="Area2D" parent="."]
+visible = false
 collision_layer = 64
 collision_mask = 0
 
 [node name="BeaverCollider" type="CollisionShape2D" parent="BeaverDetector"]
-position = Vector2( 7, -20 )
-shape = SubResource( 6 )
-[connection signal="timeout" from="BuildAnimationTimer" to="." method="_on_BuildAnimationTimer_timeout"]
+position = Vector2( 7, -23.1748 )
+shape = SubResource( 3 )
 [connection signal="area_shape_entered" from="BeaverDetector" to="." method="_on_BeaverDetector_area_shape_entered"]
