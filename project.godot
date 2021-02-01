@@ -19,16 +19,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Friends/Crow.gd"
 }, {
-"base": "Node",
-"class": "Dialogic",
-"language": "GDScript",
-"path": "res://addons/dialogic/Other/dialogic_class.gd"
-}, {
-"base": "Reference",
-"class": "DialogicUtil",
-"language": "GDScript",
-"path": "res://addons/dialogic/Other/DialogicUtil.gd"
-}, {
 "base": "Area2D",
 "class": "Glaire",
 "language": "GDScript",
@@ -62,8 +52,6 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Beaver": "",
 "Crow": "",
-"Dialogic": "",
-"DialogicUtil": "",
 "Glaire": "",
 "Kangaroo": "",
 "Lama": "",
