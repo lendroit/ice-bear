@@ -8,7 +8,7 @@ var Glaire = preload("res://Enemy/EnemyGlaire.tscn")
 export var spit_velocity = 650
 
 func upd_shoot_timer_duration():
-	shoot_timer.set_wait_time(choose(possible_shoot_timer_durations))
+	shoot_timer.set_wait_time(Utils.pick_random(possible_shoot_timer_durations))
 
 func reset_shoot_timer():
 	upd_shoot_timer_duration()

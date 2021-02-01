@@ -24,3 +24,7 @@ static func reduce(function: FuncRef, i_array: Array, first = null):
 	for index in range(start,i_array.size()):
 		acc = function.call_func(acc,i_array[index])
 	return acc
+
+static func pick_random(i_array: Array):
+	var random_index = randi() % i_array.size()
+	return i_array[random_index]
