@@ -16,7 +16,6 @@ collision_mask = 0
 script = ExtResource( 6 )
 
 [node name="Logs" parent="." instance=ExtResource( 1 )]
-rotation = 0.0698132
 
 [node name="Body" type="CollisionShape2D" parent="."]
 position = Vector2( 5.6189, -20.7937 )

@@ -4,7 +4,6 @@
 [ext_resource path="res://Terrain/Water_Tile.gd" type="Script" id=2]
 [ext_resource path="res://Terrain/Water/Water.tres" type="Texture" id=3]
 
-
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 
@@ -46,7 +45,6 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 1/z_index = 0
 
 [node name="Water" type="TileMap"]
-position = Vector2( 2, 0 )
 tile_set = SubResource( 2 )
 cell_quadrant_size = 64
 collision_friction = 0.0
