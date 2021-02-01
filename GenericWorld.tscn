@@ -5,7 +5,7 @@
 [ext_resource path="res://Terrain/Tileset.tres" type="TileSet" id=5]
 [ext_resource path="res://Terrain/ParallaxBackground.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Terrain/Water/WaterTiles.tscn" type="PackedScene" id=9]
-[ext_resource path="res://DialogManager.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Dialogs/DialogManager.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Terrain/Water/WaterFull.png" type="Texture" id=11]
 [ext_resource path="res://Terrain/Water/Water.tres" type="Texture" id=12]
 
