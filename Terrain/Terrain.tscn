@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Terrain/Tileset.tres" type="TileSet" id=1]
+
+[node name="Terrain" type="TileMap"]
+tile_set = ExtResource( 1 )
+collision_layer = 16385
+collision_mask = 2147483648
+format = 1
+tile_data = PoolIntArray( -11, 1, 0, -10, 1, 2, -9, 1, 4, -8, 1, 5, -7, 1, 2, -6, 1, 1, -5, 1, 2, -4, 1, 2, -3, 1, 7, 65525, 0, 0, 65526, 0, 0, 65527, 0, 0, 65528, 0, 0, 65529, 0, 0, 65530, 0, 0, 65531, 0, 0, 65532, 0, 0, 65533, 0, 0 )

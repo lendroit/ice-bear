@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World.gd" type="Script" id=2]
-[ext_resource path="res://Terrain/Tileset.tres" type="TileSet" id=5]
+[ext_resource path="res://Terrain/Terrain.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Terrain/ParallaxBackground.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Terrain/Water/WaterTiles.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Dialogs/DialogManager.tscn" type="PackedScene" id=10]
@@ -54,12 +54,8 @@ script = ExtResource( 2 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 6 )]
 
-[node name="Terrain" type="TileMap" parent="."]
-tile_set = ExtResource( 5 )
-collision_layer = 16385
-collision_mask = 2147483648
-format = 1
-tile_data = PoolIntArray( -11, 1, 0, -10, 1, 2, -9, 1, 4, -8, 1, 5, -7, 1, 2, -6, 1, 1, -5, 1, 2, -4, 1, 2, -3, 1, 7, 65525, 0, 0, 65526, 0, 0, 65527, 0, 0, 65528, 0, 0, 65529, 0, 0, 65530, 0, 0, 65531, 0, 0, 65532, 0, 0, 65533, 0, 0 )
+[node name="Terrain" parent="." instance=ExtResource( 3 )]
+tile_data = PoolIntArray( -262178, 0, 0, -11, 1, 0, -10, 1, 2, -9, 1, 4, -8, 1, 5, -7, 1, 2, -6, 1, 1, -5, 1, 2, -4, 1, 2, -3, 1, 7, 65525, 0, 0, 65526, 0, 0, 65527, 0, 0, 65528, 0, 0, 65529, 0, 0, 65530, 0, 0, 65531, 0, 0, 65532, 0, 0, 65533, 0, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -440.056, -137.723 )
