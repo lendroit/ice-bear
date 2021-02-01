@@ -1,18 +1,10 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://GenericWorld.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Friends/Kangaroo.gd" type="Script" id=2]
 [ext_resource path="res://Enemy/Penguin/Penguin.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Friends/Beaver.gd" type="Script" id=4]
-[ext_resource path="res://Friends/Crow.gd" type="Script" id=5]
-[ext_resource path="res://Friends/Snake.gd" type="Script" id=6]
-[ext_resource path="res://Friends/Lama.gd" type="Script" id=7]
 [ext_resource path="res://Friends/Crow.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Enemy/Penguin/Penguin.gd" type="Script" id=9]
 [ext_resource path="res://Friends/Lama.tscn" type="PackedScene" id=10]
-[ext_resource path="res://BuildablePlatform/BuildablePlatform.gd" type="Script" id=11]
 [ext_resource path="res://BuildablePlatform/BuildablePlatform.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Enemy/Bird/Bird.gd" type="Script" id=13]
 [ext_resource path="res://Enemy/Bird/Bird.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Friends/Snake.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Friends/Kangaroo.tscn" type="PackedScene" id=16]
@@ -26,569 +18,241 @@ tile_data = PoolIntArray( -8388139, 0, 0, -8322603, 0, 0, -8257067, 0, 0, -81915
 
 [node name="plat_bois" type="Node" parent="Terrain" index="0"]
 
-[node name="BuildablePlatform" type="StaticBody2D" parent="Terrain/plat_bois" index="0" instance=ExtResource( 12 )]
+[node name="BuildablePlatform" parent="Terrain/plat_bois" index="0" instance=ExtResource( 12 )]
 position = Vector2( 5323.77, -2074.91 )
-scale = Vector2( 0.5, 0.5 )
-collision_mask = 0
-script = ExtResource( 11 )
 
-[node name="BuildablePlatform2" type="StaticBody2D" parent="Terrain/plat_bois" index="1" instance=ExtResource( 12 )]
+[node name="BuildablePlatform2" parent="Terrain/plat_bois" index="1" instance=ExtResource( 12 )]
 position = Vector2( 5572.04, -2076.38 )
-scale = Vector2( 0.5, 0.5 )
-collision_mask = 0
-script = ExtResource( 11 )
 
-[node name="BuildablePlatform3" type="StaticBody2D" parent="Terrain/plat_bois" index="2" instance=ExtResource( 12 )]
+[node name="BuildablePlatform3" parent="Terrain/plat_bois" index="2" instance=ExtResource( 12 )]
 position = Vector2( 5851.06, -2080.34 )
-scale = Vector2( 0.5, 0.5 )
-collision_mask = 0
-script = ExtResource( 11 )
 
-[node name="BuildablePlatform4" type="StaticBody2D" parent="Terrain/plat_bois" index="3" instance=ExtResource( 12 )]
+[node name="BuildablePlatform4" parent="Terrain/plat_bois" index="3" instance=ExtResource( 12 )]
 position = Vector2( 10612.6, -2067.14 )
-scale = Vector2( 0.5, 0.5 )
-collision_mask = 0
-script = ExtResource( 11 )
 
 [node name="Water" parent="." index="3"]
 tile_data = PoolIntArray( -2162601, 0, 0, -2162600, 0, 0, -2162599, 0, 0, -2162598, 0, 0, -2162597, 0, 0, -2162596, 0, 0, -2162595, 0, 0, -2162594, 0, 0, -2162593, 0, 0, -2162592, 0, 0, -2162591, 0, 0, -2162590, 0, 0, -2162589, 0, 0, -2162588, 0, 0, -2162587, 0, 0, -2097065, 1, 0, -2097064, 1, 0, -2097063, 1, 0, -2097062, 1, 0, -2097061, 1, 0, -2097060, 1, 0, -2097059, 1, 0, -2097058, 1, 0, -2097057, 1, 0, -2097056, 1, 0, -2097055, 1, 0, -2097054, 1, 0, -2097053, 1, 0, -2097052, 1, 0, -2097051, 1, 0, -655268, 0, 0, -655267, 0, 0, -655266, 0, 0, -655265, 0, 0, -655264, 0, 0, -655243, 0, 0, -655242, 0, 0, -655241, 0, 0, -655230, 0, 0, -655229, 0, 0, -655228, 0, 0, -655227, 0, 0, -655226, 0, 0, -655225, 0, 0, -655224, 0, 0, -655223, 0, 0, -655222, 0, 0, -655221, 0, 0, -589732, 1, 0, -589731, 1, 0, -589730, 1, 0, -589729, 1, 0, -589728, 1, 0, -589707, 1, 0, -589706, 1, 0, -589705, 1, 0, -589694, 1, 0, -589693, 1, 0, -589692, 1, 0, -589691, 1, 0, -589690, 1, 0, -589689, 1, 0, -589688, 1, 0, -589687, 1, 0, -589686, 1, 0, -589685, 1, 0, -524196, 1, 0, -524195, 1, 0, -524194, 1, 0, -524193, 1, 0, -524192, 1, 0, -524171, 1, 0, -524170, 1, 0, -524169, 1, 0, -524158, 1, 0, -524157, 1, 0, -524156, 1, 0, -524155, 1, 0, -524154, 1, 0, -524153, 1, 0, -524152, 1, 0, -524151, 1, 0, -524150, 1, 0, -524149, 1, 0, 786384, 0, 0, 786385, 0, 0, 786386, 0, 0, 786387, 0, 0, 786388, 0, 0, 786391, 0, 0, 786392, 0, 0, 851920, 1, 0, 851921, 1, 0, 851922, 1, 0, 851923, 1, 0, 851924, 1, 0, 851927, 1, 0, 851928, 1, 0, 917456, 1, 0, 917457, 1, 0, 917458, 1, 0, 917459, 1, 0, 917460, 1, 0, 917463, 1, 0, 917464, 1, 0, 1376178, 0, 0, 1376179, 0, 0, 1376180, 0, 0, 1376181, 0, 0, 1376182, 0, 0, 1376186, 0, 0, 1376187, 0, 0, 1376188, 0, 0, 1376189, 0, 0, 1376190, 0, 0, 1441714, 1, 0, 1441715, 1, 0, 1441716, 1, 0, 1441717, 1, 0, 1441718, 1, 0, 1441722, 1, 0, 1441723, 1, 0, 1441724, 1, 0, 1441725, 1, 0, 1441726, 1, 0, 1507250, 1, 0, 1507251, 1, 0, 1507252, 1, 0, 1507253, 1, 0, 1507254, 1, 0, 1507258, 1, 0, 1507259, 1, 0, 1507260, 1, 0, 1507261, 1, 0, 1507262, 1, 0 )
 
-[node name="HookNode" type="Area2D" parent="Hooks" index="0" instance=ExtResource( 18 )]
+[node name="HookNode" parent="Hooks" index="0" instance=ExtResource( 18 )]
 position = Vector2( -1427.19, -2635.34 )
-collision_layer = 524288
-collision_mask = 0
 
-[node name="HookNode2" type="Area2D" parent="Hooks" index="1" instance=ExtResource( 18 )]
+[node name="HookNode2" parent="Hooks" index="1" instance=ExtResource( 18 )]
 position = Vector2( -1411.84, -3085.04 )
-collision_layer = 524288
-collision_mask = 0
 
-[node name="HookNode3" type="Area2D" parent="Hooks" index="2" instance=ExtResource( 18 )]
+[node name="HookNode3" parent="Hooks" index="2" instance=ExtResource( 18 )]
 position = Vector2( -1778.5, -2370.65 )
-collision_layer = 524288
-collision_mask = 0
 
-[node name="HookNode4" type="Area2D" parent="Hooks" index="3" instance=ExtResource( 18 )]
+[node name="HookNode4" parent="Hooks" index="3" instance=ExtResource( 18 )]
 position = Vector2( 12025.3, -2171.75 )
-collision_layer = 524288
-collision_mask = 0
 
-[node name="HookNode5" type="Area2D" parent="Hooks" index="4" instance=ExtResource( 18 )]
+[node name="HookNode5" parent="Hooks" index="4" instance=ExtResource( 18 )]
 position = Vector2( 12023, -2489.84 )
-collision_layer = 524288
-collision_mask = 0
 
-[node name="HookNode6" type="Area2D" parent="Hooks" index="5" instance=ExtResource( 18 )]
+[node name="HookNode6" parent="Hooks" index="5" instance=ExtResource( 18 )]
 position = Vector2( 6950.08, -2539.31 )
 scale = Vector2( 0.5, 0.5 )
-collision_layer = 524288
-collision_mask = 0
 
-[node name="HookNode7" type="Area2D" parent="Hooks" index="6" instance=ExtResource( 18 )]
+[node name="HookNode7" parent="Hooks" index="6" instance=ExtResource( 18 )]
 position = Vector2( 7802.36, -3202.84 )
 scale = Vector2( 0.5, 0.5 )
-collision_layer = 524288
-collision_mask = 0
 
-[node name="HookNode8" type="Area2D" parent="Hooks" index="7" instance=ExtResource( 18 )]
+[node name="HookNode8" parent="Hooks" index="7" instance=ExtResource( 18 )]
 position = Vector2( -1045.98, -3586.63 )
-collision_layer = 524288
-collision_mask = 0
 
-[node name="HookNode9" type="Area2D" parent="Hooks" index="8" instance=ExtResource( 18 )]
+[node name="HookNode9" parent="Hooks" index="8" instance=ExtResource( 18 )]
 position = Vector2( 100.445, -4113.91 )
-collision_layer = 524288
-collision_mask = 0
 
-[node name="HookNode10" type="Area2D" parent="Hooks" index="9" instance=ExtResource( 18 )]
+[node name="HookNode10" parent="Hooks" index="9" instance=ExtResource( 18 )]
 position = Vector2( -1129.86, -2364.32 )
-collision_layer = 524288
-collision_mask = 0
 
-[node name="Lama" type="Area2D" parent="Friends" index="0" groups=[
-"friend",
-] instance=ExtResource( 10 )]
+[node name="Lama" parent="Friends" index="0" instance=ExtResource( 10 )]
 position = Vector2( -5103.72, 1029.07 )
-collision_layer = 32
-collision_mask = 0
-script = ExtResource( 7 )
 
-[node name="Crow" type="Area2D" parent="Friends" index="1" groups=[
-"friend",
-] instance=ExtResource( 8 )]
+[node name="Crow" parent="Friends" index="1" instance=ExtResource( 8 )]
 position = Vector2( -3435.03, -2219.54 )
-collision_layer = 32
-collision_mask = 0
-script = ExtResource( 5 )
 
-[node name="Kangaroo" type="Area2D" parent="Friends" index="2" groups=[
-"friend",
-] instance=ExtResource( 16 )]
+[node name="Kangaroo" parent="Friends" index="2" instance=ExtResource( 16 )]
 position = Vector2( 606.968, -4399.87 )
-collision_layer = 32
-collision_mask = 0
-script = ExtResource( 2 )
 
-[node name="Beaver" type="Area2D" parent="Friends" index="3" groups=[
-"friend",
-] instance=ExtResource( 17 )]
+[node name="Beaver" parent="Friends" index="3" instance=ExtResource( 17 )]
 position = Vector2( 11826.3, -1958.19 )
-collision_layer = 32
-collision_mask = 0
-script = ExtResource( 4 )
 
-[node name="Snake" type="Area2D" parent="Friends" index="4" groups=[
-"friend",
-] instance=ExtResource( 15 )]
+[node name="Snake" parent="Friends" index="4" instance=ExtResource( 15 )]
 position = Vector2( 6951.04, -2237.08 )
-collision_layer = 32
-collision_mask = 0
-script = ExtResource( 6 )
 
-[node name="Kangaroo2" type="Area2D" parent="Friends" index="5" groups=[
-"friend",
-] instance=ExtResource( 16 )]
+[node name="Kangaroo2" parent="Friends" index="5" instance=ExtResource( 16 )]
 position = Vector2( 12655.7, -2754.15 )
-collision_layer = 32
-collision_mask = 0
-script = ExtResource( 2 )
 
-[node name="Bird" type="KinematicBody2D" parent="Enemies" index="0" groups=[
-"enemy",
-] instance=ExtResource( 14 )]
+[node name="Bird" parent="Enemies" index="0" instance=ExtResource( 14 )]
 position = Vector2( 772.515, -551.6 )
-collision_layer = 0
-script = ExtResource( 13 )
 
-[node name="Penguin" type="KinematicBody2D" parent="Enemies" index="1" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin" parent="Enemies" index="1" instance=ExtResource( 3 )]
 position = Vector2( 699.058, -207.261 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
 
-[node name="Penguin2" type="KinematicBody2D" parent="Enemies" index="2" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin2" parent="Enemies" index="2" instance=ExtResource( 3 )]
 position = Vector2( 944.441, -400.387 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
 
-[node name="Penguin3" type="KinematicBody2D" parent="Enemies" index="3" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin3" parent="Enemies" index="3" instance=ExtResource( 3 )]
 position = Vector2( 2098.66, -18.6797 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
 
-[node name="Penguin4" type="KinematicBody2D" parent="Enemies" index="4" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin4" parent="Enemies" index="4" instance=ExtResource( 3 )]
 position = Vector2( 2732.56, -18.6797 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
 
-[node name="Penguin5" type="KinematicBody2D" parent="Enemies" index="5" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin5" parent="Enemies" index="5" instance=ExtResource( 3 )]
 position = Vector2( 3302.85, -202.717 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
 
-[node name="Penguin6" type="KinematicBody2D" parent="Enemies" index="6" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin6" parent="Enemies" index="6" instance=ExtResource( 3 )]
 position = Vector2( 3023.39, -398.116 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
 
-[node name="Bird2" type="KinematicBody2D" parent="Enemies" index="7" groups=[
-"enemy",
-] instance=ExtResource( 14 )]
+[node name="Bird2" parent="Enemies" index="7" instance=ExtResource( 14 )]
 position = Vector2( -1695.72, 294.055 )
-collision_layer = 0
-script = ExtResource( 13 )
 
-[node name="Penguin7" type="KinematicBody2D" parent="Enemies" index="8" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin7" parent="Enemies" index="8" instance=ExtResource( 3 )]
 position = Vector2( -5455.04, 876.444 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
 
-[node name="Penguin8" type="KinematicBody2D" parent="Enemies" index="9" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin8" parent="Enemies" index="9" instance=ExtResource( 3 )]
 position = Vector2( -5102.68, 697.174 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
 
-[node name="Penguin9" type="KinematicBody2D" parent="Enemies" index="10" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin9" parent="Enemies" index="10" instance=ExtResource( 3 )]
 position = Vector2( -4944.69, -1155.72 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
 
-[node name="Penguin10" type="KinematicBody2D" parent="Enemies" index="11" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin10" parent="Enemies" index="11" instance=ExtResource( 3 )]
 position = Vector2( -4763.89, -1155.72 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
 
-[node name="Penguin11" type="KinematicBody2D" parent="Enemies" index="12" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin11" parent="Enemies" index="12" instance=ExtResource( 3 )]
 position = Vector2( -5096.06, -1180.95 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
 
-[node name="Penguin12" type="KinematicBody2D" parent="Enemies" index="13" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin12" parent="Enemies" index="13" instance=ExtResource( 3 )]
 position = Vector2( -5264.25, -1176.74 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
 
-[node name="Penguin13" type="KinematicBody2D" parent="Enemies" index="14" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin13" parent="Enemies" index="14" instance=ExtResource( 3 )]
 position = Vector2( -5403.01, -1155.72 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
 
-[node name="Penguin14" type="KinematicBody2D" parent="Enemies" index="15" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin14" parent="Enemies" index="15" instance=ExtResource( 3 )]
 position = Vector2( -5545.97, -1180.95 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
 
-[node name="Penguin15" type="KinematicBody2D" parent="Enemies" index="16" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin15" parent="Enemies" index="16" instance=ExtResource( 3 )]
 position = Vector2( -5697.34, -1159.92 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
 
-[node name="Penguin16" type="KinematicBody2D" parent="Enemies" index="17" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin16" parent="Enemies" index="17" instance=ExtResource( 3 )]
 position = Vector2( -5798.25, -1172.54 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
 
-[node name="Bird3" type="KinematicBody2D" parent="Enemies" index="18" groups=[
-"enemy",
-] instance=ExtResource( 14 )]
+[node name="Bird3" parent="Enemies" index="18" instance=ExtResource( 14 )]
 position = Vector2( -5785.64, -1403.8 )
-collision_layer = 0
-script = ExtResource( 13 )
 
-[node name="Bird4" type="KinematicBody2D" parent="Enemies" index="19" groups=[
-"enemy",
-] instance=ExtResource( 14 )]
+[node name="Bird4" parent="Enemies" index="19" instance=ExtResource( 14 )]
 position = Vector2( -5609.04, -1399.59 )
-collision_layer = 0
-script = ExtResource( 13 )
 
-[node name="Bird5" type="KinematicBody2D" parent="Enemies" index="20" groups=[
-"enemy",
-] instance=ExtResource( 14 )]
+[node name="Bird5" parent="Enemies" index="20" instance=ExtResource( 14 )]
 position = Vector2( -5394.6, -1386.98 )
-collision_layer = 0
-script = ExtResource( 13 )
 
-[node name="Bird6" type="KinematicBody2D" parent="Enemies" index="21" groups=[
-"enemy",
-] instance=ExtResource( 14 )]
+[node name="Bird6" parent="Enemies" index="21" instance=ExtResource( 14 )]
 position = Vector2( -5171.75, -1403.8 )
-collision_layer = 0
-script = ExtResource( 13 )
 
-[node name="Bird7" type="KinematicBody2D" parent="Enemies" index="22" groups=[
-"enemy",
-] instance=ExtResource( 14 )]
+[node name="Bird7" parent="Enemies" index="22" instance=ExtResource( 14 )]
 position = Vector2( -4944.69, -1412.21 )
-collision_layer = 0
-script = ExtResource( 13 )
 
-[node name="Bird8" type="KinematicBody2D" parent="Enemies" index="23" groups=[
-"enemy",
-] instance=ExtResource( 14 )]
+[node name="Bird8" parent="Enemies" index="23" instance=ExtResource( 14 )]
 position = Vector2( -4789.12, -1429.03 )
-collision_layer = 0
-script = ExtResource( 13 )
 
-[node name="Bird9" type="KinematicBody2D" parent="Enemies" index="24" groups=[
-"enemy",
-] instance=ExtResource( 14 )]
+[node name="Bird9" parent="Enemies" index="24" instance=ExtResource( 14 )]
 position = Vector2( -4675.59, -1408 )
-collision_layer = 0
-script = ExtResource( 13 )
 
-[node name="Bird10" type="KinematicBody2D" parent="Enemies" index="25" groups=[
-"enemy",
-] instance=ExtResource( 14 )]
+[node name="Bird10" parent="Enemies" index="25" instance=ExtResource( 14 )]
 position = Vector2( -5054.01, -1399.59 )
-collision_layer = 0
-script = ExtResource( 13 )
 
-[node name="Bird11" type="KinematicBody2D" parent="Enemies" index="26" groups=[
-"enemy",
-] instance=ExtResource( 14 )]
+[node name="Bird11" parent="Enemies" index="26" instance=ExtResource( 14 )]
 position = Vector2( -5272.66, -1391.18 )
-collision_layer = 0
-script = ExtResource( 13 )
 
-[node name="Bird12" type="KinematicBody2D" parent="Enemies" index="27" groups=[
-"enemy",
-] instance=ExtResource( 14 )]
+[node name="Bird12" parent="Enemies" index="27" instance=ExtResource( 14 )]
 position = Vector2( -5482.9, -1386.98 )
-collision_layer = 0
-script = ExtResource( 13 )
 
-[node name="Bird13" type="KinematicBody2D" parent="Enemies" index="28" groups=[
-"enemy",
-] instance=ExtResource( 14 )]
+[node name="Bird13" parent="Enemies" index="28" instance=ExtResource( 14 )]
 position = Vector2( -5789.84, -1492.1 )
-collision_layer = 0
-script = ExtResource( 13 )
 
-[node name="Bird14" type="KinematicBody2D" parent="Enemies" index="29" groups=[
-"enemy",
-] instance=ExtResource( 14 )]
+[node name="Bird14" parent="Enemies" index="29" instance=ExtResource( 14 )]
 position = Vector2( -5630.06, -1513.12 )
-collision_layer = 0
-script = ExtResource( 13 )
 
-[node name="Bird15" type="KinematicBody2D" parent="Enemies" index="30" groups=[
-"enemy",
-] instance=ExtResource( 14 )]
+[node name="Bird15" parent="Enemies" index="30" instance=ExtResource( 14 )]
 position = Vector2( -5474.49, -1508.92 )
-collision_layer = 0
-script = ExtResource( 13 )
 
-[node name="Bird16" type="KinematicBody2D" parent="Enemies" index="31" groups=[
-"enemy",
-] instance=ExtResource( 14 )]
+[node name="Bird16" parent="Enemies" index="31" instance=ExtResource( 14 )]
 position = Vector2( -5377.78, -1504.71 )
-collision_layer = 0
-script = ExtResource( 13 )
 
-[node name="Bird17" type="KinematicBody2D" parent="Enemies" index="32" groups=[
-"enemy",
-] instance=ExtResource( 14 )]
+[node name="Bird17" parent="Enemies" index="32" instance=ExtResource( 14 )]
 position = Vector2( -5142.31, -1513.12 )
-collision_layer = 0
-script = ExtResource( 13 )
 
-[node name="Bird18" type="KinematicBody2D" parent="Enemies" index="33" groups=[
-"enemy",
-] instance=ExtResource( 14 )]
+[node name="Bird18" parent="Enemies" index="33" instance=ExtResource( 14 )]
 position = Vector2( -4990.94, -1525.74 )
-collision_layer = 0
-script = ExtResource( 13 )
 
-[node name="Bird19" type="KinematicBody2D" parent="Enemies" index="34" groups=[
-"enemy",
-] instance=ExtResource( 14 )]
+[node name="Bird19" parent="Enemies" index="34" instance=ExtResource( 14 )]
 position = Vector2( -4843.78, -1534.15 )
-collision_layer = 0
-script = ExtResource( 13 )
 
-[node name="Bird20" type="KinematicBody2D" parent="Enemies" index="35" groups=[
-"enemy",
-] instance=ExtResource( 14 )]
+[node name="Bird20" parent="Enemies" index="35" instance=ExtResource( 14 )]
 position = Vector2( -4705.02, -1542.56 )
-collision_layer = 0
-script = ExtResource( 13 )
 
-[node name="Penguin17" type="KinematicBody2D" parent="Enemies" index="36" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin17" parent="Enemies" index="36" instance=ExtResource( 3 )]
 position = Vector2( -5701.54, -1298.68 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
 
-[node name="Penguin18" type="KinematicBody2D" parent="Enemies" index="37" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin18" parent="Enemies" index="37" instance=ExtResource( 3 )]
 position = Vector2( -5508.13, -1281.86 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
 
-[node name="Penguin19" type="KinematicBody2D" parent="Enemies" index="38" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin19" parent="Enemies" index="38" instance=ExtResource( 3 )]
 position = Vector2( -5226.41, -1302.89 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
 
-[node name="Penguin20" type="KinematicBody2D" parent="Enemies" index="39" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin20" parent="Enemies" index="39" instance=ExtResource( 3 )]
 position = Vector2( -5045.61, -1298.68 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
 
-[node name="Penguin21" type="KinematicBody2D" parent="Enemies" index="40" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin21" parent="Enemies" index="40" instance=ExtResource( 3 )]
 position = Vector2( -4856.39, -1273.45 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
 
-[node name="Penguin22" type="KinematicBody2D" parent="Enemies" index="41" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin22" parent="Enemies" index="41" instance=ExtResource( 3 )]
 position = Vector2( -4662.97, -1286.07 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
 
-[node name="Bird21" type="KinematicBody2D" parent="Enemies" index="42" groups=[
-"enemy",
-] instance=ExtResource( 14 )]
+[node name="Bird21" parent="Enemies" index="42" instance=ExtResource( 14 )]
 position = Vector2( -5260.05, -1504.71 )
-collision_layer = 0
-script = ExtResource( 13 )
 
-[node name="Penguin23" type="KinematicBody2D" parent="Enemies" index="43" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin23" parent="Enemies" index="43" instance=ExtResource( 3 )]
 position = Vector2( -5373.6, -1283.39 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
 
-[node name="Bird22" type="KinematicBody2D" parent="Enemies" index="44" groups=[
-"enemy",
-] instance=ExtResource( 14 )]
+[node name="Bird22" parent="Enemies" index="44" instance=ExtResource( 14 )]
 position = Vector2( -4892.8, 102.238 )
-collision_layer = 0
-script = ExtResource( 13 )
 
-[node name="Penguin24" type="KinematicBody2D" parent="Enemies" index="45" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin24" parent="Enemies" index="45" instance=ExtResource( 3 )]
 position = Vector2( -5187.89, 303.559 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
 
-[node name="Penguin25" type="KinematicBody2D" parent="Enemies" index="46" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin25" parent="Enemies" index="46" instance=ExtResource( 3 )]
 position = Vector2( 762.079, -2332.59 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
 
-[node name="Penguin26" type="KinematicBody2D" parent="Enemies" index="47" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin26" parent="Enemies" index="47" instance=ExtResource( 3 )]
 position = Vector2( 324.126, -2530.64 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
 
-[node name="Penguin27" type="KinematicBody2D" parent="Enemies" index="48" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin27" parent="Enemies" index="48" instance=ExtResource( 3 )]
 position = Vector2( -99.8784, -2723.12 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
 
-[node name="Bird23" type="KinematicBody2D" parent="Enemies" index="49" groups=[
-"enemy",
-] instance=ExtResource( 14 )]
+[node name="Bird23" parent="Enemies" index="49" instance=ExtResource( 14 )]
 position = Vector2( 561.234, -2882.12 )
-collision_layer = 0
-script = ExtResource( 13 )
 
-[node name="Penguin28" type="KinematicBody2D" parent="Enemies" index="50" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin28" parent="Enemies" index="50" instance=ExtResource( 3 )]
 position = Vector2( -3802.49, -2007.73 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
 
-[node name="Penguin29" type="KinematicBody2D" parent="Enemies" index="51" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin29" parent="Enemies" index="51" instance=ExtResource( 3 )]
 position = Vector2( -3473.89, -1819.57 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
 
-[node name="Bird24" type="KinematicBody2D" parent="Enemies" index="52" groups=[
-"enemy",
-] instance=ExtResource( 14 )]
+[node name="Bird24" parent="Enemies" index="52" instance=ExtResource( 14 )]
 position = Vector2( 9874.01, -863.878 )
-collision_layer = 0
-script = ExtResource( 13 )
 
-[node name="Penguin30" type="KinematicBody2D" parent="Enemies" index="53" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin30" parent="Enemies" index="53" instance=ExtResource( 3 )]
 position = Vector2( 7018.58, -674.642 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
 
-[node name="Penguin31" type="KinematicBody2D" parent="Enemies" index="54" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin31" parent="Enemies" index="54" instance=ExtResource( 3 )]
 position = Vector2( 6665.47, -684.451 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
 
-[node name="Penguin32" type="KinematicBody2D" parent="Enemies" index="55" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin32" parent="Enemies" index="55" instance=ExtResource( 3 )]
 position = Vector2( 10534.8, -973.796 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
 
-[node name="Penguin33" type="KinematicBody2D" parent="Enemies" index="56" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin33" parent="Enemies" index="56" instance=ExtResource( 3 )]
 position = Vector2( 10554.5, -1380.85 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
 
-[node name="Penguin34" type="KinematicBody2D" parent="Enemies" index="57" groups=[
-"enemy",
-] instance=ExtResource( 3 )]
+[node name="Penguin34" parent="Enemies" index="57" instance=ExtResource( 3 )]
 position = Vector2( 10525, -1753.57 )
-scale = Vector2( 1.3, 1.3 )
-collision_layer = 0
-script = ExtResource( 9 )
