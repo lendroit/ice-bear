@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://GenericWorld.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Terrain/HookNode.tscn" type="PackedScene" id=2]
