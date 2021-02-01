@@ -8,18 +8,17 @@ radius = 6.31215
 height = 10.3429
 
 [node name="EnemyGlaire" type="Area2D"]
-position = Vector2( -0.743258, -2.97303 )
+scale = Vector2( 1.1, 1.1 )
 collision_layer = 0
 collision_mask = 16386
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 14.4311, -10.1484 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 12.2402, -9.74195 )
+modulate = Color( 0.498039, 0.6, 0.286275, 1 )
 rotation = 1.5708
 scale = Vector2( 0.0229739, 0.022974 )
 texture = ExtResource( 2 )
