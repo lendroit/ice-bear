@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/castor_toss_5.wav-29e6c5dfe30278b3ded9c6c65789f752.sample"
+
+[deps]
+
+source_file="res://assets/sound/castor_toss/castor_toss_5.wav"
+dest_files=[ "res://.import/castor_toss_5.wav-29e6c5dfe30278b3ded9c6c65789f752.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
