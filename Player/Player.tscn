@@ -162,6 +162,7 @@ position = Vector2( 0, -20 )
 [node name="AudioPlayer" type="Node2D" parent="."]
 
 [node name="Spit" type="AudioStreamPlayer" parent="AudioPlayer"]
+volume_db = 5.2
 
 [node name="Death" type="AudioStreamPlayer" parent="AudioPlayer"]
 [connection signal="area_shape_entered" from="HurtBox" to="." method="_on_HurtBox_area_shape_entered"]

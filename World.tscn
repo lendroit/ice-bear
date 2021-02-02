@@ -256,3 +256,6 @@ position = Vector2( 10554.5, -1380.85 )
 
 [node name="Penguin34" parent="Enemies" index="57" instance=ExtResource( 3 )]
 position = Vector2( 10525, -1753.57 )
+
+[node name="theme" parent="AudioPlayer" index="0"]
+volume_db = -19.933
