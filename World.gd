@@ -26,7 +26,7 @@ func _player_died():
 	# var _useless = get_tree().reload_current_scene()
 	
 func _player_win():
-	get_tree().change_scene("res://End/End.tscn")
+	var _useless = get_tree().change_scene("res://End/End.tscn")
 
 func add_explosion(position: Vector2):
 	var d = enemy_death_particles.instance()
