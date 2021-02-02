@@ -20,7 +20,9 @@ func _ready():
 		friend.connect("trigger_dialog", self, "open_dialog")
 
 func _player_died():
-	var _useless = get_tree().reload_current_scene()
+	$Player.velocity = Vector2.ZERO
+	$Player.position = $PlayerSpawn.position
+	# var _useless = get_tree().reload_current_scene()
 
 func add_explosion(position: Vector2):
 	var d = enemy_death_particles.instance()
