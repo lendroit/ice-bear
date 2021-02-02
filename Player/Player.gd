@@ -67,6 +67,7 @@ func hook():
 	var hook_direction = (uppest_hook.position - self.position).normalized()*PlayerParameters.PLAYER_GRAPPLING_HOOK_SPEED
 	hook_position_tween.interpolate_property(self, "velocity", self.velocity, hook_direction, 0.1, Tween.TRANS_LINEAR)
 	hook_position_tween.start()
+	orientation = sign(hook_direction.x)
 
 func get_input():
 	direction = 0
