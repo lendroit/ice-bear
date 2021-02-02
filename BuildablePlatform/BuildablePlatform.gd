@@ -3,32 +3,26 @@ extends StaticBody2D
 onready var body = $Body
 onready var logs = $Logs
 
-var builded := false
-var building := false
+var is_builded = false
 
 func _ready():
 	unbuilded()
 	var _useless = $Logs.connect("platform_builded", self, "end_build")
 
 func unbuilded():
-	if(!builded && !building):
-		building = false
-		builded = false
-		body.disabled = true
-		logs.unbuilded()
+	body.disabled = true
+	logs.unbuilded()
 
 func build():
-	if(!builded && !building):
-		building = true
-		builded = false
-		logs.building()
+	if is_builded:
+		return
+
+	logs.building()
 
 func end_build():
-	if(!builded && building):
-		building = false
-		builded = true
-		body.disabled = false
-		logs.builded()
+	body.disabled = false
+	is_builded = true
+	logs.builded()
 
 func _on_BeaverDetector_area_shape_entered(_area_id, _area, _area_shape, _self_shape):
 	build()
