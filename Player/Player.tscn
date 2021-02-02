@@ -134,6 +134,7 @@ wait_time = 0.5
 autostart = true
 
 [node name="ReachableHooksArea" type="Area2D" parent="."]
+visible = false
 modulate = Color( 0.435294, 0.611765, 0, 0.290196 )
 collision_layer = 0
 collision_mask = 524288
@@ -154,12 +155,15 @@ anims/Idle = SubResource( 6 )
 anims/Walking = SubResource( 7 )
 
 [node name="GlaireMuzzle" type="Node2D" parent="."]
+visible = false
 position = Vector2( 0, -63 )
 
 [node name="BeaverMuzzle" type="Node2D" parent="."]
+visible = false
 position = Vector2( 0, -20 )
 
 [node name="AudioPlayer" type="Node2D" parent="."]
+visible = false
 
 [node name="Spit" type="AudioStreamPlayer" parent="AudioPlayer"]
 volume_db = 12.133

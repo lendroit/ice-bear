@@ -10,6 +10,7 @@ onready var theme = $AudioPlayer/theme
 func _ready():
 	_play_theme()
 	var _useless = $Player.connect("player_died", self, "_player_died")
+	var _useless2 = $Player.connect("player_win", self, "_player_win")
 	dialog_handler.connect("end", self, "end_dialog")
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	for enemy in enemies:
@@ -23,6 +24,9 @@ func _player_died():
 	$Player.velocity = Vector2.ZERO
 	$Player.position = $PlayerSpawn.position
 	# var _useless = get_tree().reload_current_scene()
+	
+func _player_win():
+	get_tree().change_scene("res://End/End.tscn")
 
 func add_explosion(position: Vector2):
 	var d = enemy_death_particles.instance()

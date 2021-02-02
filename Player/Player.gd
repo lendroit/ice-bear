@@ -7,6 +7,7 @@ onready var death = $AudioPlayer/Death
 onready var beaver = $AudioPlayer/Beaver
 
 signal player_died
+signal player_win
 
 onready var sprite = $SpriteContainer
 onready var animation_player = $SpriteAnimationPlayer
@@ -123,6 +124,10 @@ func player_death():
 	print("Tu es mort !")
 	_play_death_sound()
 	emit_signal("player_died")
+	
+func player_win():
+	print("Tu as gagné !")
+	emit_signal("player_win")
 
 func draw_hook():
 	if(hooked_node):
@@ -213,6 +218,7 @@ func _on_HookPositionTween_tween_all_completed():
 
 
 func _on_HurtBox_body_entered(body):
-	if !(body is Water):
-		return
-	player_death()
+	if(body is Water):
+		player_death()
+	if(body is VictoryZone):
+		player_win()
