@@ -4,6 +4,7 @@ class_name Player
 
 onready var spit = $AudioPlayer/Spit
 onready var death = $AudioPlayer/Death
+onready var beaver = $AudioPlayer/Beaver
 
 signal player_died
 
@@ -95,6 +96,7 @@ func get_input():
 		shoot()
 
 	if Input.is_action_just_pressed("build") && PlayerParameters.PLAYER_CAN_BUILD && ready_to_shoot:
+		_play_beaver_sound()
 		build()
 
 	if Input.is_action_just_pressed("hook"):
@@ -199,6 +201,11 @@ func _play_death_sound():
 	# var random_index = randi()%death_sounds.size()
 	death.stream = PlayerParameters.PLAYER_DEATH_SOUNDS[1]#[random_index]
 	death.play()
+	
+func _play_beaver_sound():
+	var random_index = randi()%PlayerParameters.PLAYER_BEAVER_TOSS_SOUNDS.size()
+	beaver.stream = PlayerParameters.PLAYER_BEAVER_TOSS_SOUNDS[random_index]
+	beaver.play()
 
 func _on_HookPositionTween_tween_all_completed():
 	hooked_node = null

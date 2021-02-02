@@ -165,6 +165,9 @@ position = Vector2( 0, -20 )
 volume_db = 12.133
 
 [node name="Death" type="AudioStreamPlayer" parent="AudioPlayer"]
+
+[node name="Beaver" type="AudioStreamPlayer" parent="AudioPlayer"]
+volume_db = 7.8
 [connection signal="area_shape_entered" from="HurtBox" to="." method="_on_HurtBox_area_shape_entered"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_HurtBox_body_entered"]
 [connection signal="area_entered" from="PickupBox" to="." method="_on_PickupBox_area_entered"]

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/beaver_toss_10.wav-9cd76943ee5b5c6f9d4637d9c7acdf82.sample"
+
+[deps]
+
+source_file="res://assets/sound/beaver_toss/beaver_toss_10.wav"
+dest_files=[ "res://.import/beaver_toss_10.wav-9cd76943ee5b5c6f9d4637d9c7acdf82.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

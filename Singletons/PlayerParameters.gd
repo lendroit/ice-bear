@@ -56,3 +56,17 @@ var PLAYER_DEATH_SOUNDS = [
 	preload("res://assets/sound/player_death/death_08_session.wav"),
 	preload("res://assets/sound/player_death/death_09_session.wav")
 ]
+
+var PLAYER_BEAVER_TOSS_SOUNDS = [
+	preload("res://assets/sound/beaver_toss/beaver_toss_1.wav"),
+	preload("res://assets/sound/beaver_toss/beaver_toss_2.wav"),
+	preload("res://assets/sound/beaver_toss/beaver_toss_3.wav"),
+	preload("res://assets/sound/beaver_toss/beaver_toss_4.wav"),
+	preload("res://assets/sound/beaver_toss/beaver_toss_5.wav"),
+	preload("res://assets/sound/beaver_toss/beaver_toss_6.wav"),
+	preload("res://assets/sound/beaver_toss/beaver_toss_7.wav"),
+	preload("res://assets/sound/beaver_toss/beaver_toss_8.wav"),
+	preload("res://assets/sound/beaver_toss/beaver_toss_9.wav"),
+	preload("res://assets/sound/beaver_toss/beaver_toss_10.wav"),
+	preload("res://assets/sound/beaver_toss/beaver_toss_11.wav")
+]
