@@ -258,4 +258,4 @@ position = Vector2( 10554.5, -1380.85 )
 position = Vector2( 10525, -1753.57 )
 
 [node name="theme" parent="AudioPlayer" index="0"]
-volume_db = -19.933
+volume_db = -6.066
