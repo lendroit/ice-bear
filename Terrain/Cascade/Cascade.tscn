@@ -121,7 +121,6 @@ shader_param/water_mask = SubResource( 5 )
 
 [node name="Cascade" type="Sprite"]
 material = SubResource( 6 )
-position = Vector2( 735.121, 556.817 )
 scale = Vector2( 2.68369, 4.23585 )
 texture = ExtResource( 2 )
 normal_map = ExtResource( 2 )
