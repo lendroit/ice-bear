@@ -10,7 +10,6 @@
 [ext_resource path="res://Dialogs/little kangaroo.png" type="Texture" id=8]
 [ext_resource path="res://Dialogs/little crow.png" type="Texture" id=9]
 
-
 [node name="DialogManager" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0

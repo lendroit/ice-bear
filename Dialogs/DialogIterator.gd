@@ -1,9 +1,15 @@
+tool
 extends Control
+
+export (int) var current_step = 0 setget set_current_step
 
 signal end
 
-var current_step = 0
 var is_active = false
+
+func set_current_step(new_current_step):
+	current_step = new_current_step
+	print_screen(current_step)
 
 func _ready():
 	hide()
