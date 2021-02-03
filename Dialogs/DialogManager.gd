@@ -5,41 +5,33 @@ export(String, "lama", "beaver", "kangaroo", "snake", "crow") var current_dialog
 
 signal end
 
-onready var lama = $Lama
-onready var beaver = $Beaver
-onready var kangaroo = $Kangaroo
-onready var snake = $Snake
-onready var crow = $Crow
-onready var all_friends = [lama, beaver, kangaroo, snake, crow]
+onready var friends_mapping = {
+	# TODO use enum for keys
+	"lama": $Lama,
+	"beaver": $Beaver,
+	"kangaroo": $Kangaroo,
+	"snake": $Snake,
+	"crow": $Crow,
+}
 
 func _ready():
 	for child in get_children():
 		child.connect("end", self, "end_dialog")
 
 func _hide_all_friends():
-	for friend in all_friends:
+	for friend in friends_mapping.values():
 		friend.visible = false
 
 func start(dialog_name: String):
 	_hide_all_friends()
-	match dialog_name:
-		"lama":
-			lama.visible = true
-			lama.start()
-		"beaver":
-			beaver.visible = true
-			beaver.start()
-		"kangaroo":
-			kangaroo.visible = true
-			kangaroo.start()
-		"snake":
-			snake.visible = true
-			snake.start()
-		"crow":
-			crow.visible = true
-			crow.start()
-		_:
-			emit_signal("end")
+
+	var current_friend = friends_mapping[dialog_name]
+	if current_friend:
+		current_friend.visible = true
+		current_friend.start()
+		return
+
+	emit_signal("end")
 
 func end_dialog():
 	emit_signal("end")

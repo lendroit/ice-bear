@@ -19,6 +19,5 @@ func set_text(new_text: String):
 
 func set_portrait(new_portrait: Texture):
 	portrait = new_portrait
-	print(portrait_node)
 	if portrait_node:
 		portrait_node.texture = new_portrait
