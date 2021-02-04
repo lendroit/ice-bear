@@ -52,7 +52,7 @@ _global_script_classes=[ {
 "base": "TileMap",
 "class": "Water",
 "language": "GDScript",
-"path": "res://Terrain/Water_Tile.gd"
+"path": "res://Terrain/Water/Water_Tile.gd"
 } ]
 _global_script_class_icons={
 "Beaver": "",
