@@ -22,7 +22,7 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "Glaire",
 "language": "GDScript",
-"path": "res://Glaire.gd"
+"path": "res://Player/Glaire.gd"
 }, {
 "base": "Area2D",
 "class": "Kangaroo",

@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://GenericWorld.tscn" type="PackedScene" id=1]
+[ext_resource path="res://World/GenericWorld.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemy/Penguin/Penguin.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Friends/Crow.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Friends/Lama.tscn" type="PackedScene" id=10]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Friends/Kangaroo.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Friends/Beaver.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Terrain/Hook/HookNode.tscn" type="PackedScene" id=18]
+
 
 [node name="World" instance=ExtResource( 1 )]
 

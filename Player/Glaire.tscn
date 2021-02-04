@@ -1,7 +1,9 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Glaire.gd" type="Script" id=1]
-[ext_resource path="res://spit.png" type="Texture" id=2]
+[ext_resource path="res://Player/Glaire.gd" type="Script" id=1]
+[ext_resource path="res://Player/spit.png" type="Texture" id=2]
+
+
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 6.31215
