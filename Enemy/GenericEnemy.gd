@@ -16,6 +16,7 @@ var possible_states_after_new_direction = [WALK]
 onready var walking_timer = $WalkingTimer
 onready var sprite = $SpriteContainer/Sprite
 onready var animation_player = $AnimationPlayer
+onready var hitbox_collider = $HitBox/HitBoxCollider
 
 var walking := true
 var velocity := Vector2.ZERO
@@ -57,7 +58,10 @@ func generic_enemy_hurt():
 		generic_enemy_death()
 	
 func generic_enemy_death():
-	emit_signal("died", self.position)
+	# We use the hitbox collider's position because we're
+	# sure it's going to be centered
+	print(hitbox_collider.global_position)
+	emit_signal("died", hitbox_collider.global_position)
 	queue_free()
 
 ##########
