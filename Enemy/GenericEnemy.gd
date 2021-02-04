@@ -5,9 +5,9 @@ signal died
 export (int) var speed = 200
 export (float) var friction = 0.1
 export (float) var acceleration = 0.25
-export (bool) var gravity_sensible = false
 export (int) var HEALTH_POINTS = 1
 
+var gravity_sensible = false
 var possible_walking_timer_durations = [1.5]
 var possible_states_after_idle = [WALK]
 var possible_states_after_walk = [NEW_DIRECTION]
