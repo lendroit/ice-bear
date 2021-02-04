@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hook.png-94af0f99a8fb63320023db3647534a12.stex"
+path="res://.import/Plan_003_001.png-8d923ecb462a2f759482533b9957048d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Terrain/hook.png"
-dest_files=[ "res://.import/hook.png-94af0f99a8fb63320023db3647534a12.stex" ]
+source_file="res://Terrain/Background/Plan_003_001.png"
+dest_files=[ "res://.import/Plan_003_001.png-8d923ecb462a2f759482533b9957048d.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Plan_003_001.png-f98f0082dca711629af50d8390564aa1.stex"
+path="res://.import/Plan_004_001.png-0f0c29351a1869753d1c98a93d719b9e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Terrain/Plan_003_001.png"
-dest_files=[ "res://.import/Plan_003_001.png-f98f0082dca711629af50d8390564aa1.stex" ]
+source_file="res://Terrain/Background/Plan_004_001.png"
+dest_files=[ "res://.import/Plan_004_001.png-0f0c29351a1869753d1c98a93d719b9e.stex" ]
 
 [params]
 
