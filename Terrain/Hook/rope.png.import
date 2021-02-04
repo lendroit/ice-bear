@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rope.png-ef3f474e690ec0766ae800036d5b3138.stex"
+path="res://.import/rope.png-2ddff8ed89abc10c25265d6098117a95.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Terrain/rope.png"
-dest_files=[ "res://.import/rope.png-ef3f474e690ec0766ae800036d5b3138.stex" ]
+source_file="res://Terrain/Hook/rope.png"
+dest_files=[ "res://.import/rope.png-2ddff8ed89abc10c25265d6098117a95.stex" ]
 
 [params]
 

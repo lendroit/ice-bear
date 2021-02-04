@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Crochet_002.png-f78c0d6f969b3bd38221de5981a45a5a.stex"
+path="res://.import/Crochet_002.png-ec611b21a782a0d612fff26501bde7c8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Terrain/Crochet_002.png"
-dest_files=[ "res://.import/Crochet_002.png-f78c0d6f969b3bd38221de5981a45a5a.stex" ]
+source_file="res://Terrain/Hook/Crochet_002.png"
+dest_files=[ "res://.import/Crochet_002.png-ec611b21a782a0d612fff26501bde7c8.stex" ]
 
 [params]
 

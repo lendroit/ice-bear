@@ -9,7 +9,8 @@
 [ext_resource path="res://Friends/Snake.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Friends/Kangaroo.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Friends/Beaver.tscn" type="PackedScene" id=17]
-[ext_resource path="res://Terrain/HookNode.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Terrain/Hook/HookNode.tscn" type="PackedScene" id=18]
+
 
 [node name="World" instance=ExtResource( 1 )]
 

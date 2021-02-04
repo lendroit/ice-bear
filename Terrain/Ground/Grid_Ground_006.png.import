@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Grid_Ground_006.png-76922da2c3b90cfde43a88d7c7462cc1.stex"
+path="res://.import/Grid_Ground_006.png-a82ccdfdff35b389b19af4bda47a7d59.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Terrain/Grid_Ground_006.png"
-dest_files=[ "res://.import/Grid_Ground_006.png-76922da2c3b90cfde43a88d7c7462cc1.stex" ]
+source_file="res://Terrain/Ground/Grid_Ground_006.png"
+dest_files=[ "res://.import/Grid_Ground_006.png-a82ccdfdff35b389b19af4bda47a7d59.stex" ]
 
 [params]
 

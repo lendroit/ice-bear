@@ -1,12 +1,13 @@
 [gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://Terrain/rope.png" type="Texture" id=1]
+[ext_resource path="res://Terrain/Hook/rope.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Player/ours_1.png" type="Texture" id=3]
 [ext_resource path="res://Player/ours_3.png" type="Texture" id=4]
 [ext_resource path="res://Player/ours_2.png" type="Texture" id=5]
 [ext_resource path="res://Player/ours_4.png" type="Texture" id=6]
 [ext_resource path="res://Player/Backpack/Backpack.tscn" type="PackedScene" id=7]
+
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
