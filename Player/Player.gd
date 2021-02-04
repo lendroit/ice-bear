@@ -27,7 +27,7 @@ var orientation = 1
 var ready_to_shoot := true
 var hooked_node
 
-var Glaire = preload("res://Glaire.tscn")
+var Glaire = preload("res://Player/Glaire.tscn")
 var beaver_projectile = preload("res://Player/BeaverProjectile.tscn")
 
 func reset_shoot_timer():

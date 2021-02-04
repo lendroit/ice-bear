@@ -1,6 +1,6 @@
 extends Control
 
-var World = preload("res://World.tscn")
+var World = preload("res://World/World.tscn")
 
 func _ready():
 	var _connect_error = $DialogIterator.connect("end", self, "start_game")
