@@ -1,16 +1,15 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://World/GenericWorld.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Enemy/Penguin/Penguin.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Friends/Crow.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Friends/Lama.tscn" type="PackedScene" id=10]
-[ext_resource path="res://BuildablePlatform/BuildablePlatform.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Enemy/Bird/Bird.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Friends/Snake.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Friends/Kangaroo.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Friends/Beaver.tscn" type="PackedScene" id=17]
-[ext_resource path="res://Terrain/Hook/HookNode.tscn" type="PackedScene" id=18]
-
+[ext_resource path="res://Enemy/Penguin/Penguin.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Friends/Kangaroo.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Friends/Crow.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Friends/Lama.tscn" type="PackedScene" id=5]
+[ext_resource path="res://BuildablePlatform/BuildablePlatform.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Friends/Snake.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Enemy/Bird/Bird.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Friends/Beaver.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Terrain/Hook/HookNode.tscn" type="PackedScene" id=10]
 
 [node name="World" instance=ExtResource( 1 )]
 
@@ -28,133 +27,133 @@ tile_data = PoolIntArray( -2097229, 0, 0, -2097228, 0, 0, -2097227, 0, 0, -20972
 
 [node name="plat_bois" type="Node" parent="." index="5"]
 
-[node name="BuildablePlatform" parent="plat_bois" index="0" instance=ExtResource( 12 )]
+[node name="BuildablePlatform" parent="plat_bois" index="0" instance=ExtResource( 6 )]
 position = Vector2( 5864, -2120 )
 
-[node name="BuildablePlatform2" parent="plat_bois" index="1" instance=ExtResource( 12 )]
+[node name="BuildablePlatform2" parent="plat_bois" index="1" instance=ExtResource( 6 )]
 position = Vector2( 6128, -2120 )
 
-[node name="BuildablePlatform4" parent="plat_bois" index="2" instance=ExtResource( 12 )]
+[node name="BuildablePlatform4" parent="plat_bois" index="2" instance=ExtResource( 6 )]
 position = Vector2( 10872, -2056 )
 
-[node name="HookNode" parent="Hooks" index="0" instance=ExtResource( 18 )]
+[node name="HookNode" parent="Hooks" index="0" instance=ExtResource( 10 )]
 position = Vector2( -1427.19, -2635.34 )
 
-[node name="HookNode2" parent="Hooks" index="1" instance=ExtResource( 18 )]
+[node name="HookNode2" parent="Hooks" index="1" instance=ExtResource( 10 )]
 position = Vector2( -1411.84, -3085.04 )
 
-[node name="HookNode3" parent="Hooks" index="2" instance=ExtResource( 18 )]
+[node name="HookNode3" parent="Hooks" index="2" instance=ExtResource( 10 )]
 position = Vector2( -1778.5, -2370.65 )
 
-[node name="HookNode4" parent="Hooks" index="3" instance=ExtResource( 18 )]
+[node name="HookNode4" parent="Hooks" index="3" instance=ExtResource( 10 )]
 position = Vector2( 12025.3, -2171.75 )
 
-[node name="HookNode5" parent="Hooks" index="4" instance=ExtResource( 18 )]
+[node name="HookNode5" parent="Hooks" index="4" instance=ExtResource( 10 )]
 position = Vector2( 12023, -2489.84 )
 
-[node name="HookNode6" parent="Hooks" index="5" instance=ExtResource( 18 )]
+[node name="HookNode6" parent="Hooks" index="5" instance=ExtResource( 10 )]
 position = Vector2( 6950.08, -2539.31 )
 
-[node name="HookNode7" parent="Hooks" index="6" instance=ExtResource( 18 )]
+[node name="HookNode7" parent="Hooks" index="6" instance=ExtResource( 10 )]
 position = Vector2( 7802.36, -3202.84 )
 
-[node name="HookNode8" parent="Hooks" index="7" instance=ExtResource( 18 )]
+[node name="HookNode8" parent="Hooks" index="7" instance=ExtResource( 10 )]
 position = Vector2( -1045.98, -3586.63 )
 
-[node name="HookNode9" parent="Hooks" index="8" instance=ExtResource( 18 )]
+[node name="HookNode9" parent="Hooks" index="8" instance=ExtResource( 10 )]
 position = Vector2( 100.445, -4113.91 )
 
-[node name="HookNode10" parent="Hooks" index="9" instance=ExtResource( 18 )]
+[node name="HookNode10" parent="Hooks" index="9" instance=ExtResource( 10 )]
 position = Vector2( -1129.86, -2364.32 )
 
-[node name="Lama" parent="Friends" index="0" instance=ExtResource( 10 )]
+[node name="Lama" parent="Friends" index="0" instance=ExtResource( 5 )]
 position = Vector2( -5103.72, 1029.07 )
 
-[node name="Crow" parent="Friends" index="1" instance=ExtResource( 8 )]
+[node name="Crow" parent="Friends" index="1" instance=ExtResource( 4 )]
 position = Vector2( -3435.03, -2219.54 )
 
-[node name="Kangaroo" parent="Friends" index="2" instance=ExtResource( 16 )]
+[node name="Kangaroo" parent="Friends" index="2" instance=ExtResource( 3 )]
 position = Vector2( 606.968, -4399.87 )
 
-[node name="Beaver" parent="Friends" index="3" instance=ExtResource( 17 )]
+[node name="Beaver" parent="Friends" index="3" instance=ExtResource( 9 )]
 position = Vector2( 11826.3, -1958.19 )
 
-[node name="Snake" parent="Friends" index="4" instance=ExtResource( 15 )]
+[node name="Snake" parent="Friends" index="4" instance=ExtResource( 7 )]
 position = Vector2( 6951.04, -2237.08 )
 
-[node name="Kangaroo2" parent="Friends" index="5" instance=ExtResource( 16 )]
+[node name="Kangaroo2" parent="Friends" index="5" instance=ExtResource( 3 )]
 position = Vector2( 12655.7, -2754.15 )
 
-[node name="Bird" parent="Enemies" index="0" instance=ExtResource( 14 )]
+[node name="Bird" parent="Enemies" index="0" instance=ExtResource( 8 )]
 position = Vector2( 772.515, -551.6 )
 
-[node name="Penguin" parent="Enemies" index="1" instance=ExtResource( 3 )]
+[node name="Penguin" parent="Enemies" index="1" instance=ExtResource( 2 )]
 position = Vector2( 699.058, -207.261 )
 
-[node name="Penguin2" parent="Enemies" index="2" instance=ExtResource( 3 )]
+[node name="Penguin2" parent="Enemies" index="2" instance=ExtResource( 2 )]
 position = Vector2( 944.441, -400.387 )
 
-[node name="Penguin3" parent="Enemies" index="3" instance=ExtResource( 3 )]
+[node name="Penguin3" parent="Enemies" index="3" instance=ExtResource( 2 )]
 position = Vector2( 2098.66, -18.6797 )
 
-[node name="Penguin4" parent="Enemies" index="4" instance=ExtResource( 3 )]
+[node name="Penguin4" parent="Enemies" index="4" instance=ExtResource( 2 )]
 position = Vector2( 2732.56, -18.6797 )
 
-[node name="Penguin5" parent="Enemies" index="5" instance=ExtResource( 3 )]
+[node name="Penguin5" parent="Enemies" index="5" instance=ExtResource( 2 )]
 position = Vector2( 3302.85, -202.717 )
 
-[node name="Penguin6" parent="Enemies" index="6" instance=ExtResource( 3 )]
+[node name="Penguin6" parent="Enemies" index="6" instance=ExtResource( 2 )]
 position = Vector2( 3023.39, -398.116 )
 
-[node name="Bird2" parent="Enemies" index="7" instance=ExtResource( 14 )]
+[node name="Bird2" parent="Enemies" index="7" instance=ExtResource( 8 )]
 position = Vector2( -1695.72, 294.055 )
 
-[node name="Penguin7" parent="Enemies" index="8" instance=ExtResource( 3 )]
+[node name="Penguin7" parent="Enemies" index="8" instance=ExtResource( 2 )]
 position = Vector2( -5455.04, 876.444 )
 
-[node name="Penguin8" parent="Enemies" index="9" instance=ExtResource( 3 )]
+[node name="Penguin8" parent="Enemies" index="9" instance=ExtResource( 2 )]
 position = Vector2( -5102.68, 697.174 )
 
-[node name="Bird22" parent="Enemies" index="10" instance=ExtResource( 14 )]
+[node name="Bird22" parent="Enemies" index="10" instance=ExtResource( 8 )]
 position = Vector2( -4892.8, 102.238 )
 
-[node name="Penguin24" parent="Enemies" index="11" instance=ExtResource( 3 )]
+[node name="Penguin24" parent="Enemies" index="11" instance=ExtResource( 2 )]
 position = Vector2( -5187.89, 303.559 )
 
-[node name="Penguin25" parent="Enemies" index="12" instance=ExtResource( 3 )]
+[node name="Penguin25" parent="Enemies" index="12" instance=ExtResource( 2 )]
 position = Vector2( 762.079, -2332.59 )
 
-[node name="Penguin26" parent="Enemies" index="13" instance=ExtResource( 3 )]
+[node name="Penguin26" parent="Enemies" index="13" instance=ExtResource( 2 )]
 position = Vector2( 324.126, -2530.64 )
 
-[node name="Penguin27" parent="Enemies" index="14" instance=ExtResource( 3 )]
+[node name="Penguin27" parent="Enemies" index="14" instance=ExtResource( 2 )]
 position = Vector2( -99.8784, -2723.12 )
 
-[node name="Bird23" parent="Enemies" index="15" instance=ExtResource( 14 )]
+[node name="Bird23" parent="Enemies" index="15" instance=ExtResource( 8 )]
 position = Vector2( 561.234, -2882.12 )
 
-[node name="Penguin28" parent="Enemies" index="16" instance=ExtResource( 3 )]
+[node name="Penguin28" parent="Enemies" index="16" instance=ExtResource( 2 )]
 position = Vector2( -3802.49, -2007.73 )
 
-[node name="Penguin29" parent="Enemies" index="17" instance=ExtResource( 3 )]
+[node name="Penguin29" parent="Enemies" index="17" instance=ExtResource( 2 )]
 position = Vector2( -3473.89, -1819.57 )
 
-[node name="Bird24" parent="Enemies" index="18" instance=ExtResource( 14 )]
+[node name="Bird24" parent="Enemies" index="18" instance=ExtResource( 8 )]
 position = Vector2( 9874.01, -863.878 )
 
-[node name="Penguin30" parent="Enemies" index="19" instance=ExtResource( 3 )]
+[node name="Penguin30" parent="Enemies" index="19" instance=ExtResource( 2 )]
 position = Vector2( 7018.58, -674.642 )
 
-[node name="Penguin31" parent="Enemies" index="20" instance=ExtResource( 3 )]
+[node name="Penguin31" parent="Enemies" index="20" instance=ExtResource( 2 )]
 position = Vector2( 6665.47, -684.451 )
 
-[node name="Penguin32" parent="Enemies" index="21" instance=ExtResource( 3 )]
+[node name="Penguin32" parent="Enemies" index="21" instance=ExtResource( 2 )]
 position = Vector2( 10534.8, -973.796 )
 
-[node name="Penguin33" parent="Enemies" index="22" instance=ExtResource( 3 )]
+[node name="Penguin33" parent="Enemies" index="22" instance=ExtResource( 2 )]
 position = Vector2( 10554.5, -1380.85 )
 
-[node name="Penguin34" parent="Enemies" index="23" instance=ExtResource( 3 )]
+[node name="Penguin34" parent="Enemies" index="23" instance=ExtResource( 2 )]
 position = Vector2( 10525, -1753.57 )
 
 [node name="theme" parent="AudioPlayer" index="0"]
