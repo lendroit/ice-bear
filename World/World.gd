@@ -45,3 +45,6 @@ func end_dialog():
 func _play_theme():
 	theme.stream = theme_sound
 	theme.play()
+
+func add_bird_shot(shot):
+	self.add_child(shot)

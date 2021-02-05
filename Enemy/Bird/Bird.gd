@@ -1,5 +1,9 @@
 extends "res://Enemy/GenericEnemy.gd"
 
+class_name Bird
+
+signal bird_shot
+
 onready var shoot_timer = $ShootTimer
 
 var possible_shoot_timer_durations = [0.7, 0.85, 1]
@@ -19,12 +23,12 @@ func _ready():
 
 func shoot():
 	var b = Glaire.instance()
-	owner.add_child(b)
 	b.position = self.position
 	b.velocity = self.velocity
 	b.velocity.x = 0
 	b.velocity.y += spit_velocity
 	b.gravity = EngineParameters.GRAVITY
+	emit_signal("bird_shot", b)
 
 func _on_ShootTimer_timeout():
 	reset_shoot_timer()
