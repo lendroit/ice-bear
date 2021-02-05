@@ -22,13 +22,9 @@ func _ready():
 	reset_shoot_timer()
 
 func shoot():
-	var b = Glaire.instance()
-	b.position = self.position
-	b.velocity = self.velocity
-	b.velocity.x = 0
-	b.velocity.y += spit_velocity
-	b.gravity = EngineParameters.GRAVITY
-	emit_signal("bird_shot", b)
+	var new_shit = Glaire.instance()
+	new_shit.position = self.position
+	emit_signal("bird_shot", new_shit)
 
 func _on_ShootTimer_timeout():
 	reset_shoot_timer()

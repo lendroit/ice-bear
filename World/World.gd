@@ -1,6 +1,7 @@
 extends Node2D
 
 var enemy_death_particles = preload("res://Particles/EnemyDeathParticles.tscn")
+var shit_explosion_particles = preload("res://Particles/ShitExplosion.tscn")
 var theme_sound = preload("res://assets/sound/theme.wav")
 
 onready var dialog_handler = $CanvasLayer/DialogManager
@@ -15,6 +16,8 @@ func _ready():
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	for enemy in enemies:
 		enemy.connect("died", self, "add_explosion")
+		if enemy is Bird:
+			enemy.connect("bird_shot", self, "add_bird_shot")
 	
 	var friends = get_tree().get_nodes_in_group("friend")
 	for friend in friends:
@@ -48,3 +51,11 @@ func _play_theme():
 
 func add_bird_shot(shot):
 	self.add_child(shot)
+	shot.connect("shit_exploded", self, "add_bird_shot_explosion")
+
+
+func add_bird_shot_explosion(shot):
+	var particles = shit_explosion_particles.instance()
+	particles.position = shot.position
+	self.add_child(particles)
+	particles.emitting = true

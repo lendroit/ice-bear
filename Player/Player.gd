@@ -27,7 +27,7 @@ var orientation = 1
 var ready_to_shoot := true
 var hooked_node
 
-var Glaire = preload("res://Player/Glaire.tscn")
+var glaire_scene = preload("res://Player/Glaire.tscn")
 var beaver_projectile = preload("res://Player/BeaverProjectile.tscn")
 
 func reset_shoot_timer():
@@ -37,7 +37,7 @@ func reset_shoot_timer():
 func shoot():
 	ready_to_shoot = false
 	reset_shoot_timer()
-	var b = Glaire.instance()
+	var b = glaire_scene.instance()
 	owner.add_child(b)
 	b.position = self.position + glaire_muzzle.position
 	b.velocity = self.velocity
@@ -218,6 +218,8 @@ func _on_HookPositionTween_tween_all_completed():
 
 
 func _on_HurtBox_body_entered(body):
+	if(body is Shit):
+		player_hurt()
 	if(body is Water):
 		player_death()
 	if(body is VictoryZone):
