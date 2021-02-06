@@ -1,18 +1,11 @@
 tool
 extends Control
 
-export (int) var current_step = 0 setget set_current_step
+export (int) var current_step = 0 setget _set_current_step
 
 signal end
 
 var is_active = false
-
-func set_current_step(new_current_step):
-	current_step = new_current_step
-	print_screen(current_step)
-
-func _ready():
-	hide()
 
 func hide():
 	current_step = 0
@@ -48,3 +41,10 @@ func _input(event):
 			emit_signal("end")
 		else:
 			print_screen(current_step)
+
+func _set_current_step(new_current_step):
+	current_step = new_current_step
+	print_screen(current_step)
+
+func _ready():
+	hide()
