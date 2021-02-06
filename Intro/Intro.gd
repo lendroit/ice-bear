@@ -2,17 +2,11 @@ extends Control
 
 var World = preload("res://World/World.tscn")
 
+onready var dialog_iterator = $DialogIterator
+
 func _ready():
-	var _connect_error = $DialogIterator.connect("end", self, "start_game")
-	$DialogIterator.start()
+	var _connect_error = dialog_iterator.connect("end", self, "start_game")
+	dialog_iterator.start()
 
 func start_game():
 	var _change_scene_error = get_tree().change_scene_to(World)
-
-#func _input(event):
-#	if event.is_action_pressed("ui_accept"):
-#		get_tree().change_scene_to(World)
-#		return
-#	if event is InputEventScreenTouch:
-#		get_tree().change_scene_to(World)
-#		return
