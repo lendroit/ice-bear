@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Enemy/GenericEnemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemy/Bird/Bird.gd" type="Script" id=2]
@@ -13,6 +13,22 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="Animation" id=2]
+resource_name = "StartShitting"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.7, 0.7 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+}
+
 [node name="Bird" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
@@ -23,4 +39,7 @@ frames = SubResource( 1 )
 flip_h = true
 
 [node name="ShootTimer" type="Timer" parent="." index="7"]
+
+[node name="ShootAnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+anims/StartShitting = SubResource( 2 )
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]

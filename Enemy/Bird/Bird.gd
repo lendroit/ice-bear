@@ -22,6 +22,7 @@ func _ready():
 	reset_shoot_timer()
 
 func shoot():
+	$ShootAnimationPlayer.play("StartShitting")
 	var new_shit = Shit.instance()
 	new_shit.position = self.position
 	emit_signal("bird_shot", new_shit)
