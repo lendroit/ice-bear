@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Enemy/EnemyShit.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/EnemyShit.png" type="Texture" id=2]
@@ -6,6 +6,22 @@
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 6.31215
 height = 10.3429
+
+[sub_resource type="Animation" id=2]
+resource_name = "Appear"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0.0229739, 0.022974 ) ]
+}
 
 [node name="EnemyShit" type="RigidBody2D"]
 collision_layer = 0
@@ -19,4 +35,8 @@ shape = SubResource( 1 )
 scale = Vector2( 0.0229739, 0.022974 )
 texture = ExtResource( 2 )
 offset = Vector2( 8.5, -2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Appear"
+anims/Appear = SubResource( 2 )
 [connection signal="body_entered" from="." to="." method="_on_EnemyGlaire_body_entered"]
