@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Enemy/EnemyGlaire.gd" type="Script" id=1]
-[ext_resource path="res://Enemy/EnemyGlaire.png" type="Texture" id=2]
+[ext_resource path="res://Enemy/EnemyShit.gd" type="Script" id=1]
+[ext_resource path="res://Enemy/EnemyShit.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 6.31215
 height = 10.3429
 
-[node name="EnemyGlaire" type="RigidBody2D"]
+[node name="EnemyShit" type="RigidBody2D"]
 collision_layer = 0
 collision_mask = 16387
 script = ExtResource( 1 )

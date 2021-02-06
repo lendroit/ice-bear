@@ -8,7 +8,7 @@ onready var shoot_timer = $ShootTimer
 
 var possible_shoot_timer_durations = [0.7, 0.85, 1]
 
-var Glaire = preload("res://Enemy/EnemyGlaire.tscn")
+var Shit = preload("res://Enemy/EnemyShit.tscn")
 export var spit_velocity = 650
 
 func upd_shoot_timer_duration():
@@ -22,7 +22,7 @@ func _ready():
 	reset_shoot_timer()
 
 func shoot():
-	var new_shit = Glaire.instance()
+	var new_shit = Shit.instance()
 	new_shit.position = self.position
 	emit_signal("bird_shot", new_shit)
 

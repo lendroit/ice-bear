@@ -47,7 +47,7 @@ _global_script_classes=[ {
 "base": "RigidBody2D",
 "class": "Shit",
 "language": "GDScript",
-"path": "res://Enemy/EnemyGlaire.gd"
+"path": "res://Enemy/EnemyShit.gd"
 }, {
 "base": "Area2D",
 "class": "Snake",
