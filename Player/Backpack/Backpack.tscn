@@ -20,7 +20,6 @@ animations = [ {
 [node name="Backpack" type="AnimatedSprite"]
 position = Vector2( -8, -19 )
 scale = Vector2( 0.467, 0.467 )
-z_index = 1
 frames = SubResource( 1 )
 script = ExtResource( 6 )
 
