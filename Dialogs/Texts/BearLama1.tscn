@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://Dialogs/PortraitAndText.tscn" type="PackedScene" id=1]
-
-[node name="PortraitAndText" instance=ExtResource( 1 )]
