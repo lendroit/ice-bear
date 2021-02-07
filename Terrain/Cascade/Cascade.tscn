@@ -30,6 +30,8 @@ uniform float speed = 1.0;
 uniform float flow_gaps : hint_range(0.0, 1.0) = 0.33;
 uniform float highlight_width : hint_range(0.0, 0.3) = 0.02;
 
+uniform float bottom_foam_threshold = 0.05;
+
 void fragment()
 {
 	// Get the two noise textures and make them move on the y axis. The gaps move twice as fast as the refraction, but you can tweak this by changing (speed * 0.5)
@@ -76,13 +78,16 @@ void fragment()
 	// Use the same mask as for the gaps for left and right edge.
 	vec2 vertical_edge_mask = gap_mask - 0.5;
 	
+	// Adding foam to the botttom
+	color = mix(vec4(1.0), color, step(UV.y + water_edge.y * 0.1, 1.0 - bottom_foam_threshold));  // Bottom foam
+	
 	// Apply the new masks to the edges. This will make the wobble effect.
 	
 	//color.a = mix(0.0, color.a, step(UV.x + vertical_edge_mask.x * 0.2, 0.995)); // Right edge
 	//color.a = mix(color.a, 0.0, step(UV.x - vertical_edge_mask.x * 0.2, 0.005)); // Left edge
 	
-	color.a = mix(0.0, color.a, step(UV.y + water_edge.y * 0.1, 0.995));  //Bottom edge
-	//color.a = mix(color.a, 0.0, step(UV.y - water_edge.y * 0.05, 0.005)); //Top edge
+	//color.a = mix(0.0, color.a, step(UV.y + water_edge.y * 0.05, 0.997)); // Bottom edge
+	//color.a = mix(color.a, 0.0, step(UV.y - water_edge.y * 0.05, 0.005)); // Top edge
 	
 	COLOR = color;
 }"
@@ -108,7 +113,7 @@ noise = SubResource( 4 )
 [sub_resource type="ShaderMaterial" id=6]
 shader = SubResource( 1 )
 shader_param/scale = Vector2( 1, 1 )
-shader_param/zoom = 2.0
+shader_param/zoom = 12.676
 shader_param/gap_stretch = Vector2( 0.8, 0.05 )
 shader_param/refraction_stretch = Vector2( 2, 0.8 )
 shader_param/refraction_strength = 0.02
@@ -117,12 +122,12 @@ shader_param/water_highlight = Color( 1, 1, 1, 0.3 )
 shader_param/speed = 1.2
 shader_param/flow_gaps = 0.33
 shader_param/highlight_width = 0.02
+shader_param/bottom_foam_threshold = 0.025
 shader_param/refraction_map = SubResource( 3 )
 shader_param/water_mask = SubResource( 5 )
 
 [node name="Cascade" type="Sprite"]
 material = SubResource( 6 )
-position = Vector2( 0, -2.14577e-06 )
 scale = Vector2( 1, 4.25 )
 texture = ExtResource( 2 )
 normal_map = ExtResource( 2 )
