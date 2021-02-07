@@ -15,11 +15,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Portrait" type="TextureRect" parent="."]
+margin_left = 4.0
+margin_right = 1028.0
+margin_bottom = 1080.0
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="DialogBorder" type="ColorRect" parent="."]
-margin_left = 822.473
-margin_top = 299.747
-margin_right = 1815.47
-margin_bottom = 831.747
+margin_left = 954.0
+margin_top = 300.0
+margin_right = 1815.0
+margin_bottom = 832.0
 color = Color( 0, 0.0468214, 0.273438, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -33,12 +42,6 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 align = 1
 valign = 1
 autowrap = true
-
-[node name="Portrait" type="TextureRect" parent="."]
-margin_left = 4.0
-margin_right = 1028.0
-margin_bottom = 1080.0
-stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
