@@ -26,5 +26,6 @@ scale_curve = SubResource( 2 )
 emitting = false
 lifetime = 0.5
 one_shot = true
+explosiveness = 1.0
 process_material = SubResource( 3 )
 texture = ExtResource( 1 )
