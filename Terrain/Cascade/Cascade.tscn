@@ -77,11 +77,11 @@ void fragment()
 	vec2 vertical_edge_mask = gap_mask - 0.5;
 	
 	// Apply the new masks to the edges. This will make the wobble effect.
-	color.a = mix(0.0, color.a, step(UV.x + vertical_edge_mask.x * 0.2, 0.92)); // Right edge
-	color.a = mix(color.a, 0.0, step(UV.x - vertical_edge_mask.x * 0.2, 0.08)); // Left edge
+	color.a = mix(0.0, color.a, step(UV.x + vertical_edge_mask.x * 0.2, 0.99)); // Right edge
+	color.a = mix(color.a, 0.0, step(UV.x - vertical_edge_mask.x * 0.2, 0.01)); // Left edge
 	
-	color.a = mix(0.0, color.a, step(UV.y + water_edge.y * 0.1, 0.95));  //Bottom edge
-	color.a = mix(color.a, 0.0, step(UV.y - water_edge.y * 0.05, 0.05)); //Top edge
+	color.a = mix(0.0, color.a, step(UV.y + water_edge.y * 0.1, 0.97));  //Bottom edge
+	color.a = mix(color.a, 0.0, step(UV.y - water_edge.y * 0.05, 0.03)); //Top edge
 	
 	COLOR = color;
 }"
@@ -107,7 +107,7 @@ noise = SubResource( 4 )
 [sub_resource type="ShaderMaterial" id=6]
 shader = SubResource( 1 )
 shader_param/scale = Vector2( 1, 1 )
-shader_param/zoom = 0.943874
+shader_param/zoom = 10.868
 shader_param/gap_stretch = Vector2( 0.8, 0.05 )
 shader_param/refraction_stretch = Vector2( 2, 0.8 )
 shader_param/refraction_strength = 0.02
@@ -121,7 +121,8 @@ shader_param/water_mask = SubResource( 5 )
 
 [node name="Cascade" type="Sprite"]
 material = SubResource( 6 )
-scale = Vector2( 2.68369, 4.23585 )
+position = Vector2( 0, -2.14577e-06 )
+scale = Vector2( 0.5, 1.125 )
 texture = ExtResource( 2 )
 normal_map = ExtResource( 2 )
 script = ExtResource( 1 )
