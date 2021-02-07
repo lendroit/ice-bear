@@ -15,12 +15,12 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 9.42656, 14.3904 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=5]
 
 [sub_resource type="Animation" id=4]
 resource_name = "Idle"
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 length = 1.5
 loop = true
 tracks/0/type = "value"
@@ -74,7 +74,7 @@ collision_layer = 0
 [node name="LeftWallCollider" type="CollisionShape2D" parent="LeftWallDetector"]
 position = Vector2( -60, -9 )
 scale = Vector2( 0.5, 0.9 )
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 
 [node name="RightWallDetector" type="Area2D" parent="."]
 collision_layer = 0
@@ -82,13 +82,13 @@ collision_layer = 0
 [node name="RightWallCollider" type="CollisionShape2D" parent="RightWallDetector"]
 position = Vector2( 60, -9 )
 scale = Vector2( 0.5, 0.9 )
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 
 [node name="WalkingTimer" type="Timer" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Idle = SubResource( 4 )
-anims/Walking = SubResource( 5 )
+anims/Walking = SubResource( 6 )
 
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 2147483656

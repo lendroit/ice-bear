@@ -23,6 +23,7 @@ __meta__ = {
 [node name="DialogIterator" parent="." instance=ExtResource( 3 )]
 
 [node name="1" type="Control" parent="DialogIterator"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
