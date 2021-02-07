@@ -86,7 +86,7 @@ void fragment()
 	//color.a = mix(0.0, color.a, step(UV.x + vertical_edge_mask.x * 0.2, 0.995)); // Right edge
 	//color.a = mix(color.a, 0.0, step(UV.x - vertical_edge_mask.x * 0.2, 0.005)); // Left edge
 	
-	//color.a = mix(0.0, color.a, step(UV.y + water_edge.y * 0.05, 0.997)); // Bottom edge
+	color.a = mix(0.0, color.a, step(UV.y + water_edge.y * 0.05, 1.0 - bottom_foam_threshold / 3.0)); // Bottom edge
 	//color.a = mix(color.a, 0.0, step(UV.y - water_edge.y * 0.05, 0.005)); // Top edge
 	
 	COLOR = color;
@@ -113,7 +113,7 @@ noise = SubResource( 4 )
 [sub_resource type="ShaderMaterial" id=6]
 shader = SubResource( 1 )
 shader_param/scale = Vector2( 1, 1 )
-shader_param/zoom = 12.676
+shader_param/zoom = 4.31695
 shader_param/gap_stretch = Vector2( 0.8, 0.05 )
 shader_param/refraction_stretch = Vector2( 2, 0.8 )
 shader_param/refraction_strength = 0.02
@@ -128,7 +128,7 @@ shader_param/water_mask = SubResource( 5 )
 
 [node name="Cascade" type="Sprite"]
 material = SubResource( 6 )
-scale = Vector2( 1, 4.25 )
+scale = Vector2( 1, 4.5 )
 texture = ExtResource( 2 )
 normal_map = ExtResource( 2 )
 script = ExtResource( 1 )
