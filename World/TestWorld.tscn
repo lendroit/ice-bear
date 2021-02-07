@@ -27,7 +27,7 @@ position = Vector2( -72, -128 )
 tile_data = PoolIntArray( -589825, 0, 0, -655360, 0, 0, -524289, 1, 0, -589824, 1, 0, -2, 0, 0, -1, 2, 0, -65536, 2, 0, 65534, 1, 0, 65535, 1, 0, 0, 1, 0 )
 
 [node name="Cascade" parent="." index="6" instance=ExtResource( 11 )]
-position = Vector2( 0, -288 )
+position = Vector2( 0, -280 )
 z_index = 2
 
 [node name="HookNode" parent="Hooks" index="0" instance=ExtResource( 2 )]
