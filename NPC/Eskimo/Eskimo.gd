@@ -17,7 +17,8 @@ var direction := Vector2.RIGHT
 enum {
 	IDLE,
 	NEW_DIRECTION,
-	WALK
+	WALK,
+	WAVING
 }
 
 var state = WALK
@@ -36,6 +37,8 @@ func _process(_delta):
 			state = WALK
 		WALK:
 			_walk()
+		WAVING:
+			_stop_walking()
 
 func _physics_process(delta):
 	velocity.y += EngineParameters.GRAVITY * delta
@@ -48,8 +51,11 @@ func _walk():
 	velocity.x = lerp(velocity.x, speed * direction.x, acceleration)
 	animation_player.play("Walking")
 
-func _idle():
+func _stop_walking():
 	velocity.x = lerp(velocity.x, Vector2.ZERO.x, friction)
+
+func _idle():
+	_stop_walking()
 	animation_player.play("Idle")
 
 func _flip():
@@ -79,3 +85,13 @@ func _on_WalkingTimer_timeout():
 			state = WALK
 		WALK:
 			state = IDLE
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "Waving":
+		state = IDLE
+
+
+func _on_Area2D_body_entered(body):
+	if state != WAVING:
+		animation_player.play("Waving")
+		state = WAVING
