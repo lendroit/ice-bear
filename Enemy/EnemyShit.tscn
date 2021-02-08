@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Enemy/EnemyShit.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/EnemyShit.png" type="Texture" id=2]
@@ -23,6 +23,46 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0.0229739, 0.022974 ) ]
 }
 
+[sub_resource type="Animation" id=3]
+resource_name = "Death"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.0229739, 0.022974 ), Vector2( 0.06, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 11.7856 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
 [node name="EnemyShit" type="RigidBody2D"]
 collision_layer = 0
 collision_mask = 16387
@@ -32,11 +72,14 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.0229739, 0.022974 )
+position = Vector2( 0, 11.7856 )
+scale = Vector2( 0.06, 1e-05 )
 texture = ExtResource( 2 )
 offset = Vector2( 8.5, -2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Appear"
 anims/Appear = SubResource( 2 )
+anims/Death = SubResource( 3 )
 [connection signal="body_entered" from="." to="." method="_on_EnemyGlaire_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
