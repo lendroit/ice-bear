@@ -20,8 +20,9 @@ func hook():
 
 	var hooks_in_area = reachable_hooks_area.get_overlapping_areas()
 	var upper_hooks = Utils.filter(funcref(self, "keep_upper_hooks"), hooks_in_area)
-	if(upper_hooks.size() == 0):
+	if (upper_hooks.size() == 0):
 		return
+
 	var uppest_hook = Utils.reduce(funcref(self, "get_higher_hook"), upper_hooks, upper_hooks[0])
 	hooked_node = uppest_hook
 	grappling_hook_rope.visible = true
@@ -31,17 +32,18 @@ func hook():
 	hook_position_tween.start()
 
 func draw_hook():
-	if(hooked_node):
-		grappling_hook_rope.visible = true
-		var rope_direction =  (hooked_node.position - player.position)
-		var rope_position = rope_direction/2
-		var rope_angle = rope_direction.angle()
-		var rope_length = rope_direction.length()
-		grappling_hook_rope.position = rope_position
-		grappling_hook_rope.rotation = rope_angle
-		grappling_hook_rope.scale.x = rope_length/1000
-	else:
+	if (!hooked_node):
 		grappling_hook_rope.visible = false
+		return
+
+	grappling_hook_rope.visible = true
+	var rope_direction =  (hooked_node.position - player.position)
+	var rope_position = rope_direction/2
+	var rope_angle = rope_direction.angle()
+	var rope_length = rope_direction.length()
+	grappling_hook_rope.position = rope_position
+	grappling_hook_rope.rotation = rope_angle
+	grappling_hook_rope.scale.x = rope_length/1000
 
 func _on_HookPositionTween_tween_all_completed():
 	hooked_node = null
@@ -50,7 +52,8 @@ func keep_upper_hooks(hook_area: Area2D)->bool:
 	return hook_area.position.y < player.position.y
 
 func get_higher_hook(uppest_hook: Area2D, hook: Area2D)->Area2D:
-	if(uppest_hook.position.y > hook.position.y):
+	if (uppest_hook.position.y > hook.position.y):
 		return hook
+
 	return uppest_hook
 
