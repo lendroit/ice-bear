@@ -4,8 +4,11 @@ onready var reachable_hooks_area = $ReachableHooksArea
 onready var grappling_hook_rope = $GrapplingHookRope
 onready var hook_position_tween = $HookPositionTween
 
-var hooked_node
+# PUBLIC
 var hook_direction = Vector2.ZERO
+####
+
+var hooked_node
 var player
 
 func custom_init(parent):
