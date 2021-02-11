@@ -39,10 +39,7 @@ func shoot():
 	reset_shoot_timer()
 	var b = glaire_scene.instance()
 	owner.add_child(b)
-	b.position = self.position + glaire_muzzle.position
-	b.velocity = self.velocity
-	b.velocity.x += orientation * PlayerParameters.PLAYER_SPIT_VELOCITY
-	b.gravity = EngineParameters.GRAVITY
+	b.custom_init(self, glaire_muzzle, orientation)
 
 func build():
 	ready_to_shoot = false
