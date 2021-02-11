@@ -1,7 +1,7 @@
 tool
 extends Node2D
 
-export (int) var size = 3 setget set_size
+export (float) var size = 3 setget set_size
 
 onready var cascade_sprite = $CascadeSprite
 onready var end_of_cascade = $CascadeSprite/EndOfCascade
