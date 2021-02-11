@@ -5,7 +5,7 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 29.7378
 
-[node name="HookNode" type="Area2D"]
+[node name="HookHandle" type="Area2D"]
 collision_layer = 524288
 collision_mask = 0
 

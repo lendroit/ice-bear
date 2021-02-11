@@ -9,7 +9,7 @@
 [ext_resource path="res://Friends/Snake.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Enemy/Bird/Bird.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Friends/Beaver.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Terrain/Hook/HookNode.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Terrain/Hook/HookHandle.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Terrain/Props/Igloo.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Terrain/Props/Rock2.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Terrain/Props/Rock1.tscn" type="PackedScene" id=13]
@@ -45,34 +45,34 @@ position = Vector2( 6128, -2120 )
 [node name="BuildablePlatform4" parent="plat_bois" index="2" instance=ExtResource( 6 )]
 position = Vector2( 10872, -2056 )
 
-[node name="HookNode" parent="Hooks" index="0" instance=ExtResource( 10 )]
+[node name="HookHandle" parent="Hooks" index="0" instance=ExtResource( 10 )]
 position = Vector2( -1427.19, -2635.34 )
 
-[node name="HookNode2" parent="Hooks" index="1" instance=ExtResource( 10 )]
+[node name="HookHandle2" parent="Hooks" index="1" instance=ExtResource( 10 )]
 position = Vector2( -1411.84, -3085.04 )
 
-[node name="HookNode3" parent="Hooks" index="2" instance=ExtResource( 10 )]
+[node name="HookHandle3" parent="Hooks" index="2" instance=ExtResource( 10 )]
 position = Vector2( -1778.5, -2370.65 )
 
-[node name="HookNode4" parent="Hooks" index="3" instance=ExtResource( 10 )]
+[node name="HookHandle4" parent="Hooks" index="3" instance=ExtResource( 10 )]
 position = Vector2( 12025.3, -2171.75 )
 
-[node name="HookNode5" parent="Hooks" index="4" instance=ExtResource( 10 )]
+[node name="HookHandle5" parent="Hooks" index="4" instance=ExtResource( 10 )]
 position = Vector2( 12023, -2489.84 )
 
-[node name="HookNode6" parent="Hooks" index="5" instance=ExtResource( 10 )]
+[node name="HookHandle6" parent="Hooks" index="5" instance=ExtResource( 10 )]
 position = Vector2( 6950.08, -2539.31 )
 
-[node name="HookNode7" parent="Hooks" index="6" instance=ExtResource( 10 )]
+[node name="HookHandle7" parent="Hooks" index="6" instance=ExtResource( 10 )]
 position = Vector2( 7802.36, -3202.84 )
 
-[node name="HookNode8" parent="Hooks" index="7" instance=ExtResource( 10 )]
+[node name="HookHandle8" parent="Hooks" index="7" instance=ExtResource( 10 )]
 position = Vector2( -1045.98, -3586.63 )
 
-[node name="HookNode9" parent="Hooks" index="8" instance=ExtResource( 10 )]
+[node name="HookHandle9" parent="Hooks" index="8" instance=ExtResource( 10 )]
 position = Vector2( 100.445, -4113.91 )
 
-[node name="HookNode10" parent="Hooks" index="9" instance=ExtResource( 10 )]
+[node name="HookHandle10" parent="Hooks" index="9" instance=ExtResource( 10 )]
 position = Vector2( -1129.86, -2364.32 )
 
 [node name="Lama" parent="Friends" index="0" instance=ExtResource( 5 )]
