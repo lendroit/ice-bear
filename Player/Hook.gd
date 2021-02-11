@@ -37,13 +37,8 @@ func draw_hook():
 		return
 
 	grappling_hook_rope.visible = true
-	var rope_direction =  (hooked_node.position - player.position)
-	var rope_position = rope_direction/2
-	var rope_angle = rope_direction.angle()
-	var rope_length = rope_direction.length()
-	grappling_hook_rope.position = rope_position
-	grappling_hook_rope.rotation = rope_angle
-	grappling_hook_rope.scale.x = rope_length/1000
+	grappling_hook_rope.points[1] = hooked_node.global_position - self.global_position
+
 
 func _on_HookPositionTween_tween_all_completed():
 	hooked_node = null
