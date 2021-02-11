@@ -15,7 +15,7 @@ onready var glaire_muzzle = $GlaireMuzzle
 onready var beaver_muzzle = $BeaverMuzzle
 onready var shoot_timer = $ShootTimer
 onready var backpack = $SpriteContainer/Body/Backpack
-onready var hook_node = $Hook
+onready var hook_muzzle = $Hook
 
 var velocity = Vector2.ZERO
 var jump_count = 0
@@ -28,7 +28,7 @@ var glaire_scene = preload("res://Player/Glaire.tscn")
 var beaver_projectile = preload("res://Player/BeaverProjectile.tscn")
 
 func _ready():
-	hook_node.custom_init(self)
+	hook_muzzle.custom_init(self)
 
 func reset_shoot_timer():
 	shoot_timer.set_wait_time(PlayerParameters.PLAYER_SHOOT_TIMER_TIME)
@@ -49,9 +49,9 @@ func build():
 	new_beaver_projectile.custom_init(self, beaver_muzzle, orientation)
 
 func hook():
-	hook_node.hook()
-	if hook_node.hook_direction.x != 0:
-		orientation = sign(hook_node.hook_direction.x)
+	hook_muzzle.hook()
+	if hook_muzzle.hook_direction.x != 0:
+		orientation = sign(hook_muzzle.hook_direction.x)
 
 func get_input():
 	direction = 0
@@ -127,7 +127,7 @@ func _physics_process(delta):
 	if abs(velocity.x) > 5:
 		set_direction(velocity.x)
 
-	hook_node.draw_hook()
+	hook_muzzle.draw_hook()
 
 func player_hurt():
 	PlayerParameters.PLAYER_HEALTH_POINTS -= 1
