@@ -127,15 +127,15 @@ shader_param/bottom_foam_threshold = 0.025
 shader_param/refraction_map = SubResource( 3 )
 shader_param/water_mask = SubResource( 5 )
 
-[sub_resource type="Curve" id=8]
+[sub_resource type="Curve" id=7]
 min_value = 0.25
 max_value = 0.75
 _data = [ Vector2( 0, 0.75 ), 0.0, 0.0, 0, 0, Vector2( 0.995968, 0.25 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=9]
-curve = SubResource( 8 )
+[sub_resource type="CurveTexture" id=8]
+curve = SubResource( 7 )
 
-[sub_resource type="ParticlesMaterial" id=7]
+[sub_resource type="ParticlesMaterial" id=9]
 emission_shape = 2
 emission_box_extents = Vector3( 128, 0, 0 )
 flag_disable_z = true
@@ -144,9 +144,9 @@ gravity = Vector3( 0, 98, 0 )
 initial_velocity = 125.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_curve = SubResource( 9 )
+scale_curve = SubResource( 8 )
 
-[node name="Node2D" type="Node2D"]
+[node name="Cascade" type="Node2D"]
 
 [node name="Cascade" type="Sprite" parent="."]
 material = SubResource( 6 )
@@ -160,5 +160,6 @@ position = Vector2( 0, 232 )
 scale = Vector2( 0.5, 0.5 )
 amount = 80
 lifetime = 0.63
-process_material = SubResource( 7 )
+process_material = SubResource( 9 )
 texture = ExtResource( 3 )
+[connection signal="item_rect_changed" from="Cascade" to="Cascade" method="_on_Cascade_item_rect_changed"]
