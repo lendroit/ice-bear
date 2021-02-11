@@ -42,4 +42,8 @@ flip_h = true
 
 [node name="ShootAnimationPlayer" type="AnimationPlayer" parent="." index="8"]
 anims/StartShitting = SubResource( 2 )
+
+[node name="VisibilityNotifier2D" parent="." index="9"]
+position = Vector2( 0, 186.875 )
+scale = Vector2( 1, 19.6875 )
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
