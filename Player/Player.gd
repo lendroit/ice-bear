@@ -37,9 +37,9 @@ func reset_shoot_timer():
 func shoot():
 	ready_to_shoot = false
 	reset_shoot_timer()
-	var b = glaire_scene.instance()
-	owner.add_child(b)
-	b.custom_init(self, glaire_muzzle, orientation)
+	var new_glaire = glaire_scene.instance()
+	owner.add_child(new_glaire)
+	new_glaire.custom_init(self, glaire_muzzle, orientation)
 
 func build():
 	ready_to_shoot = false
