@@ -22,6 +22,11 @@ func _ready():
 	reset_shoot_timer()
 
 func shoot():
+	if (!is_visible_by_player):
+		# Do not shit if player is not around
+		# it creates buggy particles
+		return
+
 	$ShootAnimationPlayer.play("StartShitting")
 	var new_shit = Shit.instance()
 	new_shit.position = self.position

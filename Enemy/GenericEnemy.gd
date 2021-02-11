@@ -21,6 +21,7 @@ onready var hitbox_collider = $HitBox/HitBoxCollider
 var walking := true
 var velocity := Vector2.ZERO
 var direction := Vector2.LEFT
+var is_visible_by_player := false
 
 enum {
 	IDLE,
@@ -103,3 +104,9 @@ func _on_HitBox_area_shape_entered(_area_id, _area, _area_shape, _self_shape):
 	if not (_area is Glaire):
 		return
 	generic_enemy_hurt()
+
+func _on_VisibilityNotifier2D_screen_entered():
+	is_visible_by_player = true
+
+func _on_VisibilityNotifier2D_screen_exited():
+	is_visible_by_player = false
