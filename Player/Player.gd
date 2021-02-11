@@ -50,6 +50,8 @@ func build():
 
 func hook():
 	hook_node.hook()
+	if hook_node.hook_direction.x != 0:
+		orientation = sign(hook_node.hook_direction.x)
 
 func get_input():
 	direction = 0
@@ -126,7 +128,6 @@ func _physics_process(delta):
 		set_direction(velocity.x)
 
 	hook_node.draw_hook()
-	orientation = sign(hook_node.hook_direction.x)
 
 func player_hurt():
 	PlayerParameters.PLAYER_HEALTH_POINTS -= 1
