@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Terrain/Cascade/Cascade.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Terrain/Cascade/white_circle.png" type="Texture" id=3]
+[ext_resource path="res://Terrain/Cascade/CascadeRoot.gd" type="Script" id=4]
 
 [sub_resource type="Shader" id=1]
 code = "/*
@@ -113,8 +114,8 @@ noise = SubResource( 4 )
 
 [sub_resource type="ShaderMaterial" id=6]
 shader = SubResource( 1 )
-shader_param/scale = Vector2( 1, 1 )
-shader_param/zoom = 2.3327
+shader_param/scale = Vector2( 1, 5 )
+shader_param/zoom = 1.6385
 shader_param/gap_stretch = Vector2( 0.8, 0.05 )
 shader_param/refraction_stretch = Vector2( 2, 0.8 )
 shader_param/refraction_strength = 0.02
@@ -146,17 +147,22 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale_curve = SubResource( 8 )
 
-[node name="Cascade" type="Node2D"]
+[node name="CascadeRoot" type="Node2D"]
+script = ExtResource( 4 )
 
 [node name="Cascade" type="Sprite" parent="."]
 material = SubResource( 6 )
-scale = Vector2( 1, 3.625 )
+scale = Vector2( 1, 3 )
 texture = ExtResource( 2 )
 normal_map = ExtResource( 2 )
 script = ExtResource( 1 )
 
+[node name="EndOfCascade" type="Node2D" parent="Cascade"]
+position = Vector2( 0, 64 )
+scale = Vector2( 1, 0.275862 )
+
 [node name="Particles2D" type="Particles2D" parent="."]
-position = Vector2( 0, 232 )
+position = Vector2( 0, 192 )
 scale = Vector2( 0.5, 0.5 )
 amount = 80
 lifetime = 0.63
