@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://Terrain/Cascade/Cascade.gd" type="Script" id=1]
+[ext_resource path="res://Terrain/Cascade/CascadeSprite.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Terrain/Cascade/white_circle.png" type="Texture" id=3]
-[ext_resource path="res://Terrain/Cascade/CascadeRoot.gd" type="Script" id=4]
+[ext_resource path="res://Terrain/Cascade/Cascade.gd" type="Script" id=4]
 
 [sub_resource type="Shader" id=1]
 code = "/*
@@ -150,14 +150,14 @@ scale_curve = SubResource( 8 )
 [node name="CascadeRoot" type="Node2D"]
 script = ExtResource( 4 )
 
-[node name="Cascade" type="Sprite" parent="."]
+[node name="CascadeSprite" type="Sprite" parent="."]
 material = SubResource( 6 )
 scale = Vector2( 1, 3 )
 texture = ExtResource( 2 )
 normal_map = ExtResource( 2 )
 script = ExtResource( 1 )
 
-[node name="EndOfCascade" type="Node2D" parent="Cascade"]
+[node name="EndOfCascade" type="Node2D" parent="CascadeSprite"]
 position = Vector2( 0, 64 )
 scale = Vector2( 1, 0.275862 )
 
@@ -168,4 +168,4 @@ amount = 80
 lifetime = 0.63
 process_material = SubResource( 9 )
 texture = ExtResource( 3 )
-[connection signal="item_rect_changed" from="Cascade" to="Cascade" method="_on_Cascade_item_rect_changed"]
+[connection signal="item_rect_changed" from="CascadeSprite" to="CascadeSprite" method="_on_Cascade_item_rect_changed"]

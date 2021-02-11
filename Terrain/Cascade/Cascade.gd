@@ -1,8 +1,17 @@
 tool
-extends Sprite
+extends Node2D
 
-func _process(_delta):
-	get_material().set_shader_param("zoom", get_viewport_transform().y.y)
+export (int) var size = 3 setget set_size
 
-func _on_Waterfall_item_rect_changed():
-	get_material().set_shader_param("scale", scale)
+onready var cascade_sprite = $CascadeSprite
+onready var end_of_cascade = $CascadeSprite/EndOfCascade
+onready var particles = $Particles2D
+
+func set_size(new_size):
+	size = new_size
+
+	if cascade_sprite && cascade_sprite.scale:
+		cascade_sprite.scale.y = new_size
+
+	if particles && end_of_cascade:
+		particles.global_position = end_of_cascade.global_position
