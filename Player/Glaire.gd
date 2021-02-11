@@ -23,5 +23,5 @@ func _disappear():
 func _on_Glaire_body_entered(_body):
 	_disappear()
 
-func _on_Glaire_area_entered(area):
+func _on_Glaire_area_entered(_area):
 	_disappear()
