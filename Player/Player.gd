@@ -17,7 +17,7 @@ onready var grappling_hook_rope = $GrapplingHookRope
 onready var glaire_muzzle = $GlaireMuzzle
 onready var beaver_muzzle = $BeaverMuzzle
 onready var shoot_timer = $ShootTimer
-onready var backpack = $SpriteContainer/Backpack
+onready var backpack = $SpriteContainer/Body/Backpack
 
 var velocity = Vector2.ZERO
 var jump_count = 0
