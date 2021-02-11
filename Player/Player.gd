@@ -11,13 +11,11 @@ signal player_win
 
 onready var sprite = $SpriteContainer
 onready var animation_player = $SpriteAnimationPlayer
-onready var reachable_hooks_area = $ReachableHooksArea
-onready var hook_position_tween = $HookPositionTween
-onready var grappling_hook_rope = $GrapplingHookRope
 onready var glaire_muzzle = $GlaireMuzzle
 onready var beaver_muzzle = $BeaverMuzzle
 onready var shoot_timer = $ShootTimer
 onready var backpack = $SpriteContainer/Body/Backpack
+onready var hook_node = $Hook
 
 var velocity = Vector2.ZERO
 var jump_count = 0
@@ -25,10 +23,12 @@ var jump_count = 0
 var direction
 var orientation = 1
 var ready_to_shoot := true
-var hooked_node
 
 var glaire_scene = preload("res://Player/Glaire.tscn")
 var beaver_projectile = preload("res://Player/BeaverProjectile.tscn")
+
+func _ready():
+	hook_node.custom_init(self)
 
 func reset_shoot_timer():
 	shoot_timer.set_wait_time(PlayerParameters.PLAYER_SHOOT_TIMER_TIME)
@@ -49,21 +49,7 @@ func build():
 	new_beaver_projectile.custom_init(self, beaver_muzzle, orientation)
 
 func hook():
-	if (!PlayerParameters.PLAYER_CAN_HOOK):
-		return
-
-	var hooks_in_area = reachable_hooks_area.get_overlapping_areas()
-	var upper_hooks = Utils.filter(funcref(self, "keep_upper_hooks"), hooks_in_area)
-	if(upper_hooks.size() == 0):
-		return
-	var uppest_hook = Utils.reduce(funcref(self, "get_higher_hook"), upper_hooks, upper_hooks[0])
-	hooked_node = uppest_hook
-	grappling_hook_rope.visible = true
-
-	var hook_direction = (uppest_hook.position - self.position).normalized()*PlayerParameters.PLAYER_GRAPPLING_HOOK_SPEED
-	hook_position_tween.interpolate_property(self, "velocity", self.velocity, hook_direction, 0.1, Tween.TRANS_LINEAR)
-	hook_position_tween.start()
-	orientation = sign(hook_direction.x)
+	hook_node.hook()
 
 func get_input():
 	direction = 0
@@ -118,23 +104,10 @@ func player_death():
 	print("Tu es mort !")
 	_play_death_sound()
 	emit_signal("player_died")
-	
+
 func player_win():
 	print("Tu as gagné !")
 	emit_signal("player_win")
-
-func draw_hook():
-	if(hooked_node):
-		grappling_hook_rope.visible = true
-		var rope_direction =  (hooked_node.position - self.position)
-		var rope_position = rope_direction/2
-		var rope_angle = rope_direction.angle()
-		var rope_length = rope_direction.length()
-		grappling_hook_rope.position = rope_position
-		grappling_hook_rope.rotation = rope_angle
-		grappling_hook_rope.scale.x = rope_length/1000
-	else:
-		grappling_hook_rope.visible = false
 
 func _physics_process(delta):
 	get_input()
@@ -152,7 +125,8 @@ func _physics_process(delta):
 	if abs(velocity.x) > 5:
 		set_direction(velocity.x)
 
-	draw_hook()
+	hook_node.draw_hook()
+	orientation = sign(hook_node.hook_direction.x)
 
 func player_hurt():
 	PlayerParameters.PLAYER_HEALTH_POINTS -= 1
@@ -179,15 +153,6 @@ func _on_PickupBox_area_entered(area):
 
 func get_direction(other_area: Area2D)->Vector2:
 	return other_area.position - self.position
-
-func keep_upper_hooks(hook_area: Area2D)->bool:
-	return hook_area.position.y < self.position.y
-
-func get_higher_hook(uppest_hook: Area2D, hook: Area2D)->Area2D:
-	if(uppest_hook.position.y > hook.position.y):
-		return hook
-	return uppest_hook
-
 func _on_Timer_timeout():
 	ready_to_shoot = true
 
@@ -200,16 +165,11 @@ func _play_death_sound():
 	# var random_index = randi()%death_sounds.size()
 	death.stream = PlayerParameters.PLAYER_DEATH_SOUNDS[1]#[random_index]
 	death.play()
-	
+
 func _play_beaver_sound():
 	var random_index = randi()%PlayerParameters.PLAYER_BEAVER_TOSS_SOUNDS.size()
 	beaver.stream = PlayerParameters.PLAYER_BEAVER_TOSS_SOUNDS[random_index]
 	beaver.play()
-
-func _on_HookPositionTween_tween_all_completed():
-	hooked_node = null
-	pass # Replace with function body.
-
 
 func _on_HurtBox_body_entered(body):
 	if(body is Shit):
