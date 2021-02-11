@@ -12,7 +12,7 @@ func custom_init(shooter, muzzle, orientation: int):
 	self.gravity = EngineParameters.GRAVITY
 	pass
 
-func _process(delta):
+func _physics_process(delta):
 	velocity.y += EngineParameters.GRAVITY / SPIT_DRAG_COEFF * delta
 	position += velocity * delta
 	rotation = velocity.angle()
