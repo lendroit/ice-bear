@@ -47,12 +47,9 @@ func shoot():
 func build():
 	ready_to_shoot = false
 	reset_shoot_timer()
-	var b = beaver_projectile.instance()
-	owner.add_child(b)
-	b.position = self.position + beaver_muzzle.position
-	b.velocity = self.velocity
-	b.velocity.x += orientation * PlayerParameters.PLAYER_SPIT_VELOCITY
-	b.gravity = EngineParameters.GRAVITY
+	var new_beaver_projectile = beaver_projectile.instance()
+	owner.add_child(new_beaver_projectile)
+	new_beaver_projectile.custom_init(self, beaver_muzzle, orientation)
 
 func hook():
 	if (!PlayerParameters.PLAYER_CAN_HOOK):
