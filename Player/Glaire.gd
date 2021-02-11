@@ -17,5 +17,11 @@ func _process(delta):
 	position += velocity * delta
 	rotation = velocity.angle()
 
-func _on_Glaire_body_entered(_body):
+func _disappear():
 	queue_free()
+
+func _on_Glaire_body_entered(_body):
+	_disappear()
+
+func _on_Glaire_area_entered(area):
+	_disappear()
