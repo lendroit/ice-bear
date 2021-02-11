@@ -91,7 +91,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		state = IDLE
 
 
-func _on_Area2D_body_entered(body):
+func _on_Area2D_body_entered(_body):
 	if state != WAVING:
 		animation_player.play("Waving")
 		state = WAVING

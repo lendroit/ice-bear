@@ -14,14 +14,14 @@ func _ready():
 	contact_monitor = true
 	contacts_reported = 1
 
-func _integrate_forces(state):
+func _integrate_forces(_state):
 	add_force(Vector2.ZERO, SPEED * Vector2.DOWN)
 
 func _disable_shit():
 	set_deferred("mode", RigidBody2D.MODE_STATIC)
 	collision_shape.set_deferred("disabled", true)
 
-func _on_EnemyGlaire_body_entered(body):
+func _on_EnemyGlaire_body_entered(_body):
 	emit_signal("shit_exploded", self)
 	_disable_shit()
 	animation_player.play("Death")
