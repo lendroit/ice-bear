@@ -60,7 +60,6 @@ func generic_enemy_hurt():
 func generic_enemy_death():
 	# We use the hitbox collider's position because we're
 	# sure it's going to be centered
-	print(hitbox_collider.global_position)
 	emit_signal("died", hitbox_collider.global_position)
 	queue_free()
 
