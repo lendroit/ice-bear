@@ -3,4 +3,4 @@ extends "res://Friends/Friend.gd"
 class_name Kangaroo
 
 func _ready():
-	friend_name = "kangaroo"
+	friend_name = FriendsParameters.ENUM.kangaroo

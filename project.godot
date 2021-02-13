@@ -89,6 +89,7 @@ config/icon="res://Dialogs/little bear.png"
 EngineParameters="*res://Singletons/EngineParameters.gd"
 PlayerParameters="*res://Singletons/PlayerParameters.gd"
 Utils="*res://Singletons/Utils.gd"
+FriendsParameters="*res://Singletons/FriendsParameters.gd"
 
 [display]
 

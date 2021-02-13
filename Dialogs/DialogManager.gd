@@ -1,17 +1,16 @@
 tool
 extends Control
 
-export(String, "lama", "beaver", "kangaroo", "snake", "crow") var current_dialog_name setget set_current_dialog
+export(FriendsParameters.ENUM) var current_dialog_name setget set_current_dialog
 
 signal end
 
 onready var friends_mapping = {
-	# TODO use enum for keys
-	"lama": $Lama,
-	"beaver": $Beaver,
-	"kangaroo": $Kangaroo,
-	"snake": $Snake,
-	"crow": $Crow,
+	FriendsParameters.ENUM.lama: $Lama,
+	FriendsParameters.ENUM.beaver: $Beaver,
+	FriendsParameters.ENUM.kangaroo: $Kangaroo,
+	FriendsParameters.ENUM.snake: $Snake,
+	FriendsParameters.ENUM.crow: $Crow,
 }
 
 func _ready():
@@ -22,10 +21,10 @@ func _hide_all_friends():
 	for friend in friends_mapping.values():
 		friend.visible = false
 
-func start(dialog_name: String):
+func start(dialog_name: int):
 	_hide_all_friends()
 
-	var current_friend = friends_mapping[dialog_name]
+	var current_friend = friends_mapping[FriendsParameters.ENUM.beaver]
 	if current_friend:
 		current_friend.visible = true
 		current_friend.start()
@@ -36,5 +35,5 @@ func start(dialog_name: String):
 func end_dialog():
 	emit_signal("end")
 
-func set_current_dialog(new_dialog: String):
+func set_current_dialog(new_dialog: int):
 	start(new_dialog)

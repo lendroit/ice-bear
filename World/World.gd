@@ -38,7 +38,7 @@ func add_explosion(position: Vector2):
 	d.emitting = true
 	pass
 
-func open_dialog(friend_name: String):
+func open_dialog(friend_name: int):
 	get_tree().paused = true
 	dialog_handler.start(friend_name)
 	
