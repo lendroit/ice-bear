@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/little kangaroo.png-b5b2e6d23cc1fd8230e97332d430bb7e.stex"
+path="res://.import/little beaver.png-cbcd8c353f93a55bcd0c650e9a3963e2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Dialogs/little kangaroo.png"
-dest_files=[ "res://.import/little kangaroo.png-b5b2e6d23cc1fd8230e97332d430bb7e.stex" ]
+source_file="res://Dialogs/Portraits/little beaver.png"
+dest_files=[ "res://.import/little beaver.png-cbcd8c353f93a55bcd0c650e9a3963e2.stex" ]
 
 [params]
 

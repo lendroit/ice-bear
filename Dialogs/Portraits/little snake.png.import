@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/little lama (1).png-da66aae29af65df5e7f7be4b0cb240d1.stex"
+path="res://.import/little snake.png-02700c2ead84adb6680e83985a183b34.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Dialogs/little lama (1).png"
-dest_files=[ "res://.import/little lama (1).png-da66aae29af65df5e7f7be4b0cb240d1.stex" ]
+source_file="res://Dialogs/Portraits/little snake.png"
+dest_files=[ "res://.import/little snake.png-02700c2ead84adb6680e83985a183b34.stex" ]
 
 [params]
 

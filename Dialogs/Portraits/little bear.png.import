@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/little beaver.png-fd1f23fe8442dba075a34e5b00f950b5.stex"
+path="res://.import/little bear.png-f7e388881e10d1106e37786d9cbf804e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Dialogs/little beaver.png"
-dest_files=[ "res://.import/little beaver.png-fd1f23fe8442dba075a34e5b00f950b5.stex" ]
+source_file="res://Dialogs/Portraits/little bear.png"
+dest_files=[ "res://.import/little bear.png-f7e388881e10d1106e37786d9cbf804e.stex" ]
 
 [params]
 

@@ -4,7 +4,7 @@
 [ext_resource path="res://Intro/Intro.gd" type="Script" id=2]
 [ext_resource path="res://Dialogs/DialogIterator.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/Roboto-Medium.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://Dialogs/little bear.png" type="Texture" id=5]
+[ext_resource path="res://Dialogs/Portraits/little bear.png" type="Texture" id=5]
 [ext_resource path="res://Intro/Titre_001.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
@@ -21,6 +21,7 @@ __meta__ = {
 }
 
 [node name="DialogIterator" parent="." instance=ExtResource( 3 )]
+current_step = 0
 
 [node name="1" type="Control" parent="DialogIterator"]
 visible = false

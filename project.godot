@@ -82,7 +82,7 @@ _global_script_class_icons={
 
 config/name="Ice Bear"
 run/main_scene="res://Intro/Intro.tscn"
-config/icon="res://Dialogs/little bear.png"
+config/icon="res://Dialogs/Portraits/little bear.png"
 
 [autoload]
 
