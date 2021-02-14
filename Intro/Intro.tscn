@@ -21,7 +21,6 @@ __meta__ = {
 }
 
 [node name="DialogIterator" parent="." instance=ExtResource( 3 )]
-current_step = 0
 
 [node name="1" type="Control" parent="DialogIterator"]
 visible = false
