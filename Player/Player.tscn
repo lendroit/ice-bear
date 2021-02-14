@@ -4,12 +4,12 @@
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Player/Hook.gd" type="Script" id=3]
 [ext_resource path="res://Player/Backpack/Backpack.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Player/ours_arm_L.png" type="Texture" id=8]
-[ext_resource path="res://Player/ours_body.png" type="Texture" id=9]
-[ext_resource path="res://Player/ours_leg_R.png" type="Texture" id=10]
-[ext_resource path="res://Player/ours_head.png" type="Texture" id=11]
-[ext_resource path="res://Player/ours_arm_R.png" type="Texture" id=12]
-[ext_resource path="res://Player/ours_leg_L.png" type="Texture" id=13]
+[ext_resource path="res://Player/Assets/ours_arm_L.png" type="Texture" id=8]
+[ext_resource path="res://Player/Assets/ours_body.png" type="Texture" id=9]
+[ext_resource path="res://Player/Assets/ours_leg_R.png" type="Texture" id=10]
+[ext_resource path="res://Player/Assets/ours_head.png" type="Texture" id=11]
+[ext_resource path="res://Player/Assets/ours_arm_R.png" type="Texture" id=12]
+[ext_resource path="res://Player/Assets/ours_leg_L.png" type="Texture" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 13.1715, 55.2245 )
@@ -461,6 +461,7 @@ texture = ExtResource( 1 )
 texture_mode = 1
 
 [node name="HookPositionTween" type="Tween" parent="Hook"]
+
 [connection signal="area_shape_entered" from="HurtBox" to="." method="_on_HurtBox_area_shape_entered"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_HurtBox_body_entered"]
 [connection signal="area_entered" from="PickupBox" to="." method="_on_PickupBox_area_entered"]
