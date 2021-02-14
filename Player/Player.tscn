@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Terrain/Hook/rope.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -19,6 +19,22 @@ extents = Vector2( 23.9846, 53.8799 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 25.5175, 52.2606 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "Build"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteContainer/ArmR:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -180.0, -30.0, 33.6541 ]
+}
 
 [sub_resource type="Animation" id=4]
 length = 2.0
@@ -316,6 +332,41 @@ tracks/11/keys = {
 "values": [ 2.36393, -5.45885, 0.435898, 6.39761 ]
 }
 
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "Build"
+
+[sub_resource type="AnimationNodeOneShot" id=15]
+filter_enabled = true
+filters = [ ".", "SpriteContainer/ArmR:position", "SpriteContainer/ArmR:rotation_degrees" ]
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "Walking"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "Walking"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id=12]
+blend_point_0/node = SubResource( 9 )
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource( 10 )
+blend_point_1/pos = 1.0
+blend_point_2/node = SubResource( 11 )
+blend_point_2/pos = 0.0
+
+[sub_resource type="AnimationNodeBlendTree" id=13]
+graph_offset = Vector2( -380.293, -123.7 )
+nodes/Animation/node = SubResource( 14 )
+nodes/Animation/position = Vector2( -90, -10 )
+nodes/Build/node = SubResource( 15 )
+nodes/Build/position = Vector2( 130, -90 )
+nodes/Movement/node = SubResource( 12 )
+nodes/Movement/position = Vector2( -100, -160 )
+nodes/output/position = Vector2( 330, 10 )
+node_connections = [ "Build", 0, "Movement", "Build", 1, "Animation", "output", 0, "Build" ]
+
 [sub_resource type="CircleShape2D" id=6]
 radius = 203.524
 
@@ -335,8 +386,8 @@ drag_margin_v_enabled = true
 position = Vector2( -0.234131, 2.10732 )
 
 [node name="LegL" type="Node2D" parent="SpriteContainer"]
-position = Vector2( -7.27227, -0.508715 )
-rotation = -0.387109
+position = Vector2( -6.95816, -0.508715 )
+rotation = -0.409899
 scale = Vector2( 0.466823, 0.466823 )
 
 [node name="ours_leg_L" type="Sprite" parent="SpriteContainer/LegL"]
@@ -344,8 +395,8 @@ position = Vector2( -10.0707, 27.5478 )
 texture = ExtResource( 13 )
 
 [node name="ArmL" type="Node2D" parent="SpriteContainer"]
-position = Vector2( -8.05422, -29.7169 )
-rotation = -0.640683
+position = Vector2( -7.7401, -31.9157 )
+rotation = -0.640682
 scale = Vector2( 0.466823, 0.466823 )
 
 [node name="ours_arm_L" type="Sprite" parent="SpriteContainer/ArmL"]
@@ -353,7 +404,7 @@ position = Vector2( -17.4943, 8.302 )
 texture = ExtResource( 8 )
 
 [node name="Body" type="Sprite" parent="SpriteContainer"]
-position = Vector2( -2.46369, -27.402 )
+position = Vector2( -2.46369, -28.449 )
 scale = Vector2( 0.466823, 0.466823 )
 texture = ExtResource( 9 )
 
@@ -363,8 +414,8 @@ rotation = -0.00166484
 scale = Vector2( 1.00038, 1.00038 )
 
 [node name="Head" type="Node2D" parent="SpriteContainer"]
-position = Vector2( -5.65214, -58.4858 )
-rotation = 0.0412583
+position = Vector2( -4.9192, -59.7422 )
+rotation = 0.0087582
 scale = Vector2( 0.466823, 0.466823 )
 
 [node name="ours_head" type="Sprite" parent="SpriteContainer/Head"]
@@ -372,7 +423,7 @@ position = Vector2( 12.7036, -14.4203 )
 texture = ExtResource( 11 )
 
 [node name="LegR" type="Node2D" parent="SpriteContainer"]
-position = Vector2( -2.99914, 0.894978 )
+position = Vector2( -3.20854, 0.37145 )
 rotation = 0.347059
 
 [node name="ours_leg_R" type="Sprite" parent="SpriteContainer/LegR"]
@@ -382,7 +433,7 @@ scale = Vector2( 0.466823, 0.466823 )
 texture = ExtResource( 10 )
 
 [node name="ArmR" type="Node2D" parent="SpriteContainer"]
-position = Vector2( 1.11138, -33.3222 )
+position = Vector2( 0.483142, -35.1022 )
 rotation = 0.587375
 
 [node name="ours_arm_R" type="Sprite" parent="SpriteContainer/ArmR"]
@@ -418,16 +469,22 @@ wait_time = 0.5
 autostart = true
 
 [node name="SpriteAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Build = SubResource( 7 )
 anims/Idle = SubResource( 4 )
 anims/Walking = SubResource( 5 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 13 )
+anim_player = NodePath("../SpriteAnimationPlayer")
+parameters/Build/active = false
+parameters/Movement/blend_position = 0.0
 
 [node name="GlaireMuzzle" type="Node2D" parent="."]
 visible = false
 position = Vector2( 0, -63 )
 
 [node name="BeaverMuzzle" type="Node2D" parent="."]
-visible = false
-position = Vector2( 0, -20 )
+position = Vector2( -0.234131, -45.5772 )
 
 [node name="AudioPlayer" type="Node2D" parent="."]
 visible = false

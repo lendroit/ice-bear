@@ -11,6 +11,7 @@ signal player_win
 
 onready var sprite = $SpriteContainer
 onready var animation_player = $SpriteAnimationPlayer
+onready var animation_tree = $AnimationTree
 onready var glaire_muzzle = $GlaireMuzzle
 onready var beaver_muzzle = $BeaverMuzzle
 onready var shoot_timer = $ShootTimer
@@ -29,6 +30,9 @@ var beaver_projectile = preload("res://Player/BeaverProjectile.tscn")
 
 func _ready():
 	hook_muzzle.custom_init(self)
+	# Activate animation tree here to not mess with the sprite
+	# transform values in the editor
+	animation_tree.active = true
 
 func reset_shoot_timer():
 	shoot_timer.set_wait_time(PlayerParameters.PLAYER_SHOOT_TIMER_TIME)
@@ -41,7 +45,9 @@ func shoot():
 	owner.add_child(new_glaire)
 	new_glaire.custom_init(self, glaire_muzzle, orientation)
 
-func build():
+func _build():
+	animation_tree.set("parameters/Build/active", true)
+	_play_beaver_sound()
 	ready_to_shoot = false
 	reset_shoot_timer()
 	var new_beaver_projectile = beaver_projectile.instance()
@@ -60,14 +66,10 @@ func get_input():
 		direction = 1
 	elif Input.is_action_pressed("walk_left"):
 		direction = -1
-	else:
-		animation_player.play("Idle")
 
 	if Input.is_action_just_pressed("walk_left"):
-		animation_player.play("Walking")
 		orientation = -1
 	if Input.is_action_just_pressed("walk_right"):
-		animation_player.play("Walking")
 		orientation = 1
 	if Input.is_action_just_released("walk_left") && Input.is_action_pressed("walk_right"):
 		orientation = 1
@@ -79,11 +81,13 @@ func get_input():
 		shoot()
 
 	if Input.is_action_just_pressed("build") && PlayerParameters.PLAYER_CAN_BUILD && ready_to_shoot:
-		_play_beaver_sound()
-		build()
+		_build()
+		return
 
 	if Input.is_action_just_pressed("hook"):
 		hook()
+
+	animation_tree.set("parameters/Movement/blend_position", velocity.x)
 
 func handle_jump(delta):
 	if is_on_floor():
@@ -179,3 +183,4 @@ func _on_HurtBox_body_entered(body):
 		player_death()
 	if(body is VictoryZone):
 		player_win()
+
