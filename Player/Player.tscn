@@ -20,7 +20,7 @@ extents = Vector2( 23.9846, 53.8799 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 25.5175, 52.2606 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=15]
 resource_name = "Build"
 length = 0.2
 tracks/0/type = "value"
@@ -36,7 +36,7 @@ tracks/0/keys = {
 "values": [ -180.0, -30.0, 33.6541 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=16]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -184,7 +184,7 @@ tracks/11/keys = {
 "values": [ 0.0, 2.50904 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=17]
 length = 1.2
 loop = true
 tracks/0/type = "value"
@@ -357,14 +357,14 @@ blend_point_2/node = SubResource( 11 )
 blend_point_2/pos = 0.0
 
 [sub_resource type="AnimationNodeBlendTree" id=13]
-graph_offset = Vector2( -380.293, -123.7 )
+graph_offset = Vector2( -390.487, -230.945 )
 nodes/Animation/node = SubResource( 7 )
 nodes/Animation/position = Vector2( -90, -10 )
 nodes/Build/node = SubResource( 8 )
-nodes/Build/position = Vector2( 130, -90 )
+nodes/Build/position = Vector2( 190, -100 )
 nodes/Movement/node = SubResource( 12 )
-nodes/Movement/position = Vector2( -100, -160 )
-nodes/output/position = Vector2( 330, 10 )
+nodes/Movement/position = Vector2( -100, -150 )
+nodes/output/position = Vector2( 620, -150 )
 node_connections = [ "output", 0, "Build", "Build", 0, "Movement", "Build", 1, "Animation" ]
 
 [sub_resource type="CircleShape2D" id=14]
@@ -469,9 +469,9 @@ wait_time = 0.5
 autostart = true
 
 [node name="SpriteAnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Build = SubResource( 4 )
-anims/Idle = SubResource( 5 )
-anims/Walking = SubResource( 6 )
+anims/Build = SubResource( 15 )
+anims/Idle = SubResource( 16 )
+anims/Walking = SubResource( 17 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 13 )
@@ -498,7 +498,7 @@ volume_db = 12.133
 volume_db = 7.8
 
 [node name="Hook" type="Node2D" parent="."]
-position = Vector2( -0.495148, -45.5772 )
+position = Vector2( 0.347496, -35.0127 )
 script = ExtResource( 3 )
 
 [node name="ReachableHooksArea" type="Area2D" parent="Hook"]
