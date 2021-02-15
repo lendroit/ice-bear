@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/Roboto-Medium.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Dialogs/DialogBox.png" type="Texture" id=2]
 [ext_resource path="res://Dialogs/PortraitAndText.gd" type="Script" id=3]
-[ext_resource path="res://Dialogs/Portraits/little bear.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -24,7 +23,6 @@ text = "Asdfkjknj"
 margin_left = 4.0
 margin_right = 1028.0
 margin_bottom = 1080.0
-texture = ExtResource( 4 )
 stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
@@ -37,8 +35,8 @@ margin_right = 1715.0
 margin_bottom = 836.0
 texture = ExtResource( 2 )
 patch_margin_left = 189
-patch_margin_top = 20
-patch_margin_right = 10
+patch_margin_top = 76
+patch_margin_right = 11
 patch_margin_bottom = 20
 axis_stretch_horizontal = 1
 __meta__ = {
@@ -48,9 +46,9 @@ __meta__ = {
 [node name="Text" type="Label" parent="DialogBorder"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 40.0
+margin_left = 40.5847
 margin_top = 40.0
-margin_right = -40.0
+margin_right = -39.4153
 margin_bottom = -40.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
