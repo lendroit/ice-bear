@@ -87,7 +87,8 @@ func get_input():
 	if Input.is_action_just_pressed("hook"):
 		hook()
 
-	animation_tree.set("parameters/Movement/blend_position", velocity.x)
+	var speed_proportion = velocity.x / PlayerParameters.PLAYER_WALK_SPEED
+	animation_tree.set("parameters/Movement/blend_position", speed_proportion)
 
 func handle_jump(delta):
 	if is_on_floor():
