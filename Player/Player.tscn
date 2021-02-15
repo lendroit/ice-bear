@@ -20,7 +20,7 @@ extents = Vector2( 23.9846, 53.8799 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 25.5175, 52.2606 )
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=4]
 resource_name = "Build"
 length = 0.2
 tracks/0/type = "value"
@@ -36,7 +36,7 @@ tracks/0/keys = {
 "values": [ -180.0, -30.0, 33.6541 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -184,7 +184,7 @@ tracks/11/keys = {
 "values": [ 0.0, 2.50904 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 length = 1.2
 loop = true
 tracks/0/type = "value"
@@ -332,10 +332,10 @@ tracks/11/keys = {
 "values": [ 2.36393, -5.45885, 0.435898, 6.39761 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=14]
+[sub_resource type="AnimationNodeAnimation" id=7]
 animation = "Build"
 
-[sub_resource type="AnimationNodeOneShot" id=15]
+[sub_resource type="AnimationNodeOneShot" id=8]
 filter_enabled = true
 filters = [ ".", "SpriteContainer/ArmR:position", "SpriteContainer/ArmR:rotation_degrees" ]
 
@@ -358,16 +358,16 @@ blend_point_2/pos = 0.0
 
 [sub_resource type="AnimationNodeBlendTree" id=13]
 graph_offset = Vector2( -380.293, -123.7 )
-nodes/Animation/node = SubResource( 14 )
+nodes/Animation/node = SubResource( 7 )
 nodes/Animation/position = Vector2( -90, -10 )
-nodes/Build/node = SubResource( 15 )
+nodes/Build/node = SubResource( 8 )
 nodes/Build/position = Vector2( 130, -90 )
 nodes/Movement/node = SubResource( 12 )
 nodes/Movement/position = Vector2( -100, -160 )
 nodes/output/position = Vector2( 330, 10 )
-node_connections = [ "Build", 0, "Movement", "Build", 1, "Animation", "output", 0, "Build" ]
+node_connections = [ "output", 0, "Build", "Build", 0, "Movement", "Build", 1, "Animation" ]
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=14]
 radius = 203.524
 
 [node name="Player" type="KinematicBody2D"]
@@ -469,9 +469,9 @@ wait_time = 0.5
 autostart = true
 
 [node name="SpriteAnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Build = SubResource( 7 )
-anims/Idle = SubResource( 4 )
-anims/Walking = SubResource( 5 )
+anims/Build = SubResource( 4 )
+anims/Idle = SubResource( 5 )
+anims/Walking = SubResource( 6 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 13 )
@@ -498,6 +498,7 @@ volume_db = 12.133
 volume_db = 7.8
 
 [node name="Hook" type="Node2D" parent="."]
+position = Vector2( -0.495148, -45.5772 )
 script = ExtResource( 3 )
 
 [node name="ReachableHooksArea" type="Area2D" parent="Hook"]
@@ -508,7 +509,7 @@ collision_mask = 524288
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hook/ReachableHooksArea"]
 position = Vector2( 0, -0.235977 )
-shape = SubResource( 6 )
+shape = SubResource( 14 )
 
 [node name="GrapplingHookRope" type="Line2D" parent="Hook"]
 position = Vector2( -0.234131, -0.235977 )
