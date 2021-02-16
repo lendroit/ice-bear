@@ -20,7 +20,7 @@ extents = Vector2( 23.9846, 53.8799 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 25.5175, 52.2606 )
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=4]
 resource_name = "Build"
 length = 0.2
 tracks/0/type = "value"
@@ -36,7 +36,7 @@ tracks/0/keys = {
 "values": [ -180.0, -30.0, 33.6541 ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=5]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -184,7 +184,7 @@ tracks/11/keys = {
 "values": [ 0.0, 2.50904 ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=6]
 length = 1.2
 loop = true
 tracks/0/type = "value"
@@ -376,11 +376,14 @@ collision_mask = 17
 script = ExtResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( -0.495148, -19.6786 )
-scale = Vector2( 0.164762, 0.164762 )
+position = Vector2( -0.234131, 0 )
 current = true
+zoom = Vector2( 0.7, 0.7 )
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
+drag_margin_left = 0.1
+drag_margin_top = 0.1
+drag_margin_right = 0.1
 
 [node name="SpriteContainer" type="Node2D" parent="."]
 position = Vector2( -0.234131, 2.10732 )
@@ -469,9 +472,9 @@ wait_time = 0.5
 autostart = true
 
 [node name="SpriteAnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Build = SubResource( 15 )
-anims/Idle = SubResource( 16 )
-anims/Walking = SubResource( 17 )
+anims/Build = SubResource( 4 )
+anims/Idle = SubResource( 5 )
+anims/Walking = SubResource( 6 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 13 )
