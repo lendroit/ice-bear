@@ -1,13 +1,16 @@
 tool
 extends Node2D
 
-export (float) var size = 3 setget set_size
+export (float) var size = 3 setget _set_size
 
 onready var cascade_sprite = $CascadeSprite
 onready var end_of_cascade = $CascadeSprite/EndOfCascade
 onready var particles = $Particles2D
 
-func set_size(new_size):
+func _ready():
+	_set_size(size)
+
+func _set_size(new_size):
 	size = new_size
 
 	if cascade_sprite && cascade_sprite.scale:
