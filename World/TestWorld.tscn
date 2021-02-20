@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://World/GenericWorld.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Terrain/Hook/HookHandle.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://BuildablePlatform/BuildablePlatform.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Terrain/Cascade/Cascade.tscn" type="PackedScene" id=11]
 [ext_resource path="res://NPC/Eskimo/Eskimo.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Terrain/Flag/Flag.tscn" type="PackedScene" id=13]
 
 [node name="TestWorld" instance=ExtResource( 1 )]
 
@@ -61,3 +62,6 @@ position = Vector2( -1072, -616 )
 
 [node name="Eskimo" parent="." index="14" instance=ExtResource( 12 )]
 position = Vector2( -310.327, -107 )
+
+[node name="Flag" parent="." index="16" instance=ExtResource( 13 )]
+position = Vector2( -189.881, -67.7177 )
