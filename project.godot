@@ -157,5 +157,5 @@ build={
 
 [rendering]
 
-environment/default_clear_color=Color( 0.803922, 0.984314, 0.992157, 1 )
+environment/default_clear_color=Color( 0.686275, 0.870588, 0.933333, 1 )
 environment/default_environment="res://default_env.tres"
