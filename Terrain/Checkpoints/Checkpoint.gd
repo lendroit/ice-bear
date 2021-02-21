@@ -3,28 +3,28 @@ extends Node2D
 
 export (bool) var is_active = false setget _set_is_active
 
-onready var sprite_container = $SpriteContainer
+onready var flag = $Flag
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	desactivate()
+	deactivate()
 
 func _handle_sprite():
-	if(sprite_container):
-		sprite_container.my_set_sprite(is_active)
+	if !flag:
+		return
+
+	flag.set_is_active(is_active)
+
 
 func _set_is_active(new_is_active):
 	is_active = new_is_active
 	_handle_sprite()
 
+
 func activate():
 	is_active = true
 	_handle_sprite()
-	
-func desactivate():
+
+
+func deactivate():
 	is_active = false
 	_handle_sprite()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
