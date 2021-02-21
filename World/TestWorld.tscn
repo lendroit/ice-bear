@@ -60,6 +60,9 @@ position = Vector2( 240.638, -118.281 )
 [node name="Bird" parent="Enemies" index="1" instance=ExtResource( 8 )]
 position = Vector2( -1072, -616 )
 
+[node name="DialogManager" parent="CanvasLayer" index="0"]
+current_dialog_name = 0
+
 [node name="Eskimo" parent="." index="14" instance=ExtResource( 12 )]
 position = Vector2( -310.327, -107 )
 
