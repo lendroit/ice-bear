@@ -146,7 +146,6 @@ build={
 
 2d_physics/layer_1="Terrain"
 2d_physics/layer_2="Hurtbox Player"
-2d_physics/layer_3="Hitbox Player"
 2d_physics/layer_4="Hurtbox Enemy"
 2d_physics/layer_5="HitboxEnemy"
 2d_physics/layer_6="Allies/Collectible"
