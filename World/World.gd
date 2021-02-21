@@ -30,8 +30,7 @@ func _ready():
 
 func _player_died():
 	$Player.velocity = Vector2.ZERO
-	# TODO set as global
-	$Player.position = global_player_spawn.position
+	$Player.global_position = global_player_spawn.global_position
 	# var _useless = get_tree().reload_current_scene()
 	
 func _player_win():
