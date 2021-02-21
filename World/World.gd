@@ -6,6 +6,7 @@ var theme_sound = preload("res://assets/sound/theme.wav")
 
 onready var dialog_handler = $CanvasLayer/DialogManager
 onready var theme = $AudioPlayer/theme
+onready var global_player_spawn = $PlayerSpawn
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,9 +24,14 @@ func _ready():
 	for friend in friends:
 		friend.connect("trigger_dialog", self, "open_dialog")
 
+	var checkpoints = get_tree().get_nodes_in_group("checkpoint")
+	for checkpoint in checkpoints:
+		checkpoint.connect("checkpoint_activated", self, "_activate_checkpoint")
+
 func _player_died():
 	$Player.velocity = Vector2.ZERO
-	$Player.position = $PlayerSpawn.position
+	# TODO set as global
+	$Player.position = global_player_spawn.position
 	# var _useless = get_tree().reload_current_scene()
 	
 func _player_win():
@@ -59,3 +65,6 @@ func add_bird_shot_explosion(shot):
 	particles.position = shot.position
 	self.add_child(particles)
 	particles.emitting = true
+
+func _activate_checkpoint(checkpoint):
+	global_player_spawn.global_position = checkpoint.spawn_position.global_position

@@ -21,4 +21,7 @@ collision_mask = 0
 position = Vector2( 2.95447, -109.808 )
 shape = SubResource( 1 )
 
+[node name="SpawnPosition" type="Node2D" parent="."]
+position = Vector2( 0, -160 )
+
 [connection signal="area_entered" from="PlayerCollider" to="." method="_on_PlayerCollider_area_entered"]
