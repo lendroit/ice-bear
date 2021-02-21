@@ -22,7 +22,7 @@ texture = ExtResource( 2 )
 
 [node name="raplapla" type="Sprite" parent="Sprites"]
 material = ExtResource( 5 )
-position = Vector2( 28.5, -96.6614 )
+position = Vector2( 28.5, -107.699 )
 texture = ExtResource( 3 )
 
 [node name="pole" type="Sprite" parent="Sprites"]
