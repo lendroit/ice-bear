@@ -1,0 +1,27 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float intensity = 1.0;
+uniform float speed = 3.0;
+uniform float displacement = 15.0;
+
+void vertex() {
+	VERTEX.x += UV.x * 0.5 * displacement * sin(0.5 * speed * TIME);
+	VERTEX.y += UV.x * displacement * cos(intensity * UV.x + speed * TIME);
+}
+
+//void fragment() {
+//    vec4 c = texture(TEXTURE, UV);
+//	float depth = cos(1.5 * speed * TIME - 10.0 * UV.x);
+//	float color_shift = 0.08;
+//    c.rgb += vec3(-color_shift * depth);
+//    COLOR = c;
+//}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/intensity = 2.0
+shader_param/speed = 2.0
+shader_param/displacement = 15.0
