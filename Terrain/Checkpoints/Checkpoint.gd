@@ -21,6 +21,13 @@ func _set_is_active(new_is_active):
 
 
 func activate():
+	if is_active:
+		return
+
+	var checkpoints = get_tree().get_nodes_in_group("checkpoint")
+	for checkpoint in checkpoints:
+		checkpoint.deactivate()
+
 	is_active = true
 	_handle_sprite()
 
@@ -28,3 +35,7 @@ func activate():
 func deactivate():
 	is_active = false
 	_handle_sprite()
+
+
+func _on_PlayerCollider_area_entered(_area):
+	activate()

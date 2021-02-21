@@ -12,7 +12,7 @@
 [ext_resource path="res://BuildablePlatform/BuildablePlatform.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Terrain/Cascade/Cascade.tscn" type="PackedScene" id=11]
 [ext_resource path="res://NPC/Eskimo/Eskimo.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Terrain/Flag/Flag.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Terrain/Checkpoints/Checkpoint.tscn" type="PackedScene" id=13]
 
 [node name="TestWorld" instance=ExtResource( 1 )]
 
@@ -60,11 +60,11 @@ position = Vector2( 240.638, -118.281 )
 [node name="Bird" parent="Enemies" index="1" instance=ExtResource( 8 )]
 position = Vector2( -1072, -616 )
 
-[node name="DialogManager" parent="CanvasLayer" index="0"]
-current_dialog_name = 0
-
 [node name="Eskimo" parent="." index="14" instance=ExtResource( 12 )]
 position = Vector2( -310.327, -107 )
 
-[node name="Flag" parent="." index="16" instance=ExtResource( 13 )]
-position = Vector2( -189.881, -67.7177 )
+[node name="Checkpoint" parent="." index="17" instance=ExtResource( 13 )]
+position = Vector2( -215.848, -69.2064 )
+
+[node name="Checkpoint2" parent="." index="18" instance=ExtResource( 13 )]
+position = Vector2( -637.845, -62.805 )
