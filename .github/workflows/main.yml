@@ -18,6 +18,18 @@ jobs:
       # Ensure that you get the entire project history
       with:
         fetch-depth: 0
+
+    ###########
+    # Setup the Android SDK
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
+
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v2
+    ###########
+
     - name: export game
       # Use latest version (see releases for all versions)
       uses: firebelley/godot-export@v2.6.0
