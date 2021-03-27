@@ -84,8 +84,9 @@ func handle_jump(delta):
 	else:
 		velocity.y += EngineParameters.GRAVITY * delta
 
-func set_direction(horizontal_speed):
-	sprite.scale.x = sign(horizontal_speed) * abs(sprite.scale.x)
+func _set_orientation(horizontal_speed):
+	orientation = sign(horizontal_speed) * abs(sprite.scale.x)
+	sprite.scale.x = orientation
 
 func player_death():
 	print("Tu es mort !")
@@ -99,7 +100,9 @@ func player_win():
 func _handle_walk():
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("walk_right") - Input.get_action_strength("walk_left")
-	orientation = input_vector.x
+	
+	if abs(velocity.x) > 5:
+		_set_orientation(velocity.x)
 
 	var friction = PlayerParameters.PLAYER_WALK_FRICTION if is_on_floor() else PlayerParameters.PLAYER_AIR_FRICTION
 
@@ -110,8 +113,6 @@ func _handle_walk():
 
 	velocity = move_and_slide(velocity, Vector2.UP)
 
-	if abs(velocity.x) > 5:
-		set_direction(velocity.x)
 
 
 func _physics_process(delta):
