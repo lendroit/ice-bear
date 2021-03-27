@@ -21,7 +21,6 @@ onready var hook_muzzle = $Hook
 var velocity = Vector2.ZERO
 var jump_count = 0
 
-var direction
 var orientation = 1
 var ready_to_shoot := true
 
@@ -60,22 +59,6 @@ func hook():
 		orientation = sign(hook_muzzle.hook_direction.x)
 
 func get_input():
-	direction = 0
-
-	if Input.is_action_pressed("walk_right"):
-		direction = 1
-	elif Input.is_action_pressed("walk_left"):
-		direction = -1
-
-	if Input.is_action_just_pressed("walk_left"):
-		orientation = -1
-	if Input.is_action_just_pressed("walk_right"):
-		orientation = 1
-	if Input.is_action_just_released("walk_left") && Input.is_action_pressed("walk_right"):
-		orientation = 1
-	elif Input.is_action_just_released("walk_right") && Input.is_action_pressed("walk_left"):
-		orientation = -1
-
 	if Input.is_action_just_pressed("Glaire") && PlayerParameters.PLAYER_CAN_GLAIRE && ready_to_shoot:
 		_play_spit_sound()
 		shoot()
@@ -86,9 +69,6 @@ func get_input():
 
 	if Input.is_action_just_pressed("hook"):
 		hook()
-
-	var speed_proportion = velocity.x / PlayerParameters.PLAYER_WALK_SPEED
-	animation_tree.set("parameters/Movement/blend_position", speed_proportion)
 
 func handle_jump(delta):
 	if is_on_floor():
@@ -116,14 +96,15 @@ func player_win():
 	print("Tu as gagné !")
 	emit_signal("player_win")
 
-func _physics_process(delta):
-	get_input()
-	handle_jump(delta)
+func _handle_walk():
+	var input_vector = Vector2.ZERO
+	input_vector.x = Input.get_action_strength("walk_right") - Input.get_action_strength("walk_left")
+	orientation = input_vector.x
 
 	var friction = PlayerParameters.PLAYER_WALK_FRICTION if is_on_floor() else PlayerParameters.PLAYER_AIR_FRICTION
 
-	if direction != 0:
-		velocity.x = lerp(velocity.x, direction * PlayerParameters.PLAYER_WALK_SPEED, PlayerParameters.PLAYER_WALK_ACCELERATION)
+	if input_vector.x != 0:
+		velocity.x = lerp(velocity.x, input_vector.x * PlayerParameters.PLAYER_WALK_SPEED, PlayerParameters.PLAYER_WALK_ACCELERATION)
 	else:
 		velocity.x = lerp(velocity.x, 0, friction)
 
@@ -132,7 +113,17 @@ func _physics_process(delta):
 	if abs(velocity.x) > 5:
 		set_direction(velocity.x)
 
+
+func _physics_process(delta):
+	get_input()
+	handle_jump(delta)
+	_handle_walk()
+
 	hook_muzzle.draw_hook()
+
+	var speed_proportion = velocity.x / PlayerParameters.PLAYER_WALK_SPEED
+	animation_tree.set("parameters/Movement/blend_position", speed_proportion)
+
 
 func player_hurt():
 	PlayerParameters.PLAYER_HEALTH_POINTS -= 1
