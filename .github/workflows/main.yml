@@ -32,7 +32,7 @@ jobs:
 
     - name: export game
       # Use latest version (see releases for all versions)
-      uses: firebelley/godot-export@v2.6.0
+      uses: firebelley/godot-export@v2.6.1
       with:
         # Defining all the required inputs
         # I used the mono version of Godot in this example
