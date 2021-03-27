@@ -4,7 +4,7 @@ var enemy_death_particles = preload("res://Particles/EnemyDeathParticles.tscn")
 var shit_explosion_particles = preload("res://Particles/ShitExplosion.tscn")
 var theme_sound = preload("res://assets/sound/theme.wav")
 
-onready var dialog_handler = $CanvasLayer/DialogManager
+onready var dialog_handler = $UI/DialogManager
 onready var theme = $AudioPlayer/theme
 onready var global_player_spawn = $PlayerSpawn
 onready var player = $Player

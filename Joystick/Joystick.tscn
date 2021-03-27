@@ -15,6 +15,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+symmetry_angle = 0
 
 [node name="Background" type="TextureRect" parent="."]
 anchor_left = 0.5

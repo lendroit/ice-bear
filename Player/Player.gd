@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 class_name Player
 
+export (NodePath) var joystick_path
+
 onready var spit = $AudioPlayer/Spit
 onready var death = $AudioPlayer/Death
 onready var beaver = $AudioPlayer/Beaver

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Terrain/VictoryZone.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Terrain/Background/ParallaxBackground.tscn" type="PackedScene" id=2]
@@ -6,8 +6,11 @@
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Terrain/Ground/Terrain.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/World.gd" type="Script" id=6]
+[ext_resource path="res://Joystick/Joystick.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Terrain/Water/WaterTiles.tscn" type="PackedScene" id=8]
+[ext_resource path="res://World/MobileController.gd" type="Script" id=9]
 [ext_resource path="res://Dialogs/DialogManager.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Joystick/joystick_circle.png" type="Texture" id=11]
 
 [node name="GenericWorld" type="Node2D"]
 script = ExtResource( 6 )
@@ -19,6 +22,7 @@ tile_data = PoolIntArray( -262178, 0, 0, -11, 1, 0, -10, 1, 2, -9, 1, 4, -8, 1, 
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( -440.056, -137.723 )
+joystick_path = NodePath("../UI/MobileController/Joystick")
 
 [node name="VictoryZone" parent="." instance=ExtResource( 1 )]
 
@@ -38,11 +42,54 @@ tile_data = PoolIntArray( -2, 0, 0, -1, 0, 0, -65536, 0, 0, 65534, 1, 0, 65535, 
 
 [node name="Props" type="Node2D" parent="."]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
 pause_mode = 2
 
-[node name="DialogManager" parent="CanvasLayer" instance=ExtResource( 10 )]
-current_dialog_name = 0
+[node name="MobileController" type="Control" parent="UI"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+visibility_mode = 1
+
+[node name="Joystick" parent="UI/MobileController" instance=ExtResource( 7 )]
+margin_left = 124.726
+margin_top = 668.728
+margin_right = 424.726
+margin_bottom = 968.728
+directions = 2
+clamp_zone = 0.9
+visibility_mode = 1
+left_action = "walk_left"
+right_action = "walk_right"
+
+[node name="Jump" type="TouchScreenButton" parent="UI/MobileController"]
+position = Vector2( 1573.74, 929.17 )
+normal = ExtResource( 11 )
+action = "jump"
+visibility_mode = 1
+
+[node name="Glaire" type="TouchScreenButton" parent="UI/MobileController"]
+position = Vector2( 1435.83, 791.263 )
+normal = ExtResource( 11 )
+action = "Glaire"
+visibility_mode = 1
+
+[node name="Build" type="TouchScreenButton" parent="UI/MobileController"]
+position = Vector2( 1708.28, 789.582 )
+normal = ExtResource( 11 )
+action = "build"
+visibility_mode = 1
+
+[node name="Hook" type="TouchScreenButton" parent="UI/MobileController"]
+position = Vector2( 1575.42, 660.083 )
+normal = ExtResource( 11 )
+action = "hook"
+visibility_mode = 1
+
+[node name="DialogManager" parent="UI" instance=ExtResource( 10 )]
 
 [node name="AudioPlayer" type="Node" parent="."]
 pause_mode = 2
