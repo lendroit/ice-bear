@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Terrain/VictoryZone.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Terrain/Background/ParallaxBackground.tscn" type="PackedScene" id=2]
@@ -11,6 +11,18 @@
 [ext_resource path="res://World/MobileController.gd" type="Script" id=9]
 [ext_resource path="res://Dialogs/DialogManager.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Joystick/joystick_circle.png" type="Texture" id=11]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 100.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 100.0
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 100.0
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 100.0
 
 [node name="GenericWorld" type="Node2D"]
 script = ExtResource( 6 )
@@ -66,26 +78,30 @@ left_action = "walk_left"
 right_action = "walk_right"
 
 [node name="Jump" type="TouchScreenButton" parent="UI/MobileController"]
-position = Vector2( 1573.74, 929.17 )
+position = Vector2( 1573.74, 938.17 )
 normal = ExtResource( 11 )
+shape = SubResource( 1 )
 action = "jump"
 visibility_mode = 1
 
 [node name="Glaire" type="TouchScreenButton" parent="UI/MobileController"]
-position = Vector2( 1435.83, 791.263 )
+position = Vector2( 1435.83, 800 )
 normal = ExtResource( 11 )
+shape = SubResource( 2 )
 action = "Glaire"
 visibility_mode = 1
 
 [node name="Build" type="TouchScreenButton" parent="UI/MobileController"]
-position = Vector2( 1708.28, 789.582 )
+position = Vector2( 1708.28, 800 )
 normal = ExtResource( 11 )
+shape = SubResource( 3 )
 action = "build"
 visibility_mode = 1
 
 [node name="Hook" type="TouchScreenButton" parent="UI/MobileController"]
-position = Vector2( 1575.42, 660.083 )
+position = Vector2( 1571.42, 660.083 )
 normal = ExtResource( 11 )
+shape = SubResource( 4 )
 action = "hook"
 visibility_mode = 1
 
