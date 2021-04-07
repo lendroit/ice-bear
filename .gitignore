@@ -15,6 +15,7 @@ dist
 
 .tmp
 
-*.apk*
+*.apk
+*.apk.idsig
 
 android/build
