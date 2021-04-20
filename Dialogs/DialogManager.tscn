@@ -21,97 +21,129 @@ __meta__ = {
 [node name="Lama" parent="." instance=ExtResource( 2 )]
 
 [node name="PortraitAndText" parent="Lama" instance=ExtResource( 6 )]
+visible = false
 text = "Merci de m'avoir sauvé ! Je peux t'aider à cracher sur tes ennemis héhéhé"
 portrait = ExtResource( 5 )
 
 [node name="PortraitAndText2" parent="Lama" instance=ExtResource( 6 )]
-text = "Merci mais comment ça marche Jammy ?"
+visible = false
+text = "Merci mais comment faire ?"
 portrait = ExtResource( 4 )
 
 [node name="PortraitAndText3" parent="Lama" instance=ExtResource( 6 )]
-text = "C'est très simple il suffit de cracher avec la touche T de ton clavier."
+visible = false
+text = "C'est très simple, il suffit d'appuyer sur la touche T de ton clavier."
 portrait = ExtResource( 5 )
 
 [node name="Beaver" parent="." instance=ExtResource( 2 )]
 
 [node name="PortraitAndText3" parent="Beaver" instance=ExtResource( 6 )]
+visible = false
 text = "Sors de chez moi, calice de tabarnak !"
 portrait = ExtResource( 1 )
 
 [node name="PortraitAndText4" parent="Beaver" instance=ExtResource( 6 )]
-text = "ostie de calice !"
+visible = false
+text = "Ostie de calice !"
 portrait = ExtResource( 4 )
 
 [node name="PortraitAndText5" parent="Beaver" instance=ExtResource( 6 )]
+visible = false
 text = "Ô un p'tit gars du pays. Laisse moi le gros oeuvre !"
 portrait = ExtResource( 1 )
 
 [node name="PortraitAndText6" parent="Beaver" instance=ExtResource( 6 )]
-text = "Appuie sur la touche b."
+visible = false
+text = "Appuie sur la touche B et j't'aiderai à construire des barrages !"
 portrait = ExtResource( 1 )
 
 [node name="Kangaroo" parent="." instance=ExtResource( 2 )]
 
 [node name="PortraitAndText3" parent="Kangaroo" instance=ExtResource( 6 )]
-text = "hoi haow ahh yah "
+visible = false
+text = "Hoi haow ahh yah "
 portrait = ExtResource( 8 )
 
 [node name="PortraitAndText4" parent="Kangaroo" instance=ExtResource( 6 )]
-text = "Qu'est ce que c'est encore que ce truc...."
+visible = false
+text = "Qu'est ce qu'il raconte ?"
 portrait = ExtResource( 4 )
 
 [node name="PortraitAndText5" parent="Kangaroo" instance=ExtResource( 6 )]
-text = "Et ssshhhettt assshhhhent."
+visible = false
+text = "On diraiisssshhh un dialectsshhhhhh de l'autre hemisphershhhh"
 portrait = ExtResource( 7 )
 
 [node name="PortraitAndText6" parent="Kangaroo" instance=ExtResource( 6 )]
-text = "Yo reuf, tu veux pas me filer un cou'd'main au lieu de rien faire ? (oiseau)"
+visible = false
+text = "Hy, do yah wahnt t' haelp us?"
 portrait = ExtResource( 9 )
 
-[node name="PortraitAndText7" parent="Kangaroo" instance=ExtResource( 6 )]
-text = "ih' weell be moy plezshah "
+[node name="PortraitAndText10" parent="Kangaroo" instance=ExtResource( 6 )]
+visible = false
+text = "Hein ? Tu parles son dialecte ?"
+portrait = ExtResource( 4 )
+
+[node name="PortraitAndText11" parent="Kangaroo" instance=ExtResource( 6 )]
+visible = false
+text = "A leettle biieh'"
+portrait = ExtResource( 9 )
+
+[node name="PortraitAndText13" parent="Kangaroo" instance=ExtResource( 6 )]
+visible = false
+text = "Ih' weell be moy plezshah "
 portrait = ExtResource( 8 )
 
-[node name="PortraitAndText8" parent="Kangaroo" instance=ExtResource( 6 )]
-text = "yah cahn naow double jump "
+[node name="PortraitAndText14" parent="Kangaroo" instance=ExtResource( 6 )]
+visible = false
+text = "Yah cahn naow double jump "
 portrait = ExtResource( 8 )
 
 [node name="Snake" parent="." instance=ExtResource( 2 )]
 
 [node name="PortraitAndText3" parent="Snake" instance=ExtResource( 6 )]
+visible = false
 text = "Ssshheee ssshhhais pas où je ssshhhuis."
 portrait = ExtResource( 7 )
 
 [node name="PortraitAndText4" parent="Snake" instance=ExtResource( 6 )]
+visible = false
 text = "Tu veussshhh que je t'aissshhhe ?"
 portrait = ExtResource( 4 )
 
 [node name="PortraitAndText5" parent="Snake" instance=ExtResource( 6 )]
+visible = false
 text = "Oui, mais ssshhhilence, ton assshhhent m'agressshhhe"
 portrait = ExtResource( 7 )
 
 [node name="PortraitAndText6" parent="Snake" instance=ExtResource( 6 )]
-text = "Utilissshhhe la toussshhhe Hssshhh !"
+visible = false
+text = "Utilissshhhe la toussshhhe Hssshhh pourrrr grimpeeeschhh ! (utilise la touche H)"
 portrait = ExtResource( 7 )
 
 [node name="Crow" parent="." instance=ExtResource( 2 )]
 
 [node name="PortraitAndText3" parent="Crow" instance=ExtResource( 6 )]
-text = "Ils sont déchirés chez GreenPeace ou quoi ?"
+visible = false
+text = "Ah tiens ! Un ours brun !"
 portrait = ExtResource( 9 )
 
 [node name="PortraitAndText4" parent="Crow" instance=ExtResource( 6 )]
-text = "Toi aussi ils t'ont kidnapper wallah ?"
+visible = false
+text = "Tu ressembles étrangement à un pigeon des glaces aux yeux r... Mais non, c'est un corbeau !"
 portrait = ExtResource( 4 )
 
 [node name="PortraitAndText5" parent="Crow" instance=ExtResource( 6 )]
-text = "Exact mamène ! Tu veux que je te file un coup de main reuf ?"
+visible = false
+text = "Exact ! On fait équipe ?"
 portrait = ExtResource( 9 )
 
 [node name="PortraitAndText6" parent="Crow" instance=ExtResource( 6 )]
-text = "Cimer Gros !"
+visible = false
+text = "Avec grand plaisir !"
 portrait = ExtResource( 4 )
 
 [node name="PortraitAndText7" parent="Crow" instance=ExtResource( 6 )]
-text = "Je vais te faire planer mon gars t'es pas prêt ! Maintiens la barre espace en plein saut."
+visible = false
+text = "Ensemble on va pouvoir planer très très loin. Maintiens la barre espace en plein saut !"
 portrait = ExtResource( 9 )

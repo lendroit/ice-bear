@@ -130,7 +130,9 @@ margin_right = -469.0
 margin_bottom = 1.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Je me souviens. Ces idiots m'ont confondu avec un ours polaire. Et maintenant me voilà perdu au milieu de la banquise...."
+text = "Je me souviens... Ils m'ont pris pour un ours polaire. Mais bon sang ils ont déjà vu un ours polaire aux yeux rouges ? JE NE SUIS PAS UN OURS POLAIRE, JE NE SUIS QU'UN OURS ALBINOS.
+
+Qu'est-ce que je vais bien pouvoir faire ici ? Comment je rentre, moi ? Il n'y a pas de Ubear dans le coin."
 align = 1
 valign = 1
 autowrap = true
@@ -169,8 +171,8 @@ margin_right = -469.0
 margin_bottom = 1.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Plus qu'à trouver un moyen de rentrer chez moi.
-Peut être que je pourrais trouver d'autres personnes dans la même situation que moi.."
+text = "Bon. Plus qu'à trouver un moyen de rentrer à la maison.
+J'espère que je vais trouver de l'aide. Ces \"pigeons des glaces\" n'ont pas l'air commodes."
 align = 1
 valign = 1
 autowrap = true
