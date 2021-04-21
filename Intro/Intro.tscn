@@ -172,7 +172,7 @@ margin_bottom = 1.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Bon. Plus qu'à trouver un moyen de rentrer à la maison.
-J'espère que je vais trouver de l'aide. Ces \"pigeons des glaces\" n'ont pas l'air commodes."
+J'espère que je vais trouver de l'aide. Ces \"pigeons des glaces\" n'ont pas l'air commode."
 align = 1
 valign = 1
 autowrap = true
