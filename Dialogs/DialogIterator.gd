@@ -1,13 +1,13 @@
 @tool
 extends Control
 
-@export (int) var current_step = 0: set = _set_current_step
+@export var current_step: int = 0: set = _set_current_step
 
 signal end
 
 var is_active = false
 
-func hide():
+func custom_hide():
 	current_step = 0
 	var children = get_children()
 	for child in children:
@@ -37,7 +37,7 @@ func _input(event):
 		
 		if (current_step >= number_of_steps):
 			is_active = false
-			hide()
+			custom_hide()
 			emit_signal("end")
 		else:
 			print_screen(current_step)
@@ -47,4 +47,4 @@ func _set_current_step(new_current_step):
 	print_screen(current_step)
 
 func _ready():
-	hide()
+	custom_hide()

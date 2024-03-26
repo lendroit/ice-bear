@@ -1,7 +1,7 @@
 @tool
 extends Control
 
-@export var current_dialog_name : set = set_current_dialog
+@export var current_dialog_name: int : set = set_current_dialog
 
 signal end
 

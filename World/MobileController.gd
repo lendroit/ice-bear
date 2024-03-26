@@ -7,5 +7,5 @@ enum VisibilityMode {ALWAYS , TOUCHSCREEN_ONLY }
 @export var visibility_mode := VisibilityMode.ALWAYS
 
 func _ready() -> void:
-	if not OS.has_touchscreen_ui_hint() and visibility_mode == VisibilityMode.TOUCHSCREEN_ONLY:
+	if not DisplayServer.is_touchscreen_available() and visibility_mode == VisibilityMode.TOUCHSCREEN_ONLY:
 		hide()

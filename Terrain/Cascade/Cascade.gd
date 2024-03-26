@@ -1,7 +1,7 @@
 @tool
 extends Node2D
 
-@export (float) var size = 3: set = _set_size
+@export var size: float = 3: set = _set_size
 
 @onready var cascade_sprite = $CascadeSprite
 @onready var end_of_cascade = $CascadeSprite/EndOfCascade

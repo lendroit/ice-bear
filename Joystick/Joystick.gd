@@ -56,7 +56,7 @@ enum VisibilityMode {ALWAYS , TOUCHSCREEN_ONLY }
 var _touch_index :int = -1
 
 func _ready() -> void:
-	if not OS.has_touchscreen_ui_hint() and visibility_mode == VisibilityMode.TOUCHSCREEN_ONLY:
+	if not DisplayServer.is_touchscreen_available() and visibility_mode == VisibilityMode.TOUCHSCREEN_ONLY:
 		hide()
 
 func _touch_started(event: InputEventScreenTouch) -> bool:
@@ -159,7 +159,7 @@ func _update_joystick(event_position: Vector2):
 
 
 func _process(_delta):
-	if not OS.has_touchscreen_ui_hint() and visibility_mode == VisibilityMode.TOUCHSCREEN_ONLY:
+	if not DisplayServer.is_touchscreen_available() and visibility_mode == VisibilityMode.TOUCHSCREEN_ONLY:
 		return
 
 	if (left_action and right_action):

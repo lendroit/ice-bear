@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-@export (int) var speed = 50
-@export (float) var friction = 0.1
-@export (float) var acceleration = 0.25
+@export var speed: int = 50
+@export var friction: float = 0.1
+@export var acceleration: float = 0.25
 
 var POSSIBLE_WALKING_TIMER_DURATIONS = [2, 3]
 
@@ -11,7 +11,7 @@ var POSSIBLE_WALKING_TIMER_DURATIONS = [2, 3]
 @onready var cliff_detector = $CliffDetector
 @onready var wall_detector = $WallDetector
 
-var velocity := Vector2.ZERO
+var custom_velocity := Vector2.ZERO
 var direction := Vector2.RIGHT
 
 enum {
@@ -41,28 +41,28 @@ func _process(_delta):
 			_stop_walking()
 
 func _physics_process(delta):
-	velocity.y += EngineParameters.GRAVITY * delta
-	set_velocity(velocity)
+	custom_velocity.y += EngineParameters.GRAVITY * delta
+	set_velocity(custom_velocity)
 	set_up_direction(Vector2.UP)
 	move_and_slide()
-	velocity = velocity
+	custom_velocity = custom_velocity
 
 func _upd_walking_timer_duration():
 	walking_timer.set_wait_time(Utils.pick_random(POSSIBLE_WALKING_TIMER_DURATIONS))
 
 func _walk():
-	velocity.x = lerp(velocity.x, speed * direction.x, acceleration)
+	custom_velocity.x = lerp(custom_velocity.x, speed * direction.x, acceleration)
 	animation_player.play("Walking")
 
 func _stop_walking():
-	velocity.x = lerp(velocity.x, Vector2.ZERO.x, friction)
+	custom_velocity.x = lerp(custom_velocity.x, Vector2.ZERO.x, friction)
 
 func _idle():
 	_stop_walking()
 	animation_player.play("Idle")
 
 func _flip():
-	velocity.x = 0
+	custom_velocity.x = 0
 	direction = -direction
 	self.scale.x *= -1
 

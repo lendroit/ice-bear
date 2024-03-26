@@ -1,8 +1,8 @@
 @tool
 extends Control
 
-@export (String) var text = "": set = set_text
-@export (Texture2D) var portrait : set = set_portrait
+@export var text: String = "": set = set_text
+@export var portrait: Texture2D : set = set_portrait
 
 @onready var text_node = $DialogBorder/Text
 @onready var portrait_node = $Portrait

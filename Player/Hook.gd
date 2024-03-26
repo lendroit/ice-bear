@@ -19,11 +19,11 @@ func hook():
 		return
 
 	var hooks_in_area = reachable_hooks_area.get_overlapping_areas()
-	var upper_hooks = Utils.filter(funcref(self, "keep_upper_hooks"), hooks_in_area)
+	var upper_hooks = Utils.filter(keep_upper_hooks, hooks_in_area)
 	if (upper_hooks.size() == 0):
 		return
 
-	var uppest_hook = Utils.reduce(funcref(self, "get_higher_hook"), upper_hooks, upper_hooks[0])
+	var uppest_hook = Utils.reduce(get_higher_hook, upper_hooks, upper_hooks[0])
 	hooked_node = uppest_hook
 	grappling_hook_rope.visible = true
 

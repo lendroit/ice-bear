@@ -3,7 +3,7 @@ extends Node2D
 
 signal checkpoint_activated
 
-@export (bool) var is_active = false: set = _set_is_active
+@export var is_active: bool = false: set = _set_is_active
 
 @onready var _flag = $Flag
 @onready var spawn_position = $SpawnPosition

@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name Player
 
-@export (NodePath) var joystick_path
+@export var joystick_path: NodePath
 
 @onready var spit = $AudioPlayer/Spit
 @onready var death = $AudioPlayer/Death
@@ -20,7 +20,7 @@ signal player_win
 @onready var backpack = $SpriteContainer/Body/Backpack
 @onready var hook_muzzle = $Hook
 
-var velocity = Vector2.ZERO
+var custom_velocity = Vector2.ZERO
 var jump_count = 0
 
 var orientation = 1
@@ -80,11 +80,11 @@ func handle_jump(delta):
 
 	if Input.is_action_just_pressed("jump") && jump_count < PlayerParameters.PLAYER_MAX_JUMPS:
 		jump_count += 1
-		velocity.y = PlayerParameters.PLAYER_JUMP_SPEED
-	elif Input.is_action_pressed("jump") && velocity.y > 0 && PlayerParameters.PLAYER_CAN_HOVER:
-		velocity.y = lerp(velocity.y, PlayerParameters.PLAYER_HOVER_SPEED, PlayerParameters.PLAYER_AIR_FRICTION)
+		custom_velocity.y = PlayerParameters.PLAYER_JUMP_SPEED
+	elif Input.is_action_pressed("jump") && custom_velocity.y > 0 && PlayerParameters.PLAYER_CAN_HOVER:
+		custom_velocity.y = lerp(custom_velocity.y, PlayerParameters.PLAYER_HOVER_SPEED, PlayerParameters.PLAYER_AIR_FRICTION)
 	else:
-		velocity.y += EngineParameters.GRAVITY * delta
+		custom_velocity.y += EngineParameters.GRAVITY * delta
 
 func _set_orientation(horizontal_speed):
 	orientation = sign(horizontal_speed) * abs(sprite.scale.x)
@@ -95,7 +95,7 @@ func player_death():
 	_play_death_sound()
 	emit_signal("player_died")
 
-func player_win():
+func _player_win():
 	print("Tu as gagné !")
 	emit_signal("player_win")
 
@@ -103,20 +103,20 @@ func _handle_walk():
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("walk_right") - Input.get_action_strength("walk_left")
 	
-	if abs(velocity.x) > 5:
-		_set_orientation(velocity.x)
+	if abs(custom_velocity.x) > 5:
+		_set_orientation(custom_velocity.x)
 
 	var friction = PlayerParameters.PLAYER_WALK_FRICTION if is_on_floor() else PlayerParameters.PLAYER_AIR_FRICTION
 
 	if input_vector.x != 0:
-		velocity.x = lerp(velocity.x, input_vector.x * PlayerParameters.PLAYER_WALK_SPEED, PlayerParameters.PLAYER_WALK_ACCELERATION)
+		custom_velocity.x = lerp(custom_velocity.x, input_vector.x * PlayerParameters.PLAYER_WALK_SPEED, PlayerParameters.PLAYER_WALK_ACCELERATION)
 	else:
-		velocity.x = lerp(velocity.x, 0, friction)
+		custom_velocity.x = lerp(custom_velocity.x, 0.0, friction)
 
-	set_velocity(velocity)
+	set_velocity(custom_velocity)
 	set_up_direction(Vector2.UP)
 	move_and_slide()
-	velocity = velocity
+	custom_velocity = custom_velocity
 
 
 
@@ -127,7 +127,7 @@ func _physics_process(delta):
 
 	hook_muzzle.draw_hook()
 
-	var speed_proportion = velocity.x / PlayerParameters.PLAYER_WALK_SPEED
+	var speed_proportion = custom_velocity.x / PlayerParameters.PLAYER_WALK_SPEED
 	animation_tree.set("parameters/Movement/blend_position", speed_proportion)
 
 
@@ -180,5 +180,5 @@ func _on_HurtBox_body_entered(body):
 	if(body is Water):
 		player_death()
 	if(body is VictoryZone):
-		player_win()
+		_player_win()
 
