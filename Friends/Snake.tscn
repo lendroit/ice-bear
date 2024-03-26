@@ -2,11 +2,11 @@
 
 [ext_resource path="res://Friends/Friend.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Friends/Snake.gd" type="Script" id=2]
-[ext_resource path="res://Friends/Snake.png" type="Texture" id=3]
+[ext_resource path="res://Friends/Snake.png" type="Texture2D" id=3]
 
 [node name="Snake" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite2D" parent="." index="0"]
 scale = Vector2( 0.336257, 0.336257 )
 texture = ExtResource( 3 )

@@ -1,12 +1,12 @@
-tool
+@tool
 extends Node2D
 
 signal checkpoint_activated
 
-export (bool) var is_active = false setget _set_is_active
+@export (bool) var is_active = false: set = _set_is_active
 
-onready var _flag = $Flag
-onready var spawn_position = $SpawnPosition
+@onready var _flag = $Flag
+@onready var spawn_position = $SpawnPosition
 
 func _ready():
 	deactivate()

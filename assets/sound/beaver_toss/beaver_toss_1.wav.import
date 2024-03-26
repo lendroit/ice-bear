@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/beaver_toss_1.wav-5d3ff65b0e2cd893bea182778f1a35fa.sample"
+type="AudioStreamWAV"
+uid="uid://dppk6tx1hwb0t"
+path="res://.godot/imported/beaver_toss_1.wav-5d3ff65b0e2cd893bea182778f1a35fa.sample"
 
 [deps]
 
 source_file="res://assets/sound/beaver_toss/beaver_toss_1.wav"
-dest_files=[ "res://.import/beaver_toss_1.wav-5d3ff65b0e2cd893bea182778f1a35fa.sample" ]
+dest_files=["res://.godot/imported/beaver_toss_1.wav-5d3ff65b0e2cd893bea182778f1a35fa.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

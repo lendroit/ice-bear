@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/spit6.wav-e28fa4fd2294a09511a07b5265a73c3b.sample"
+type="AudioStreamWAV"
+uid="uid://ccrm8x0t1jws8"
+path="res://.godot/imported/spit6.wav-e28fa4fd2294a09511a07b5265a73c3b.sample"
 
 [deps]
 
 source_file="res://assets/sound/spit/spit6.wav"
-dest_files=[ "res://.import/spit6.wav-e28fa4fd2294a09511a07b5265a73c3b.sample" ]
+dest_files=["res://.godot/imported/spit6.wav-e28fa4fd2294a09511a07b5265a73c3b.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

@@ -1,13 +1,13 @@
 extends StaticBody2D
 
-onready var body = $Body
-onready var logs = $Logs
+@onready var body = $Body
+@onready var logs = $Logs
 
 var is_builded = false
 
 func _ready():
 	unbuild()
-	var _useless = $Logs.connect("platform_builded", self, "end_build")
+	var _useless = $Logs.connect("platform_builded", Callable(self, "end_build"))
 
 func unbuild():
 	body.disabled = true

@@ -1,24 +1,24 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 class_name Player
 
-export (NodePath) var joystick_path
+@export (NodePath) var joystick_path
 
-onready var spit = $AudioPlayer/Spit
-onready var death = $AudioPlayer/Death
-onready var beaver = $AudioPlayer/Beaver
+@onready var spit = $AudioPlayer/Spit
+@onready var death = $AudioPlayer/Death
+@onready var beaver = $AudioPlayer/Beaver
 
 signal player_died
 signal player_win
 
-onready var sprite = $SpriteContainer
-onready var animation_player = $SpriteAnimationPlayer
-onready var animation_tree = $AnimationTree
-onready var glaire_muzzle = $GlaireMuzzle
-onready var beaver_muzzle = $BeaverMuzzle
-onready var shoot_timer = $ShootTimer
-onready var backpack = $SpriteContainer/Body/Backpack
-onready var hook_muzzle = $Hook
+@onready var sprite = $SpriteContainer
+@onready var animation_player = $SpriteAnimationPlayer
+@onready var animation_tree = $AnimationTree
+@onready var glaire_muzzle = $GlaireMuzzle
+@onready var beaver_muzzle = $BeaverMuzzle
+@onready var shoot_timer = $ShootTimer
+@onready var backpack = $SpriteContainer/Body/Backpack
+@onready var hook_muzzle = $Hook
 
 var velocity = Vector2.ZERO
 var jump_count = 0
@@ -42,7 +42,7 @@ func reset_shoot_timer():
 func shoot():
 	ready_to_shoot = false
 	reset_shoot_timer()
-	var new_glaire = glaire_scene.instance()
+	var new_glaire = glaire_scene.instantiate()
 	owner.add_child(new_glaire)
 	new_glaire.custom_init(self, glaire_muzzle, orientation)
 
@@ -51,7 +51,7 @@ func _build():
 	_play_beaver_sound()
 	ready_to_shoot = false
 	reset_shoot_timer()
-	var new_beaver_projectile = beaver_projectile.instance()
+	var new_beaver_projectile = beaver_projectile.instantiate()
 	owner.add_child(new_beaver_projectile)
 	new_beaver_projectile.custom_init(self, beaver_muzzle, orientation)
 
@@ -113,7 +113,10 @@ func _handle_walk():
 	else:
 		velocity.x = lerp(velocity.x, 0, friction)
 
-	velocity = move_and_slide(velocity, Vector2.UP)
+	set_velocity(velocity)
+	set_up_direction(Vector2.UP)
+	move_and_slide()
+	velocity = velocity
 
 
 

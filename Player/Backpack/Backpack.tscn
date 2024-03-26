@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Player/Backpack/Sac_Ferme.png" type="Texture" id=1]
-[ext_resource path="res://Player/Backpack/Sac_Ouvert.png" type="Texture" id=2]
-[ext_resource path="res://Player/Backpack/Head_Corbeau_001.png" type="Texture" id=3]
-[ext_resource path="res://Player/Backpack/Head_Lama_001.png" type="Texture" id=4]
-[ext_resource path="res://Player/Backpack/Head_Castor_001.png" type="Texture" id=5]
+[ext_resource path="res://Player/Backpack/Sac_Ferme.png" type="Texture2D" id=1]
+[ext_resource path="res://Player/Backpack/Sac_Ouvert.png" type="Texture2D" id=2]
+[ext_resource path="res://Player/Backpack/Head_Corbeau_001.png" type="Texture2D" id=3]
+[ext_resource path="res://Player/Backpack/Head_Lama_001.png" type="Texture2D" id=4]
+[ext_resource path="res://Player/Backpack/Head_Castor_001.png" type="Texture2D" id=5]
 [ext_resource path="res://Player/Backpack/Backpack.gd" type="Script" id=6]
-[ext_resource path="res://Player/Backpack/Head_Kangourou_001.png" type="Texture" id=7]
-[ext_resource path="res://Player/Backpack/Head_Cobra_001.png" type="Texture" id=8]
+[ext_resource path="res://Player/Backpack/Head_Kangourou_001.png" type="Texture2D" id=7]
+[ext_resource path="res://Player/Backpack/Head_Cobra_001.png" type="Texture2D" id=8]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -17,20 +17,20 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Backpack" type="AnimatedSprite"]
+[node name="Backpack" type="AnimatedSprite2D"]
 position = Vector2( -8, -19 )
 scale = Vector2( 0.467, 0.467 )
 frames = SubResource( 1 )
 script = ExtResource( 6 )
 
-[node name="Beaver" type="Sprite" parent="."]
+[node name="Beaver" type="Sprite2D" parent="."]
 visible = false
 position = Vector2( -61.5412, -50.8895 )
 scale = Vector2( 0.428267, 0.428267 )
 z_as_relative = false
 texture = ExtResource( 5 )
 
-[node name="Snake" type="Sprite" parent="."]
+[node name="Snake" type="Sprite2D" parent="."]
 visible = false
 position = Vector2( -52.4461, -32.6992 )
 rotation = -0.85328
@@ -38,7 +38,7 @@ scale = Vector2( 0.428267, 0.428267 )
 z_as_relative = false
 texture = ExtResource( 8 )
 
-[node name="Crow" type="Sprite" parent="."]
+[node name="Crow" type="Sprite2D" parent="."]
 visible = false
 position = Vector2( -38.298, -41.7944 )
 rotation = -0.309243
@@ -46,7 +46,7 @@ scale = Vector2( 0.428267, 0.428267 )
 z_as_relative = false
 texture = ExtResource( 3 )
 
-[node name="Kangaroo" type="Sprite" parent="."]
+[node name="Kangaroo" type="Sprite2D" parent="."]
 visible = false
 position = Vector2( -54.4672, -34.7204 )
 rotation = -0.790897
@@ -54,7 +54,7 @@ scale = Vector2( 0.428267, 0.428267 )
 z_as_relative = false
 texture = ExtResource( 7 )
 
-[node name="Lama" type="Sprite" parent="."]
+[node name="Lama" type="Sprite2D" parent="."]
 visible = false
 position = Vector2( -26.1712, -71.101 )
 rotation = 0.0220469

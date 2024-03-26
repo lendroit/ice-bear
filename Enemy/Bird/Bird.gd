@@ -4,12 +4,12 @@ class_name Bird
 
 signal bird_shot
 
-onready var shoot_timer = $ShootTimer
+@onready var shoot_timer = $ShootTimer
 
 var possible_shoot_timer_durations = [0.7, 0.85, 1]
 
 var Shit = preload("res://Enemy/EnemyShit.tscn")
-export var spit_velocity = 650
+@export var spit_velocity = 650
 
 func upd_shoot_timer_duration():
 	shoot_timer.set_wait_time(Utils.pick_random(possible_shoot_timer_durations))
@@ -28,7 +28,7 @@ func shoot():
 		return
 
 	$ShootAnimationPlayer.play("StartShitting")
-	var new_shit = Shit.instance()
+	var new_shit = Shit.instantiate()
 	new_shit.position = self.position
 	emit_signal("bird_shot", new_shit)
 

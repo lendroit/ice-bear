@@ -1,11 +1,11 @@
-tool
+@tool
 extends Node2D
 
-export (float) var size = 3 setget _set_size
+@export (float) var size = 3: set = _set_size
 
-onready var cascade_sprite = $CascadeSprite
-onready var end_of_cascade = $CascadeSprite/EndOfCascade
-onready var particles = $Particles2D
+@onready var cascade_sprite = $CascadeSprite
+@onready var end_of_cascade = $CascadeSprite/EndOfCascade
+@onready var particles = $GPUParticles2D
 
 func _ready():
 	_set_size(size)

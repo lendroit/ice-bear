@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/spit5.wav-1f6ab95adbe200e188a51c6e54d24473.sample"
+type="AudioStreamWAV"
+uid="uid://cadmicavdhmr4"
+path="res://.godot/imported/spit5.wav-1f6ab95adbe200e188a51c6e54d24473.sample"
 
 [deps]
 
 source_file="res://assets/sound/spit/spit5.wav"
-dest_files=[ "res://.import/spit5.wav-1f6ab95adbe200e188a51c6e54d24473.sample" ]
+dest_files=["res://.godot/imported/spit5.wav-1f6ab95adbe200e188a51c6e54d24473.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

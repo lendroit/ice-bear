@@ -1,11 +1,11 @@
-tool
+@tool
 extends Control
 
-export (String) var text = "" setget set_text
-export (Texture) var portrait setget set_portrait
+@export (String) var text = "": set = set_text
+@export (Texture2D) var portrait : set = set_portrait
 
-onready var text_node = $DialogBorder/Text
-onready var portrait_node = $Portrait
+@onready var text_node = $DialogBorder/Text
+@onready var portrait_node = $Portrait
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,7 +17,7 @@ func set_text(new_text: String):
 	if text_node:
 		text_node.text = new_text
 
-func set_portrait(new_portrait: Texture):
+func set_portrait(new_portrait: Texture2D):
 	portrait = new_portrait
 	if portrait_node:
 		portrait_node.texture = new_portrait

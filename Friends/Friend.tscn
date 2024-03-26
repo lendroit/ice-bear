@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Friends/Corbeau.png" type="Texture" id=1]
+[ext_resource path="res://Friends/Corbeau.png" type="Texture2D" id=1]
 [ext_resource path="res://Friends/Friend.gd" type="Script" id=2]
-[ext_resource path="res://Particles/circle_05.png" type="Texture" id=3]
+[ext_resource path="res://Particles/circle_05.png" type="Texture2D" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 31.4138
@@ -12,31 +12,31 @@ height = 15.3242
 resource_name = "Idle"
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:position")
+tracks/0/path = NodePath("Sprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.5 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 3 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:rotation_degrees")
+tracks/1/path = NodePath("Sprite2D:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.4 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ -3.0, 3.0 ]
 }
 
-[sub_resource type="ParticlesMaterial" id=3]
+[sub_resource type="ParticleProcessMaterial" id=3]
 flag_disable_z = true
 spread = 180.0
 gravity = Vector3( 0, 0, 0 )
@@ -53,7 +53,7 @@ collision_layer = 32
 collision_mask = 0
 script = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2( 0, 2.4 )
 scale = Vector2( 0.27428, 0.27428 )
 texture = ExtResource( 1 )
@@ -66,7 +66,7 @@ shape = SubResource( 1 )
 autoplay = "Idle"
 anims/Idle = SubResource( 2 )
 
-[node name="Particles2D" type="Particles2D" parent="."]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2( -0.340103, 11.2234 )
 rotation = -3.72529e-09
 z_index = -1

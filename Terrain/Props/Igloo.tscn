@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Terrain/Props/Igloo.png" type="Texture" id=1]
+[ext_resource path="res://Terrain/Props/Igloo.png" type="Texture2D" id=1]
 
-[node name="Igloo" type="Sprite"]
+[node name="Igloo" type="Sprite2D"]
 position = Vector2( -468.859, -54.3864 )
 rotation = -0.0217555
 scale = Vector2( 0.747978, 0.747978 )

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckuckbuasbwcq"
-path="res://.godot/imported/Water_F05.png-f3496bd0974789daaf782cd48e114ec1.ctex"
+uid="uid://bq5eqwy3y2yup"
+path="res://.godot/imported/ice-bear-example.png-3d9432aeacc1522adfe889abbc277b08.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Terrain/Water/Water_F05.png"
-dest_files=["res://.godot/imported/Water_F05.png-f3496bd0974789daaf782cd48e114ec1.ctex"]
+source_file="res://doc/ice-bear-example.png"
+dest_files=["res://.godot/imported/ice-bear-example.png-3d9432aeacc1522adfe889abbc277b08.ctex"]
 
 [params]
 

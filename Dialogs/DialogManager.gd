@@ -1,11 +1,11 @@
-tool
+@tool
 extends Control
 
-export(FriendsParameters.ENUM) var current_dialog_name setget set_current_dialog
+@export var current_dialog_name : set = set_current_dialog
 
 signal end
 
-onready var friends_mapping = {
+@onready var friends_mapping = {
 	FriendsParameters.ENUM.lama: $Lama,
 	FriendsParameters.ENUM.beaver: $Beaver,
 	FriendsParameters.ENUM.kangaroo: $Kangaroo,
@@ -15,7 +15,7 @@ onready var friends_mapping = {
 
 func _ready():
 	for child in get_children():
-		child.connect("end", self, "end_dialog")
+		child.connect("end", Callable(self, "end_dialog"))
 
 func _hide_all_friends():
 	if !friends_mapping:

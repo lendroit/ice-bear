@@ -1,8 +1,8 @@
-tool
+@tool
 extends Node2D
 
-onready var active_sprite = $ActiveSprite
-onready var inactive_sprite = $InactiveSprite
+@onready var active_sprite = $ActiveSprite
+@onready var inactive_sprite = $InactiveSprite
 
 func set_is_active(is_active):
 	if(active_sprite && inactive_sprite):

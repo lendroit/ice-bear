@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Enemy/GenericEnemy.gd" type="Script" id=1]
-[ext_resource path="res://assets/penguin_standing.png" type="Texture" id=2]
-[ext_resource path="res://assets/penguin_moving.png" type="Texture" id=3]
+[ext_resource path="res://assets/penguin_standing.png" type="Texture2D" id=2]
+[ext_resource path="res://assets/penguin_moving.png" type="Texture2D" id=3]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -24,14 +24,14 @@ resource_name = "Idle"
 length = 1.5
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("SpriteContainer/Sprite:frame")
+tracks/0/path = NodePath("SpriteContainer/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.8 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.8 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ 0, 1 ]
 }
@@ -42,13 +42,13 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.9 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.9 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 15 ) ]
 }
 
-[node name="GenericEnemy" type="KinematicBody2D" groups=[
+[node name="GenericEnemy" type="CharacterBody2D" groups=[
 "enemy",
 ]]
 collision_layer = 0
@@ -57,7 +57,7 @@ script = ExtResource( 1 )
 [node name="SpriteContainer" type="Node2D" parent="."]
 position = Vector2( 0, 10 )
 
-[node name="Sprite" type="AnimatedSprite" parent="SpriteContainer"]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="SpriteContainer"]
 position = Vector2( 0.947052, -35.6258 )
 scale = Vector2( 0.08, 0.08 )
 frames = SubResource( 1 )
@@ -100,10 +100,10 @@ rotation = 1.5708
 scale = Vector2( 1.3, 1.75 )
 shape = SubResource( 2 )
 
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 [connection signal="body_entered" from="LeftWallDetector" to="." method="_on_LeftWallDetector_body_entered"]
 [connection signal="body_entered" from="RightWallDetector" to="." method="_on_RightWallDetector_body_entered"]
 [connection signal="timeout" from="WalkingTimer" to="." method="_on_WalkingTimer_timeout"]
 [connection signal="area_shape_entered" from="HitBox" to="." method="_on_HitBox_area_shape_entered"]
-[connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
-[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

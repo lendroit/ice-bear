@@ -1,11 +1,11 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 signal died
 
-export (int) var speed = 200
-export (float) var friction = 0.1
-export (float) var acceleration = 0.25
-export (int) var HEALTH_POINTS = 1
+@export (int) var speed = 200
+@export (float) var friction = 0.1
+@export (float) var acceleration = 0.25
+@export (int) var HEALTH_POINTS = 1
 
 var gravity_sensible = false
 var possible_walking_timer_durations = [1.5]
@@ -13,10 +13,10 @@ var possible_states_after_idle = [WALK]
 var possible_states_after_walk = [NEW_DIRECTION]
 var possible_states_after_new_direction = [WALK]
 
-onready var walking_timer = $WalkingTimer
-onready var sprite = $SpriteContainer/Sprite
-onready var animation_player = $AnimationPlayer
-onready var hitbox_collider = $HitBox/HitBoxCollider
+@onready var walking_timer = $WalkingTimer
+@onready var sprite = $SpriteContainer/Sprite2D
+@onready var animation_player = $AnimationPlayer
+@onready var hitbox_collider = $HitBox/HitBoxCollider
 
 var walking := true
 var velocity := Vector2.ZERO
@@ -85,7 +85,10 @@ func _process(_delta):
 func _physics_process(delta):
 	if(gravity_sensible):
 		velocity.y += EngineParameters.GRAVITY * delta
-	velocity = move_and_slide(velocity, Vector2.UP)
+	set_velocity(velocity)
+	set_up_direction(Vector2.UP)
+	move_and_slide()
+	velocity = velocity
 
 func _on_WalkingTimer_timeout():
 	match state:

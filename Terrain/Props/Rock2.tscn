@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Terrain/Props/Rock2.png" type="Texture" id=1]
+[ext_resource path="res://Terrain/Props/Rock2.png" type="Texture2D" id=1]
 
-[node name="Rock2" type="Sprite"]
+[node name="Rock2" type="Sprite2D"]
 position = Vector2( -669.184, -38.0923 )
 z_index = 1
 texture = ExtResource( 1 )

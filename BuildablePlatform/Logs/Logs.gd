@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var building_animation = $BuildingAnimation 
+@onready var building_animation = $BuildingAnimation 
 
 signal platform_builded
 

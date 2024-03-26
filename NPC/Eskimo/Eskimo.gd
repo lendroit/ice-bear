@@ -1,15 +1,15 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
-export (int) var speed = 50
-export (float) var friction = 0.1
-export (float) var acceleration = 0.25
+@export (int) var speed = 50
+@export (float) var friction = 0.1
+@export (float) var acceleration = 0.25
 
 var POSSIBLE_WALKING_TIMER_DURATIONS = [2, 3]
 
-onready var walking_timer = $WalkingTimer
-onready var animation_player = $AnimationPlayer
-onready var cliff_detector = $CliffDetector
-onready var wall_detector = $WallDetector
+@onready var walking_timer = $WalkingTimer
+@onready var animation_player = $AnimationPlayer
+@onready var cliff_detector = $CliffDetector
+@onready var wall_detector = $WallDetector
 
 var velocity := Vector2.ZERO
 var direction := Vector2.RIGHT
@@ -42,7 +42,10 @@ func _process(_delta):
 
 func _physics_process(delta):
 	velocity.y += EngineParameters.GRAVITY * delta
-	velocity = move_and_slide(velocity, Vector2.UP)
+	set_velocity(velocity)
+	set_up_direction(Vector2.UP)
+	move_and_slide()
+	velocity = velocity
 
 func _upd_walking_timer_duration():
 	walking_timer.set_wait_time(Utils.pick_random(POSSIBLE_WALKING_TIMER_DURATIONS))

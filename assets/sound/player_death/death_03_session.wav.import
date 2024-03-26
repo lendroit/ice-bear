@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/death_03_session.wav-4cd0b68052b0a763bface5f1a411cb0b.sample"
+type="AudioStreamWAV"
+uid="uid://c8bbj5epy313h"
+path="res://.godot/imported/death_03_session.wav-4cd0b68052b0a763bface5f1a411cb0b.sample"
 
 [deps]
 
 source_file="res://assets/sound/player_death/death_03_session.wav"
-dest_files=[ "res://.import/death_03_session.wav-4cd0b68052b0a763bface5f1a411cb0b.sample" ]
+dest_files=["res://.godot/imported/death_03_session.wav-4cd0b68052b0a763bface5f1a411cb0b.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

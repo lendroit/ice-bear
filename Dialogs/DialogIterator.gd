@@ -1,7 +1,7 @@
-tool
+@tool
 extends Control
 
-export (int) var current_step = 0 setget _set_current_step
+@export (int) var current_step = 0: set = _set_current_step
 
 signal end
 

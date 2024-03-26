@@ -7,18 +7,18 @@ signal shit_exploded
 const SPEED = 30
 const ENEMY_GLAIRE_DRAG_COEFF := 2.0
 
-onready var animation_player = $AnimationPlayer
-onready var collision_shape = $CollisionShape2D
+@onready var animation_player = $AnimationPlayer
+@onready var collision_shape = $CollisionShape2D
 
 func _ready():
 	contact_monitor = true
-	contacts_reported = 1
+	max_contacts_reported = 1
 
 func _integrate_forces(_state):
-	add_force(Vector2.ZERO, SPEED * Vector2.DOWN)
+	apply_force(SPEED * Vector2.DOWN, Vector2.ZERO)
 
 func _disable_shit():
-	set_deferred("mode", RigidBody2D.MODE_STATIC)
+	set_deferred("mode", RigidBody2D.FREEZE_MODE_STATIC)
 	collision_shape.set_deferred("disabled", true)
 
 func _on_EnemyGlaire_body_entered(_body):

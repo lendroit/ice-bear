@@ -1,181 +1,151 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=8 format=3 uid="uid://dyee06nx6wo6o"]
 
-[ext_resource path="res://Intro/intro.png" type="Texture" id=1]
-[ext_resource path="res://Intro/Intro.gd" type="Script" id=2]
-[ext_resource path="res://Dialogs/DialogIterator.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/Roboto-Medium.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://Dialogs/Portraits/little bear.png" type="Texture" id=5]
-[ext_resource path="res://Intro/Titre_001.png" type="Texture" id=6]
+[ext_resource type="Texture2D" uid="uid://boxjgoienyoi7" path="res://Intro/intro.png" id="1"]
+[ext_resource type="Script" path="res://Intro/Intro.gd" id="2"]
+[ext_resource type="PackedScene" path="res://Dialogs/DialogIterator.tscn" id="3"]
+[ext_resource type="FontFile" uid="uid://bt7hsodbfc0e2" path="res://assets/Roboto-Medium.ttf" id="4"]
+[ext_resource type="Texture2D" uid="uid://bxpo678h1y1jr" path="res://Dialogs/Portraits/little bear.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://budtkfq2u83kh" path="res://Intro/Titre_001.png" id="6"]
 
-[sub_resource type="DynamicFont" id=1]
-size = 32
-font_data = ExtResource( 4 )
+[sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("4")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
 [node name="Intro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_bottom = 1.0
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_bottom = 1.0
+script = ExtResource("2")
 
-[node name="DialogIterator" parent="." instance=ExtResource( 3 )]
+[node name="DialogIterator" parent="." instance=ExtResource("3")]
+anchors_preset = 0
 
 [node name="1" type="Control" parent="DialogIterator"]
 visible = false
+anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect" type="TextureRect" parent="DialogIterator/1"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -380.0
-texture = ExtResource( 6 )
-expand = true
+offset_left = -380.0
+texture = ExtResource("6")
+expand_mode = 1
 stretch_mode = 7
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="2" type="Control" parent="DialogIterator"]
 visible = false
+anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect" type="TextureRect" parent="DialogIterator/2"]
+layout_mode = 0
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -582.0
-margin_top = -291.0
-margin_bottom = 291.0
-texture = ExtResource( 5 )
-expand = true
+offset_left = -582.0
+offset_top = -291.0
+offset_bottom = 291.0
+texture = ExtResource("5")
+expand_mode = 1
 stretch_mode = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="DialogIterator/2"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 50.0
-margin_right = -469.0
-margin_bottom = 1.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+offset_left = 50.0
+offset_right = -469.0
+offset_bottom = 1.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("1")
 text = "Où suis-je ? Ma tête....
 Que s'est-il passé ?"
-align = 1
-valign = 1
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="3" type="Control" parent="DialogIterator"]
 visible = false
+anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect" type="TextureRect" parent="DialogIterator/3"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 1 )
-expand = true
+texture = ExtResource("1")
+expand_mode = 1
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="4" type="Control" parent="DialogIterator"]
 visible = false
+anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect" type="TextureRect" parent="DialogIterator/4"]
+layout_mode = 0
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -582.0
-margin_top = -291.0
-margin_bottom = 291.0
-texture = ExtResource( 5 )
-expand = true
+offset_left = -582.0
+offset_top = -291.0
+offset_bottom = 291.0
+texture = ExtResource("5")
+expand_mode = 1
 stretch_mode = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="DialogIterator/4"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 50.0
-margin_right = -469.0
-margin_bottom = 1.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+offset_left = 50.0
+offset_right = -469.0
+offset_bottom = 1.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("1")
 text = "Je me souviens... Ils m'ont pris pour un ours polaire. Mais bon sang ils ont déjà vu un ours polaire aux yeux rouges ? JE NE SUIS PAS UN OURS POLAIRE, JE NE SUIS QU'UN OURS ALBINOS.
 
 Qu'est-ce que je vais bien pouvoir faire ici ? Comment je rentre, moi ? Il n'y a pas de Ubear dans le coin."
-align = 1
-valign = 1
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="5" type="Control" parent="DialogIterator"]
 visible = false
+anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect" type="TextureRect" parent="DialogIterator/5"]
+layout_mode = 0
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -582.0
-margin_top = -291.0
-margin_bottom = 291.0
-texture = ExtResource( 5 )
-expand = true
+offset_left = -582.0
+offset_top = -291.0
+offset_bottom = 291.0
+texture = ExtResource("5")
+expand_mode = 1
 stretch_mode = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="DialogIterator/5"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 50.0
-margin_right = -469.0
-margin_bottom = 1.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+offset_left = 50.0
+offset_right = -469.0
+offset_bottom = 1.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("1")
 text = "Bon. Plus qu'à trouver un moyen de rentrer à la maison.
 J'espère que je vais trouver de l'aide. Ces \"pigeons des glaces\" n'ont pas l'air commode."
-align = 1
-valign = 1
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}

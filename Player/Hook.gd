@@ -1,8 +1,8 @@
 extends Node2D
 
-onready var reachable_hooks_area = $ReachableHooksArea
-onready var grappling_hook_rope = $GrapplingHookRope
-onready var hook_position_tween = $HookPositionTween
+@onready var reachable_hooks_area = $ReachableHooksArea
+@onready var grappling_hook_rope = $GrapplingHookRope
+@onready var hook_position_tween = $HookPositionTween
 
 # PUBLIC
 var hook_direction = Vector2.ZERO
